@@ -1,0 +1,19 @@
+{
+  "name": "@musical-patterns/utilities-pattern",
+  "version": "1.0.2",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MusicalPatterns/utilities-pattern.git"
+  },
+  "devDependencies": {
+    "@musical-patterns/cli": "^1.0.142",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "@musical-patterns/compiler": "^1.0.42",
+    "@musical-patterns/utilities": "^1.0.118"
+  }
+}
