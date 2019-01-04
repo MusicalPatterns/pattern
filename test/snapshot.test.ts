@@ -1,23 +1,27 @@
 // tslint:disable-next-line:no-implicit-dependencies
 import { compilePattern } from '@musical-patterns/compiler'
-import { logMessageToConsole } from '@musical-patterns/utilities'
+import * as path from 'path'
 
 describe('snapshot', () => {
-    it('stays locked down', async (done: DoneFn) => {
-        // tslint:disable-next-line:no-unsafe-any no-require-imports
-        const { pattern, snapshot } = require('../src/indexForTest')
+    // tslint:disable-next-line:no-unsafe-any no-require-imports
+    const { pattern, snapshot } = require('../src/indexForTest')
 
-        if (!pattern) {
-            logMessageToConsole('This snapshot test is running outside of a pattern\'s test suite. Harmless.')
-            done()
-
-            return
+    if (!pattern) {
+        const repoName: string = path.dirname(__dirname)
+            .split(path.sep)
+            .pop() || ''
+        if (repoName.includes('pattern-')) {
+            fail(`A pattern was not found. Ensure you are exporting the pattern from your 'src/indexForTest.ts'.`)
         }
+    }
+    else {
+        it('stays locked down', async (done: DoneFn) => {
 
-        // tslint:disable-next-line:no-unsafe-any
-        expect(JSON.stringify(await compilePattern(pattern), undefined, 2))
-            .toEqual(JSON.stringify(snapshot, undefined, 2))
+            // tslint:disable-next-line:no-unsafe-any
+            expect(JSON.stringify(await compilePattern(pattern), undefined, 2))
+                .toEqual(JSON.stringify(snapshot, undefined, 2))
 
-        done()
-    })
+            done()
+        })
+    }
 })
