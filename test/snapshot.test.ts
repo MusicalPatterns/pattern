@@ -10,7 +10,8 @@ describe('snapshot', () => {
         const repoName: string = path.dirname(__dirname)
             .split(path.sep)
             .pop() || ''
-        if (repoName.includes('pattern-')) {
+
+        if (!([ 'cli', 'utilities', 'performer', 'compiler', 'pattern', 'registry', 'playroom', 'lab' ].includes(repoName))) {
             it('includes this test', () => {
                 fail(`A pattern was not found. Ensure you are exporting the pattern from your 'src/indexForTest.ts'.`)
             })
