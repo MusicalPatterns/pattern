@@ -15,10 +15,25 @@ interface PatternSpecPitchAdjustments extends AnyOtherProperties {
 // tslint:disable-next-line:no-magic-numbers
 type StandardContour = 2
 
+interface PatternMetadata {
+    description: string,
+    formattedName: string,
+    musicalIdeaIllustrated: string,
+}
+
+interface PatternSpec extends AnyOtherProperties {
+    patternDurationOffset?: Offset,
+    patternDurationScalar?: Scalar,
+    patternPitchOffset?: Offset,
+    patternPitchScalar?: Scalar,
+}
+
 export {
     Segment,
     Rendering,
     RenderingByBlockElement,
     PatternSpecPitchAdjustments,
     StandardContour,
+    PatternMetadata,
+    PatternSpec,
 }

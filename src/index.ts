@@ -11,4 +11,6 @@ export {
     Segment,
     RenderingByBlockElement,
     Rendering,
+    PatternSpec,
+    PatternMetadata,
 } from './types'
