@@ -11,7 +11,9 @@ describe('snapshot', () => {
             .split(path.sep)
             .pop() || ''
         if (repoName.includes('pattern-')) {
-            fail(`A pattern was not found. Ensure you are exporting the pattern from your 'src/indexForTest.ts'.`)
+            it('includes this test', () => {
+                fail(`A pattern was not found. Ensure you are exporting the pattern from your 'src/indexForTest.ts'.`)
+            })
         }
     }
     else {
