@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-make share_file FILE=Makefile.snapshot
-make share_file FILE=test/snapshot.test.ts
+. node_modules/@musical-patterns/cli/bin/non_cli/share_file.sh
+
+share_file Makefile.snapshot
+share_file test/snapshot.test.ts
