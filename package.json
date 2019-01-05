@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/pattern",
-  "version": "1.0.67",
+  "version": "1.0.68",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "postinstall": "bash ./bin/postinstall.sh"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.212",
+    "@musical-patterns/cli": "^1.0.221",
     "typescript": "^3.2.2"
   },
   "dependencies": {
