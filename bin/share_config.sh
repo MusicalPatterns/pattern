@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "am i running"
+
 set -e
 
 . ../../../node_modules/@musical-patterns/cli/bin/non_cli/share_file.sh
