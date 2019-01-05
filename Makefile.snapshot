@@ -1,8 +1,5 @@
 Makefile.snapshot:
 	@:
 
-%:
-	@bash node_modules/.bin/musical-patterns $@
-
 snapshot:
 	@bash node_modules/.bin/mps
