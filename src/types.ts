@@ -18,9 +18,9 @@ type StandardContour = 2
 interface PatternMetadata {
     description: string,
     formattedName: string,
-    mostRecentPublish?: string,
+    mostRecentPublish: string,
     musicalIdeaIllustrated: string,
-    originalPublish?: string,
+    originalPublish: string,
 }
 
 interface PatternSpec extends AnyOtherProperties {
