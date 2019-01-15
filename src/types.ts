@@ -53,22 +53,11 @@ interface DiscretePatternSpecProperty {
 
 type PatternSpecProperty = ContinuousPatternSpecProperty | DiscretePatternSpecProperty
 
-interface StandardSettledPatternSpec {
+interface SettledPatternSpec extends AnyOtherProperties {
     patternDurationOffset?: Offset,
     patternDurationScalar?: Scalar,
     patternPitchOffset?: Offset,
     patternPitchScalar?: Scalar,
-}
-
-interface SettledPatternSpec extends StandardSettledPatternSpec, AnyOtherProperties {}
-
-interface StandardPatternSpec {
-    patternDurationOffset: ContinuousPatternSpecProperty,
-    patternDurationScalar: ContinuousPatternSpecProperty,
-    patternPitchOffset: ContinuousPatternSpecProperty,
-    patternPitchScalar: ContinuousPatternSpecProperty,
-
-    [ index: string ]: PatternSpecProperty,
 }
 
 type PatternSpec = DictionaryOf<PatternSpecProperty>
@@ -81,7 +70,6 @@ export {
     StandardContour,
     PatternMetadata,
     PatternSpec,
-    StandardPatternSpec,
     PatternSpecProperty,
     DiscretePatternSpecProperty,
     ContinuousPatternSpecProperty,
@@ -89,6 +77,5 @@ export {
     DiscretePatternSpecPropertyRange,
     PatternSpecPropertyRange,
     PatternSpecPropertyType,
-    StandardSettledPatternSpec,
     SettledPatternSpec,
 }

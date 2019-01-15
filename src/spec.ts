@@ -1,15 +1,15 @@
 import { from, to } from '@musical-patterns/utilities'
 import { DEFAULT_DURATION_SCALAR, DEFAULT_PITCH_SCALAR } from './constants'
-import { PatternSpecPropertyType, StandardPatternSpec, StandardSettledPatternSpec } from './types'
+import { PatternSpec, PatternSpecPropertyType, SettledPatternSpec } from './types'
 
-const standardSettledPatternSpec: StandardSettledPatternSpec = {
+const standardSettledPatternSpec: SettledPatternSpec = {
     patternDurationOffset: to.Offset(0),
     patternDurationScalar: DEFAULT_DURATION_SCALAR,
     patternPitchOffset: to.Offset(0),
     patternPitchScalar: DEFAULT_PITCH_SCALAR,
 }
 
-const standardPatternSpec: StandardPatternSpec = {
+const standardPatternSpec: PatternSpec = {
     patternDurationOffset: {
         initial: 0,
         patternSpecPropertyType: PatternSpecPropertyType.CONTINUOUS,

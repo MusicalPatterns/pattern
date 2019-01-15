@@ -14,7 +14,6 @@ export {
     Rendering,
     PatternMetadata,
     PatternSpec,
-    StandardPatternSpec,
     PatternSpecProperty,
     DiscretePatternSpecProperty,
     ContinuousPatternSpecProperty,
@@ -22,6 +21,5 @@ export {
     DiscretePatternSpecPropertyRange,
     PatternSpecPropertyRange,
     PatternSpecPropertyType,
-    StandardSettledPatternSpec,
     SettledPatternSpec,
 } from './types'
