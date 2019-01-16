@@ -1,7 +1,19 @@
 export { unpackStandardContourElement, calculateTotalStandardContourDuration, standardRest } from './contours'
 export { adjustScalars } from './adjustScalars'
 export { buildStandardScales } from './scales'
-export { standardPatternSpec, standardSettledPatternSpec } from './spec'
+export {
+    standardPatternSpec,
+    standardSettledPatternSpec,
+    PatternSpec,
+    PatternSpecProperty,
+    DiscretePatternSpecProperty,
+    ContinuousPatternSpecProperty,
+    ContinuousPatternSpecPropertyRange,
+    DiscretePatternSpecPropertyRange,
+    PatternSpecPropertyRange,
+    PatternSpecPropertyType,
+    SettledPatternSpec,
+} from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,
     DEFAULT_PITCH_SCALE_INDEX,
@@ -13,13 +25,4 @@ export {
     RenderingByBlockElement,
     Rendering,
     PatternMetadata,
-    PatternSpec,
-    PatternSpecProperty,
-    DiscretePatternSpecProperty,
-    ContinuousPatternSpecProperty,
-    ContinuousPatternSpecPropertyRange,
-    DiscretePatternSpecPropertyRange,
-    PatternSpecPropertyRange,
-    PatternSpecPropertyType,
-    SettledPatternSpec,
 } from './types'

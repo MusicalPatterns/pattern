@@ -1,5 +1,5 @@
 import { from, to } from '@musical-patterns/utilities'
-import { DEFAULT_DURATION_SCALAR, DEFAULT_PITCH_SCALAR } from './constants'
+import { DEFAULT_DURATION_SCALAR, DEFAULT_PITCH_SCALAR } from '../constants'
 import { PatternSpec, PatternSpecPropertyType, SettledPatternSpec } from './types'
 
 const standardSettledPatternSpec: SettledPatternSpec = {

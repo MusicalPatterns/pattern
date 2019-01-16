@@ -1,5 +1,5 @@
 import { NoteSpec } from '@musical-patterns/compiler'
-import { AnyOtherProperties, Block, ContourPiece, DictionaryOf, Offset, Scalar } from '@musical-patterns/utilities'
+import { AnyOtherProperties, Block, ContourPiece, Offset, Scalar } from '@musical-patterns/utilities'
 
 type Segment = NoteSpec[][]
 
@@ -23,45 +23,6 @@ interface PatternMetadata {
     originalPublish: string,
 }
 
-enum PatternSpecPropertyType {
-    CONTINUOUS = 'CONTINUOUS',
-    DISCRETE = 'DISCRETE',
-}
-
-interface ContinuousPatternSpecPropertyRange {
-    excludeMax?: boolean,
-    excludeMin?: boolean,
-    max?: number,
-    min?: number,
-}
-
-type DiscretePatternSpecPropertyRange = string[]
-
-type PatternSpecPropertyRange = ContinuousPatternSpecPropertyRange | DiscretePatternSpecPropertyRange
-
-interface ContinuousPatternSpecProperty {
-    initial: number,
-    patternSpecPropertyRange?: ContinuousPatternSpecPropertyRange,
-    patternSpecPropertyType: PatternSpecPropertyType.CONTINUOUS,
-}
-
-interface DiscretePatternSpecProperty {
-    initial: string,
-    patternSpecPropertyRange: DiscretePatternSpecPropertyRange,
-    patternSpecPropertyType: PatternSpecPropertyType.DISCRETE,
-}
-
-type PatternSpecProperty = ContinuousPatternSpecProperty | DiscretePatternSpecProperty
-
-interface SettledPatternSpec extends AnyOtherProperties {
-    patternDurationOffset?: Offset,
-    patternDurationScalar?: Scalar,
-    patternPitchOffset?: Offset,
-    patternPitchScalar?: Scalar,
-}
-
-type PatternSpec = DictionaryOf<PatternSpecProperty>
-
 export {
     Segment,
     Rendering,
@@ -69,13 +30,4 @@ export {
     PatternSpecPitchAdjustments,
     StandardContour,
     PatternMetadata,
-    PatternSpec,
-    PatternSpecProperty,
-    DiscretePatternSpecProperty,
-    ContinuousPatternSpecProperty,
-    ContinuousPatternSpecPropertyRange,
-    DiscretePatternSpecPropertyRange,
-    PatternSpecPropertyRange,
-    PatternSpecPropertyType,
-    SettledPatternSpec,
 }
