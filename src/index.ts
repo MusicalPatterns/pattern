@@ -13,6 +13,7 @@ export {
     Constraint,
     PatternSpecPropertyType,
     PatternSpec,
+    StandardPatternSpecProperties,
 } from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,

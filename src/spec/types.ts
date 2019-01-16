@@ -67,4 +67,5 @@ export {
     Constraint,
     PatternSpecPropertyType,
     PatternSpec,
+    StandardPatternSpecProperties,
 }

@@ -9,4 +9,5 @@ export {
     Constraint,
     PatternSpecPropertyType,
     PatternSpec,
+    StandardPatternSpecProperties,
 } from './types'

@@ -14,7 +14,7 @@ const standardPatternSpecAttributes: PatternSpecAttributes = {
         patternSpecPropertyType: PatternSpecPropertyType.RANGED,
     },
     patternDurationScalar: {
-        patternSpecPropertyRange: {
+        constraint: {
             excludeMin: true,
             min: 0,
         },
@@ -24,7 +24,7 @@ const standardPatternSpecAttributes: PatternSpecAttributes = {
         patternSpecPropertyType: PatternSpecPropertyType.RANGED,
     },
     patternPitchScalar: {
-        patternSpecPropertyRange: {
+        constraint: {
             excludeMin: true,
             min: 0,
         },
