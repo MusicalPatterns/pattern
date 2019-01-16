@@ -1,29 +1,29 @@
 import { to } from '@musical-patterns/utilities'
 import { DEFAULT_DURATION_SCALAR, DEFAULT_PITCH_SCALAR } from '../constants'
-import { PatternSpec, PatternSpecAttributes, PatternSpecPropertyType } from './types'
+import { PatternSpec, PatternSpecAttributes, PatternSpecPropertyType, StandardPatternSpecProperties } from './types'
 
 const standardInitialPatternSpec: PatternSpec = {
-    patternDurationOffset: to.Offset(0),
-    patternDurationScalar: DEFAULT_DURATION_SCALAR,
-    patternPitchOffset: to.Offset(0),
-    patternPitchScalar: DEFAULT_PITCH_SCALAR,
+    [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: to.Offset(0),
+    [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: DEFAULT_DURATION_SCALAR,
+    [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: to.Offset(0),
+    [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: DEFAULT_PITCH_SCALAR,
 }
 
 const standardPatternSpecAttributes: PatternSpecAttributes = {
-    patternDurationOffset: {
+    [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: {
         patternSpecPropertyType: PatternSpecPropertyType.RANGED,
     },
-    patternDurationScalar: {
+    [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: {
         constraint: {
             excludeMin: true,
             min: 0,
         },
         patternSpecPropertyType: PatternSpecPropertyType.RANGED,
     },
-    patternPitchOffset: {
+    [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: {
         patternSpecPropertyType: PatternSpecPropertyType.RANGED,
     },
-    patternPitchScalar: {
+    [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: {
         constraint: {
             excludeMin: true,
             min: 0,
