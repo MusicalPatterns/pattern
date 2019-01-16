@@ -20,14 +20,12 @@ type Constraint = RangedConstraint | OptionedConstraint
 interface RangedPatternSpecPropertyAttributes {
     constraint?: RangedConstraint,
     formattedName?: string,
-    initial: number,
     patternSpecPropertyType: PatternSpecPropertyType.RANGED,
 }
 
 interface OptionedPatternSpecPropertyAttributes {
     constraint: OptionedConstraint,
     formattedName?: string,
-    initial: string,
     patternSpecPropertyType: PatternSpecPropertyType.OPTIONED,
 }
 

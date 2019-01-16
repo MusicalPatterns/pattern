@@ -3,7 +3,7 @@ export { adjustScalars } from './adjustScalars'
 export { buildStandardScales } from './scales'
 export {
     standardPatternSpecAttributes,
-    standardPatternSpec,
+    standardInitialPatternSpec,
     PatternSpecAttributes,
     PatternSpecPropertyAttributes,
     OptionedPatternSpecPropertyAttributes,

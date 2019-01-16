@@ -1,4 +1,4 @@
-export { standardPatternSpecAttributes, standardPatternSpec } from './standard'
+export { standardPatternSpecAttributes, standardInitialPatternSpec } from './standard'
 export {
     PatternSpecAttributes,
     PatternSpecPropertyAttributes,
