@@ -18,12 +18,14 @@ type DiscretePatternSpecPropertyRange = string[]
 type PatternSpecPropertyRange = ContinuousPatternSpecPropertyRange | DiscretePatternSpecPropertyRange
 
 interface ContinuousPatternSpecProperty {
+    formattedName?: string,
     initial: number,
     patternSpecPropertyRange?: ContinuousPatternSpecPropertyRange,
     patternSpecPropertyType: PatternSpecPropertyType.CONTINUOUS,
 }
 
 interface DiscretePatternSpecProperty {
+    formattedName?: string,
     initial: string,
     patternSpecPropertyRange: DiscretePatternSpecPropertyRange,
     patternSpecPropertyType: PatternSpecPropertyType.DISCRETE,
