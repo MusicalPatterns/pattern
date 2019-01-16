@@ -1,11 +1,11 @@
 import { AnyOtherProperties, DictionaryOf, Maybe, Offset, Scalar } from '@musical-patterns/utilities'
 
 enum PatternSpecPropertyType {
-    CONTINUOUS = 'CONTINUOUS',
-    DISCRETE = 'DISCRETE',
+    RANGED = 'RANGED',
+    OPTIONED = 'OPTIONED',
 }
 
-interface ContinuousPatternSpecPropertyRange {
+interface RangedConstraint {
     excludeMax?: boolean,
     excludeMin?: boolean,
     integer?: boolean,
@@ -13,25 +13,25 @@ interface ContinuousPatternSpecPropertyRange {
     min?: number,
 }
 
-type DiscretePatternSpecPropertyRange = string[]
+type OptionedConstraint = string[]
 
-type PatternSpecPropertyRange = ContinuousPatternSpecPropertyRange | DiscretePatternSpecPropertyRange
+type Constraint = RangedConstraint | OptionedConstraint
 
-interface ContinuousPatternSpecProperty {
+interface RangedPatternSpecPropertyAttributes {
+    constraint?: RangedConstraint,
     formattedName?: string,
     initial: number,
-    patternSpecPropertyRange?: ContinuousPatternSpecPropertyRange,
-    patternSpecPropertyType: PatternSpecPropertyType.CONTINUOUS,
+    patternSpecPropertyType: PatternSpecPropertyType.RANGED,
 }
 
-interface DiscretePatternSpecProperty {
+interface OptionedPatternSpecPropertyAttributes {
+    constraint: OptionedConstraint,
     formattedName?: string,
     initial: string,
-    patternSpecPropertyRange: DiscretePatternSpecPropertyRange,
-    patternSpecPropertyType: PatternSpecPropertyType.DISCRETE,
+    patternSpecPropertyType: PatternSpecPropertyType.OPTIONED,
 }
 
-type PatternSpecProperty = ContinuousPatternSpecProperty | DiscretePatternSpecProperty
+type PatternSpecPropertyAttributes = RangedPatternSpecPropertyAttributes | OptionedPatternSpecPropertyAttributes
 
 enum StandardPatternSpecProperties {
     PATTERN_DURATION_OFFSET = 'patternDurationOffset',
@@ -40,33 +40,33 @@ enum StandardPatternSpecProperties {
     PATTERN_PITCH_SCALAR = 'patternPitchScalar',
 }
 
-type StandardSettledPatternSpec = Partial<{
+type StandardPatternSpec = Partial<{
     [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: Offset,
     [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: Scalar,
     [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: Offset,
     [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: Scalar,
 }>
 
-type StandardPatternSpec = Partial<{
-    [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: ContinuousPatternSpecProperty,
-    [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: ContinuousPatternSpecProperty,
-    [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: ContinuousPatternSpecProperty,
-    [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: ContinuousPatternSpecProperty,
+type StandardPatternSpecAttributes = Partial<{
+    [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: RangedPatternSpecPropertyAttributes,
+    [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: RangedPatternSpecPropertyAttributes,
+    [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: RangedPatternSpecPropertyAttributes,
+    [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: RangedPatternSpecPropertyAttributes,
 }>
 
-interface SettledPatternSpec extends StandardSettledPatternSpec, AnyOtherProperties {
+interface PatternSpec extends StandardPatternSpec, AnyOtherProperties {
 }
 
-type PatternSpec = StandardPatternSpec & DictionaryOf<Maybe<PatternSpecProperty>>
+type PatternSpecAttributes = StandardPatternSpecAttributes & DictionaryOf<Maybe<PatternSpecPropertyAttributes>>
 
 export {
-    PatternSpec,
-    PatternSpecProperty,
-    DiscretePatternSpecProperty,
-    ContinuousPatternSpecProperty,
-    ContinuousPatternSpecPropertyRange,
-    DiscretePatternSpecPropertyRange,
-    PatternSpecPropertyRange,
+    PatternSpecAttributes,
+    PatternSpecPropertyAttributes,
+    OptionedPatternSpecPropertyAttributes,
+    RangedPatternSpecPropertyAttributes,
+    RangedConstraint,
+    OptionedConstraint,
+    Constraint,
     PatternSpecPropertyType,
-    SettledPatternSpec,
+    PatternSpec,
 }

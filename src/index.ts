@@ -2,17 +2,17 @@ export { unpackStandardContourElement, calculateTotalStandardContourDuration, st
 export { adjustScalars } from './adjustScalars'
 export { buildStandardScales } from './scales'
 export {
+    standardPatternSpecAttributes,
     standardPatternSpec,
-    standardSettledPatternSpec,
-    PatternSpec,
-    PatternSpecProperty,
-    DiscretePatternSpecProperty,
-    ContinuousPatternSpecProperty,
-    ContinuousPatternSpecPropertyRange,
-    DiscretePatternSpecPropertyRange,
-    PatternSpecPropertyRange,
+    PatternSpecAttributes,
+    PatternSpecPropertyAttributes,
+    OptionedPatternSpecPropertyAttributes,
+    RangedPatternSpecPropertyAttributes,
+    RangedConstraint,
+    OptionedConstraint,
+    Constraint,
     PatternSpecPropertyType,
-    SettledPatternSpec,
+    PatternSpec,
 } from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,

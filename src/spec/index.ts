@@ -1,12 +1,12 @@
-export { standardPatternSpec, standardSettledPatternSpec } from './standard'
+export { standardPatternSpecAttributes, standardPatternSpec } from './standard'
 export {
-    PatternSpec,
-    PatternSpecProperty,
-    DiscretePatternSpecProperty,
-    ContinuousPatternSpecProperty,
-    ContinuousPatternSpecPropertyRange,
-    DiscretePatternSpecPropertyRange,
-    PatternSpecPropertyRange,
+    PatternSpecAttributes,
+    PatternSpecPropertyAttributes,
+    OptionedPatternSpecPropertyAttributes,
+    RangedPatternSpecPropertyAttributes,
+    RangedConstraint,
+    OptionedConstraint,
+    Constraint,
     PatternSpecPropertyType,
-    SettledPatternSpec,
+    PatternSpec,
 } from './types'
