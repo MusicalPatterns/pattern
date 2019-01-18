@@ -38,7 +38,7 @@ enum StandardPatternSpecProperties {
     PATTERN_PITCH_SCALAR = 'patternPitchScalar',
 }
 
-type StandardPatternSpec = Partial<{
+type PatternSpec = Partial<{
     [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: Offset,
     [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: Scalar,
     [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: Offset,
@@ -51,9 +51,6 @@ type StandardPatternSpecAttributes = Partial<{
     [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: RangedPatternSpecPropertyAttributes,
     [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: RangedPatternSpecPropertyAttributes,
 }>
-
-interface PatternSpec extends StandardPatternSpec, AnyOtherProperties {
-}
 
 type PatternSpecPropertyMap<PatternSpecType, ValueType> = { [P in keyof PatternSpecType]: ValueType }
 
@@ -91,4 +88,5 @@ export {
     PatternSpecs,
     PatternSpecValidationResults,
     PatternSpecPropertyMap,
+    StandardPatternSpecAttributes,
 }
