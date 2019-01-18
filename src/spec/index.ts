@@ -19,4 +19,5 @@ export {
     StandardPatternSpecAttributes,
     AnyPatternSpec,
     StandardPatternSpecData,
+    AnyPatternSpecAttributes,
 } from './types'
