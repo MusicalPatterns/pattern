@@ -1,5 +1,3 @@
-export { standardPatternSpecAttributes, standardInitialPatternSpec } from './standards'
-export { defaultPatternSpecPropertyAttributes } from './defaults'
 export {
     PatternSpecAttributes,
     PatternSpecPropertyAttributes,
@@ -9,6 +7,13 @@ export {
     OptionedConstraint,
     Constraint,
     PatternSpecPropertyType,
+    StandardPatternSpecAttributes,
+    AnyPatternSpecAttributes,
+    standardPatternSpecAttributes,
+    defaultPatternSpecPropertyAttributes,
+} from './attributes'
+export { standardInitialPatternSpec } from './standards'
+export {
     StandardPatternSpec,
     StandardPatternSpecProperties,
     PatternSpecValidationFunction,
@@ -16,8 +21,7 @@ export {
     PatternSpecs,
     PatternSpecValidationResults,
     PatternSpecPropertyMap,
-    StandardPatternSpecAttributes,
     AnyPatternSpec,
     StandardPatternSpecData,
-    AnyPatternSpecAttributes,
+    AnyPatternSpecData,
 } from './types'

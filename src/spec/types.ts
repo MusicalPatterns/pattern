@@ -1,35 +1,5 @@
 import { AnyOtherProperties, DictionaryOf, Maybe, Offset, Scalar } from '@musical-patterns/utilities'
-
-enum PatternSpecPropertyType {
-    RANGED = 'RANGED',
-    OPTIONED = 'OPTIONED',
-}
-
-interface RangedConstraint {
-    excludeMax?: boolean,
-    excludeMin?: boolean,
-    integer?: boolean,
-    max?: number,
-    min?: number,
-}
-
-type OptionedConstraint = string[]
-
-type Constraint = RangedConstraint | OptionedConstraint
-
-interface RangedPatternSpecPropertyAttributes {
-    constraint?: RangedConstraint,
-    formattedName?: string,
-    patternSpecPropertyType: PatternSpecPropertyType.RANGED,
-}
-
-interface OptionedPatternSpecPropertyAttributes {
-    constraint: OptionedConstraint,
-    formattedName?: string,
-    patternSpecPropertyType: PatternSpecPropertyType.OPTIONED,
-}
-
-type PatternSpecPropertyAttributes = RangedPatternSpecPropertyAttributes | OptionedPatternSpecPropertyAttributes
+import { PatternSpecAttributes } from './attributes'
 
 enum StandardPatternSpecProperties {
     PATTERN_DURATION_OFFSET = 'patternDurationOffset',
@@ -47,26 +17,14 @@ type StandardPatternSpec = Partial<{
 
 interface AnyPatternSpec extends StandardPatternSpec, AnyOtherProperties {}
 
-type StandardPatternSpecAttributes = Partial<{
-    [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: RangedPatternSpecPropertyAttributes,
-    [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: RangedPatternSpecPropertyAttributes,
-    [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: RangedPatternSpecPropertyAttributes,
-    [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: RangedPatternSpecPropertyAttributes,
-}>
+interface PatternSpecs<PatternSpecType> extends DictionaryOf<PatternSpecType> { initial: PatternSpecType }
 
 type PatternSpecPropertyMap<PatternSpecType, ValueType> = { [P in keyof PatternSpecType]: ValueType }
-
-type PatternSpecAttributes<PatternSpecType> = StandardPatternSpecAttributes &
-    PatternSpecPropertyMap<PatternSpecType, PatternSpecPropertyAttributes>
-
-type AnyPatternSpecAttributes = PatternSpecAttributes<AnyPatternSpec>
 
 type PatternSpecValidationResults<PatternSpecType> = Maybe<Partial<PatternSpecPropertyMap<PatternSpecType, string>>>
 
 type PatternSpecValidationFunction<PatternSpecType> =
     (patternSpec: PatternSpecType) => PatternSpecValidationResults<PatternSpecType>
-
-interface PatternSpecs<PatternSpecType> extends DictionaryOf<PatternSpecType> { initial: PatternSpecType }
 
 interface PatternSpecData<PatternSpecType> {
     attributes: PatternSpecAttributes<PatternSpecType>,
@@ -76,24 +34,17 @@ interface PatternSpecData<PatternSpecType> {
 
 type StandardPatternSpecData = PatternSpecData<StandardPatternSpec>
 
+type AnyPatternSpecData = PatternSpecData<AnyPatternSpec>
+
 export {
-    PatternSpecAttributes,
-    PatternSpecPropertyAttributes,
-    OptionedPatternSpecPropertyAttributes,
-    RangedPatternSpecPropertyAttributes,
-    RangedConstraint,
-    OptionedConstraint,
-    Constraint,
-    PatternSpecPropertyType,
     StandardPatternSpec,
     StandardPatternSpecProperties,
     PatternSpecValidationFunction,
-    PatternSpecData,
     PatternSpecs,
     PatternSpecValidationResults,
     PatternSpecPropertyMap,
-    StandardPatternSpecAttributes,
     AnyPatternSpec,
+    PatternSpecData,
     StandardPatternSpecData,
-    AnyPatternSpecAttributes,
+    AnyPatternSpecData,
 }
