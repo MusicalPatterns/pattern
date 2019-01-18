@@ -22,6 +22,7 @@ export {
     PatternSpecPropertyMap,
     StandardPatternSpecAttributes,
     AnyPatternSpec,
+    StandardPatternSpecData,
 } from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,

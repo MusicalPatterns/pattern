@@ -74,6 +74,8 @@ interface PatternSpecData<PatternSpecType> {
     validationFunction?: PatternSpecValidationFunction<PatternSpecType>,
 }
 
+type StandardPatternSpecData = PatternSpecData<StandardPatternSpec>
+
 export {
     PatternSpecAttributes,
     PatternSpecPropertyAttributes,
@@ -92,4 +94,5 @@ export {
     PatternSpecPropertyMap,
     StandardPatternSpecAttributes,
     AnyPatternSpec,
+    StandardPatternSpecData,
 }
