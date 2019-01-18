@@ -69,7 +69,7 @@ type PatternSpecValidationFunction<PatternSpecType> =
 interface PatternSpecs<PatternSpecType> extends DictionaryOf<PatternSpecType> { initial: PatternSpecType }
 
 interface PatternSpecData<PatternSpecType> {
-    specAttributes: PatternSpecAttributes<PatternSpecType>,
+    attributes: PatternSpecAttributes<PatternSpecType>,
     specs: PatternSpecs<PatternSpecType>,
     validationFunction?: PatternSpecValidationFunction<PatternSpecType>,
 }
