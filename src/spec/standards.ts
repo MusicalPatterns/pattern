@@ -1,6 +1,7 @@
 import { to } from '@musical-patterns/utilities'
 import { DEFAULT_DURATION_SCALAR, DEFAULT_PITCH_SCALAR } from '../constants'
-import { StandardPatternSpec, StandardPatternSpecProperties } from './types'
+import { standardPatternSpecAttributes } from './attributes'
+import { StandardPatternSpec, StandardPatternSpecData, StandardPatternSpecProperties } from './types'
 
 const standardInitialPatternSpec: StandardPatternSpec = {
     [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: to.Offset(0),
@@ -9,6 +10,12 @@ const standardInitialPatternSpec: StandardPatternSpec = {
     [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: DEFAULT_PITCH_SCALAR,
 }
 
+const standardPatternSpecData: StandardPatternSpecData = {
+    attributes: standardPatternSpecAttributes,
+    initial: standardInitialPatternSpec,
+}
+
 export {
     standardInitialPatternSpec,
+    standardPatternSpecData,
 }

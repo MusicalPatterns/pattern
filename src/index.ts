@@ -17,7 +17,6 @@ export {
     defaultPatternSpecPropertyAttributes,
     PatternSpecValidationFunction,
     PatternSpecData,
-    PatternSpecs,
     PatternSpecValidationResults,
     PatternSpecPropertyMap,
     StandardPatternSpecAttributes,
@@ -27,7 +26,7 @@ export {
     AnyPatternSpecData,
     AnyPatternSpecValidationFunction,
     AnyPatternSpecValidationResults,
-    AnyPatternSpecs,
+    standardPatternSpecData,
 } from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,

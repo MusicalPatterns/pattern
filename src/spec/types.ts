@@ -17,10 +17,6 @@ type StandardPatternSpec = Partial<{
 
 interface AnyPatternSpec extends StandardPatternSpec, AnyOtherProperties {}
 
-interface PatternSpecs<PatternSpecType> extends DictionaryOf<PatternSpecType> { initial: PatternSpecType }
-
-type AnyPatternSpecs = PatternSpecs<AnyPatternSpec>
-
 type PatternSpecPropertyMap<PatternSpecType, ValueType> = { [P in keyof PatternSpecType]: ValueType }
 
 type PatternSpecValidationResults<PatternSpecType> = Maybe<Partial<PatternSpecPropertyMap<PatternSpecType, string>>>
@@ -34,7 +30,8 @@ type AnyPatternSpecValidationResults = PatternSpecValidationResults<AnyPatternSp
 
 interface PatternSpecData<PatternSpecType> {
     attributes: PatternSpecAttributes<PatternSpecType>,
-    specs: PatternSpecs<PatternSpecType>,
+    initial: PatternSpecType,
+    presets?: DictionaryOf<PatternSpecType>,
     validationFunction?: PatternSpecValidationFunction<PatternSpecType>,
 }
 
@@ -46,7 +43,6 @@ export {
     StandardPatternSpec,
     StandardPatternSpecProperties,
     PatternSpecValidationFunction,
-    PatternSpecs,
     PatternSpecValidationResults,
     PatternSpecPropertyMap,
     AnyPatternSpec,
@@ -55,5 +51,4 @@ export {
     AnyPatternSpecData,
     AnyPatternSpecValidationFunction,
     AnyPatternSpecValidationResults,
-    AnyPatternSpecs,
 }

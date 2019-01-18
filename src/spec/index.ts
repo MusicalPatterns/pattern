@@ -12,13 +12,12 @@ export {
     standardPatternSpecAttributes,
     defaultPatternSpecPropertyAttributes,
 } from './attributes'
-export { standardInitialPatternSpec } from './standards'
+export { standardInitialPatternSpec, standardPatternSpecData } from './standards'
 export {
     StandardPatternSpec,
     StandardPatternSpecProperties,
     PatternSpecValidationFunction,
     PatternSpecData,
-    PatternSpecs,
     PatternSpecValidationResults,
     PatternSpecPropertyMap,
     AnyPatternSpec,
@@ -26,5 +25,4 @@ export {
     AnyPatternSpecData,
     AnyPatternSpecValidationFunction,
     AnyPatternSpecValidationResults,
-    AnyPatternSpecs,
 } from './types'
