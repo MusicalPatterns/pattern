@@ -9,7 +9,7 @@ export {
     OptionedConstraint,
     Constraint,
     PatternSpecPropertyType,
-    PatternSpec,
+    StandardPatternSpec,
     StandardPatternSpecProperties,
     PatternSpecValidationFunction,
     PatternSpecData,

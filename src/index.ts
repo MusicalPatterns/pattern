@@ -12,7 +12,7 @@ export {
     OptionedConstraint,
     Constraint,
     PatternSpecPropertyType,
-    PatternSpec,
+    StandardPatternSpec,
     StandardPatternSpecProperties,
     defaultPatternSpecPropertyAttributes,
     PatternSpecValidationFunction,

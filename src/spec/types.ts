@@ -1,4 +1,4 @@
-import { AnyOtherProperties, DictionaryOf, Maybe, Offset, Scalar } from '@musical-patterns/utilities'
+import { DictionaryOf, Maybe, Offset, Scalar } from '@musical-patterns/utilities'
 
 enum PatternSpecPropertyType {
     RANGED = 'RANGED',
@@ -38,7 +38,7 @@ enum StandardPatternSpecProperties {
     PATTERN_PITCH_SCALAR = 'patternPitchScalar',
 }
 
-type PatternSpec = Partial<{
+type StandardPatternSpec = Partial<{
     [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: Offset,
     [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: Scalar,
     [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: Offset,
@@ -57,7 +57,7 @@ type PatternSpecPropertyMap<PatternSpecType, ValueType> = { [P in keyof PatternS
 type PatternSpecAttributes<PatternSpecType> = StandardPatternSpecAttributes &
     PatternSpecPropertyMap<PatternSpecType, PatternSpecPropertyAttributes>
 
-type PatternSpecValidationResults<PatternSpecType> = Maybe<PatternSpecPropertyMap<PatternSpecType, Maybe<string>>>
+type PatternSpecValidationResults<PatternSpecType> = Maybe<Partial<PatternSpecPropertyMap<PatternSpecType, string>>>
 
 type PatternSpecValidationFunction<PatternSpecType> =
     (patternSpec: PatternSpecType) => PatternSpecValidationResults<PatternSpecType>
@@ -81,7 +81,7 @@ export {
     OptionedConstraint,
     Constraint,
     PatternSpecPropertyType,
-    PatternSpec,
+    StandardPatternSpec,
     StandardPatternSpecProperties,
     PatternSpecValidationFunction,
     PatternSpecData,
