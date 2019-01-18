@@ -18,6 +18,8 @@ export {
     PatternSpecValidationFunction,
     PatternSpecData,
     PatternSpecs,
+    PatternSpecValidationResults,
+    PatternSpecPropertyMap,
 } from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,

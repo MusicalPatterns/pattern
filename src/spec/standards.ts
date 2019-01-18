@@ -9,7 +9,7 @@ const standardInitialPatternSpec: PatternSpec = {
     [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: DEFAULT_PITCH_SCALAR,
 }
 
-const standardPatternSpecAttributes: PatternSpecAttributes = {
+const standardPatternSpecAttributes: PatternSpecAttributes<PatternSpec> = {
     [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: {
         patternSpecPropertyType: PatternSpecPropertyType.RANGED,
     },
