@@ -66,7 +66,7 @@ interface PatternSpecs extends DictionaryOf<PatternSpec> {
 interface PatternSpecData {
     specAttributes: PatternSpecAttributes,
     specs: PatternSpecs,
-    validationFunction: PatternSpecValidationFunction,
+    validationFunction?: PatternSpecValidationFunction,
 }
 
 export {
