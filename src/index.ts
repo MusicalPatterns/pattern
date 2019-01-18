@@ -25,6 +25,8 @@ export {
     StandardPatternSpecData,
     AnyPatternSpecAttributes,
     AnyPatternSpecData,
+    AnyPatternSpecValidationFunction,
+    AnyPatternSpecValidationResults,
 } from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,

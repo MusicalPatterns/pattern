@@ -26,6 +26,10 @@ type PatternSpecValidationResults<PatternSpecType> = Maybe<Partial<PatternSpecPr
 type PatternSpecValidationFunction<PatternSpecType> =
     (patternSpec: PatternSpecType) => PatternSpecValidationResults<PatternSpecType>
 
+type AnyPatternSpecValidationFunction = PatternSpecValidationFunction<AnyPatternSpec>
+
+type AnyPatternSpecValidationResults = PatternSpecValidationResults<AnyPatternSpec>
+
 interface PatternSpecData<PatternSpecType> {
     attributes: PatternSpecAttributes<PatternSpecType>,
     specs: PatternSpecs<PatternSpecType>,
@@ -47,4 +51,6 @@ export {
     PatternSpecData,
     StandardPatternSpecData,
     AnyPatternSpecData,
+    AnyPatternSpecValidationFunction,
+    AnyPatternSpecValidationResults,
 }

@@ -24,4 +24,6 @@ export {
     AnyPatternSpec,
     StandardPatternSpecData,
     AnyPatternSpecData,
+    AnyPatternSpecValidationFunction,
+    AnyPatternSpecValidationResults,
 } from './types'
