@@ -1,4 +1,4 @@
-import { DictionaryOf, Maybe, Offset, Scalar } from '@musical-patterns/utilities'
+import { AnyOtherProperties, DictionaryOf, Maybe, Offset, Scalar } from '@musical-patterns/utilities'
 
 enum PatternSpecPropertyType {
     RANGED = 'RANGED',
@@ -45,6 +45,8 @@ type StandardPatternSpec = Partial<{
     [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: Scalar,
 }>
 
+interface AnyPatternSpec extends StandardPatternSpec, AnyOtherProperties {}
+
 type StandardPatternSpecAttributes = Partial<{
     [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: RangedPatternSpecPropertyAttributes,
     [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: RangedPatternSpecPropertyAttributes,
@@ -89,4 +91,5 @@ export {
     PatternSpecValidationResults,
     PatternSpecPropertyMap,
     StandardPatternSpecAttributes,
+    AnyPatternSpec,
 }
