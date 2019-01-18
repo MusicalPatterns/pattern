@@ -11,4 +11,7 @@ export {
     PatternSpecPropertyType,
     PatternSpec,
     StandardPatternSpecProperties,
+    PatternSpecValidationFunction,
+    PatternSpecData,
+    PatternSpecs,
 } from './types'

@@ -57,6 +57,18 @@ interface PatternSpec extends StandardPatternSpec, AnyOtherProperties {
 
 type PatternSpecAttributes = StandardPatternSpecAttributes & DictionaryOf<Maybe<PatternSpecPropertyAttributes>>
 
+type PatternSpecValidationFunction = (patternSpec: PatternSpec) => Maybe<DictionaryOf<string>>
+
+interface PatternSpecs extends DictionaryOf<PatternSpec> {
+    initial: PatternSpec,
+}
+
+interface PatternSpecData {
+    specAttributes: PatternSpecAttributes,
+    specs: PatternSpecs,
+    validationFunction: PatternSpecValidationFunction,
+}
+
 export {
     PatternSpecAttributes,
     PatternSpecPropertyAttributes,
@@ -68,4 +80,7 @@ export {
     PatternSpecPropertyType,
     PatternSpec,
     StandardPatternSpecProperties,
+    PatternSpecValidationFunction,
+    PatternSpecData,
+    PatternSpecs,
 }
