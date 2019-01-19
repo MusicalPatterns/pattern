@@ -11,4 +11,5 @@ export {
     PatternSpecPropertyType,
     StandardPatternSpecAttributes,
     AnyPatternSpecAttributes,
+    OptionedConstraintOption,
 } from './types'

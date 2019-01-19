@@ -27,6 +27,7 @@ export {
     AnyPatternSpecValidationFunction,
     AnyPatternSpecValidationResults,
     standardPatternSpecData,
+    OptionedConstraintOption,
 } from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,

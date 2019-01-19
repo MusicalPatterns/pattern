@@ -11,6 +11,7 @@ export {
     AnyPatternSpecAttributes,
     standardPatternSpecAttributes,
     defaultPatternSpecPropertyAttributes,
+    OptionedConstraintOption,
 } from './attributes'
 export { standardInitialPatternSpec, standardPatternSpecData } from './standards'
 export {
