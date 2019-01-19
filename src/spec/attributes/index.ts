@@ -1,5 +1,4 @@
 export { standardPatternSpecAttributes } from './standards'
-export { buildOptionedConstraint } from './buildOptionedConstraint'
 export { defaultPatternSpecPropertyAttributes } from './defaults'
 export {
     PatternSpecAttributes,
