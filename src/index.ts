@@ -8,6 +8,7 @@ export {
     PatternSpecPropertyAttributes,
     OptionedPatternSpecPropertyAttributes,
     RangedPatternSpecPropertyAttributes,
+    ToggledPatternSpecPropertyAttributes,
     RangedConstraint,
     OptionedConstraint,
     Constraint,

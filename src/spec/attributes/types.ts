@@ -3,6 +3,7 @@ import { AnyPatternSpec, PatternSpecPropertyMap, StandardPatternSpecProperties }
 enum PatternSpecPropertyType {
     RANGED = 'RANGED',
     OPTIONED = 'OPTIONED',
+    TOGGLED = 'TOGGLED',
 }
 
 interface RangedConstraint {
@@ -34,7 +35,15 @@ interface OptionedPatternSpecPropertyAttributes {
     patternSpecPropertyType: PatternSpecPropertyType.OPTIONED,
 }
 
-type PatternSpecPropertyAttributes = RangedPatternSpecPropertyAttributes | OptionedPatternSpecPropertyAttributes
+interface ToggledPatternSpecPropertyAttributes {
+    formattedName?: string,
+    patternSpecPropertyType: PatternSpecPropertyType.TOGGLED,
+}
+
+type PatternSpecPropertyAttributes =
+    RangedPatternSpecPropertyAttributes |
+    OptionedPatternSpecPropertyAttributes |
+    ToggledPatternSpecPropertyAttributes
 
 type StandardPatternSpecAttributes = Partial<{
     [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: RangedPatternSpecPropertyAttributes,
@@ -53,6 +62,7 @@ export {
     PatternSpecPropertyAttributes,
     OptionedPatternSpecPropertyAttributes,
     RangedPatternSpecPropertyAttributes,
+    ToggledPatternSpecPropertyAttributes,
     RangedConstraint,
     OptionedConstraint,
     Constraint,
