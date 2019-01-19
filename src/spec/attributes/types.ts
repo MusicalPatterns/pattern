@@ -13,7 +13,12 @@ interface RangedConstraint {
     min?: number,
 }
 
-type OptionedConstraint = string[]
+interface OptionedConstraintOption {
+    formattedName: string,
+    key: string,
+}
+
+type OptionedConstraint = OptionedConstraintOption[]
 
 type Constraint = RangedConstraint | OptionedConstraint
 
@@ -54,4 +59,5 @@ export {
     PatternSpecPropertyType,
     StandardPatternSpecAttributes,
     AnyPatternSpecAttributes,
+    OptionedConstraintOption,
 }
