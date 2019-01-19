@@ -36,6 +36,7 @@ interface OptionedPatternSpecPropertyAttributes {
 }
 
 interface ToggledPatternSpecPropertyAttributes {
+    constraint?: undefined,
     formattedName?: string,
     patternSpecPropertyType: PatternSpecPropertyType.TOGGLED,
 }
