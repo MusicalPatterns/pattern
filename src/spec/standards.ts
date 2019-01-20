@@ -1,21 +1,21 @@
 import { to } from '@musical-patterns/utilities'
 import { DEFAULT_DURATION_SCALAR, DEFAULT_PITCH_SCALAR } from '../constants'
-import { standardPatternSpecAttributes } from './attributes'
-import { StandardPatternSpec, StandardPatternSpecData, StandardPatternSpecProperties } from './types'
+import { standardSpecAttributes } from './attributes'
+import { StandardSpec, StandardSpecData, StandardSpecProperties } from './types'
 
-const standardInitialPatternSpec: StandardPatternSpec = {
-    [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: to.Offset(0),
-    [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: DEFAULT_DURATION_SCALAR,
-    [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: to.Offset(0),
-    [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: DEFAULT_PITCH_SCALAR,
+const standardInitialSpec: StandardSpec = {
+    [ StandardSpecProperties.PATTERN_DURATION_OFFSET ]: to.Offset(0),
+    [ StandardSpecProperties.PATTERN_DURATION_SCALAR ]: DEFAULT_DURATION_SCALAR,
+    [ StandardSpecProperties.PATTERN_PITCH_OFFSET ]: to.Offset(0),
+    [ StandardSpecProperties.PATTERN_PITCH_SCALAR ]: DEFAULT_PITCH_SCALAR,
 }
 
-const standardPatternSpecData: StandardPatternSpecData = {
-    attributes: standardPatternSpecAttributes,
-    initial: standardInitialPatternSpec,
+const standardSpecData: StandardSpecData = {
+    attributes: standardSpecAttributes,
+    initial: standardInitialSpec,
 }
 
 export {
-    standardInitialPatternSpec,
-    standardPatternSpecData,
+    standardInitialSpec,
+    standardSpecData,
 }

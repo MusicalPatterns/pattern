@@ -7,7 +7,7 @@ type Rendering<T> = (block: Block) => ContourPiece<T>
 
 type RenderingByBlockElement<T> = (blockElement: number) => ContourPiece<T>
 
-interface PatternSpecPitchAdjustments extends AnyOtherProperties {
+interface SpecPitchAdjustments extends AnyOtherProperties {
     patternPitchOffset?: Offset,
     patternPitchScalar?: Scalar,
 }
@@ -27,7 +27,7 @@ export {
     Segment,
     Rendering,
     RenderingByBlockElement,
-    PatternSpecPitchAdjustments,
+    SpecPitchAdjustments,
     StandardContour,
     PatternMetadata,
 }

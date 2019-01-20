@@ -1,16 +1,16 @@
-export { standardPatternSpecAttributes } from './standards'
-export { defaultPatternSpecPropertyAttributes } from './defaults'
+export { standardSpecAttributes } from './standards'
+export { defaultSpecPropertyAttributes } from './defaults'
 export {
-    PatternSpecAttributesFor,
-    PatternSpecPropertyAttributes,
-    OptionedPatternSpecPropertyAttributes,
-    RangedPatternSpecPropertyAttributes,
-    ToggledPatternSpecPropertyAttributes,
+    SpecAttributesFor,
+    SpecPropertyAttributes,
+    OptionedSpecPropertyAttributes,
+    RangedSpecPropertyAttributes,
+    ToggledSpecPropertyAttributes,
     RangedConstraint,
     OptionedConstraint,
     Constraint,
-    PatternSpecPropertyType,
-    StandardPatternSpecAttributes,
-    PatternSpecAttributes,
+    SpecPropertyType,
+    StandardSpecAttributes,
+    SpecAttributes,
     OptionedConstraintOption,
 } from './types'

@@ -1,6 +1,6 @@
-import { PatternSpec, PatternSpecPropertyMap, StandardPatternSpecProperties } from '../types'
+import { Spec, SpecPropertyMap, StandardSpecProperties } from '../types'
 
-enum PatternSpecPropertyType {
+enum SpecPropertyType {
     RANGED = 'RANGED',
     OPTIONED = 'OPTIONED',
     TOGGLED = 'TOGGLED',
@@ -23,52 +23,52 @@ type OptionedConstraint = OptionedConstraintOption[]
 
 type Constraint = RangedConstraint | OptionedConstraint
 
-interface RangedPatternSpecPropertyAttributes {
+interface RangedSpecPropertyAttributes {
     constraint?: RangedConstraint,
     formattedName?: string,
-    patternSpecPropertyType: PatternSpecPropertyType.RANGED,
+    specPropertyType: SpecPropertyType.RANGED,
 }
 
-interface OptionedPatternSpecPropertyAttributes {
+interface OptionedSpecPropertyAttributes {
     constraint: OptionedConstraint,
     formattedName?: string,
-    patternSpecPropertyType: PatternSpecPropertyType.OPTIONED,
+    specPropertyType: SpecPropertyType.OPTIONED,
 }
 
-interface ToggledPatternSpecPropertyAttributes {
+interface ToggledSpecPropertyAttributes {
     constraint?: undefined,
     formattedName?: string,
-    patternSpecPropertyType: PatternSpecPropertyType.TOGGLED,
+    specPropertyType: SpecPropertyType.TOGGLED,
 }
 
-type PatternSpecPropertyAttributes =
-    RangedPatternSpecPropertyAttributes |
-    OptionedPatternSpecPropertyAttributes |
-    ToggledPatternSpecPropertyAttributes
+type SpecPropertyAttributes =
+    RangedSpecPropertyAttributes |
+    OptionedSpecPropertyAttributes |
+    ToggledSpecPropertyAttributes
 
-type StandardPatternSpecAttributes = Partial<{
-    [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: RangedPatternSpecPropertyAttributes,
-    [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: RangedPatternSpecPropertyAttributes,
-    [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: RangedPatternSpecPropertyAttributes,
-    [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: RangedPatternSpecPropertyAttributes,
+type StandardSpecAttributes = Partial<{
+    [ StandardSpecProperties.PATTERN_DURATION_OFFSET ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.PATTERN_DURATION_SCALAR ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.PATTERN_PITCH_OFFSET ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.PATTERN_PITCH_SCALAR ]: RangedSpecPropertyAttributes,
 }>
 
-type PatternSpecAttributesFor<PatternSpecType> = StandardPatternSpecAttributes &
-    PatternSpecPropertyMap<PatternSpecType, PatternSpecPropertyAttributes>
+type SpecAttributesFor<SpecType> = StandardSpecAttributes &
+    SpecPropertyMap<SpecType, SpecPropertyAttributes>
 
-type PatternSpecAttributes = PatternSpecAttributesFor<PatternSpec>
+type SpecAttributes = SpecAttributesFor<Spec>
 
 export {
-    PatternSpecAttributesFor,
-    PatternSpecPropertyAttributes,
-    OptionedPatternSpecPropertyAttributes,
-    RangedPatternSpecPropertyAttributes,
-    ToggledPatternSpecPropertyAttributes,
+    SpecAttributesFor,
+    SpecPropertyAttributes,
+    OptionedSpecPropertyAttributes,
+    RangedSpecPropertyAttributes,
+    ToggledSpecPropertyAttributes,
     RangedConstraint,
     OptionedConstraint,
     Constraint,
-    PatternSpecPropertyType,
-    StandardPatternSpecAttributes,
-    PatternSpecAttributes,
+    SpecPropertyType,
+    StandardSpecAttributes,
+    SpecAttributes,
     OptionedConstraintOption,
 }

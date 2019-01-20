@@ -1,9 +1,9 @@
 import { Scale } from '@musical-patterns/compiler'
 import { Maybe, Scalar } from '@musical-patterns/utilities'
-import { PatternSpecPitchAdjustments } from './types'
+import { SpecPitchAdjustments } from './types'
 
-const adjustScalars: (scalars: Maybe<Scalar[]>, patternSpec: PatternSpecPitchAdjustments) => Scale =
-    (scalars: Maybe<Scalar[]>, { patternPitchScalar, patternPitchOffset }: PatternSpecPitchAdjustments): Scale => ({
+const adjustScalars: (scalars: Maybe<Scalar[]>, spec: SpecPitchAdjustments) => Scale =
+    (scalars: Maybe<Scalar[]>, { patternPitchScalar, patternPitchOffset }: SpecPitchAdjustments): Scale => ({
         offset: patternPitchOffset,
         scalar: patternPitchScalar,
         scalars,

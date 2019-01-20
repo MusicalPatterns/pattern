@@ -1,29 +1,29 @@
-import { StandardPatternSpecProperties } from '../types'
-import { PatternSpecPropertyType, StandardPatternSpecAttributes } from './types'
+import { StandardSpecProperties } from '../types'
+import { SpecPropertyType, StandardSpecAttributes } from './types'
 
-const standardPatternSpecAttributes: StandardPatternSpecAttributes = {
-    [ StandardPatternSpecProperties.PATTERN_DURATION_OFFSET ]: {
-        patternSpecPropertyType: PatternSpecPropertyType.RANGED,
+const standardSpecAttributes: StandardSpecAttributes = {
+    [ StandardSpecProperties.PATTERN_DURATION_OFFSET ]: {
+        specPropertyType: SpecPropertyType.RANGED,
     },
-    [ StandardPatternSpecProperties.PATTERN_DURATION_SCALAR ]: {
+    [ StandardSpecProperties.PATTERN_DURATION_SCALAR ]: {
         constraint: {
             excludeMin: true,
             min: 0,
         },
-        patternSpecPropertyType: PatternSpecPropertyType.RANGED,
+        specPropertyType: SpecPropertyType.RANGED,
     },
-    [ StandardPatternSpecProperties.PATTERN_PITCH_OFFSET ]: {
-        patternSpecPropertyType: PatternSpecPropertyType.RANGED,
+    [ StandardSpecProperties.PATTERN_PITCH_OFFSET ]: {
+        specPropertyType: SpecPropertyType.RANGED,
     },
-    [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: {
+    [ StandardSpecProperties.PATTERN_PITCH_SCALAR ]: {
         constraint: {
             excludeMin: true,
             min: 0,
         },
-        patternSpecPropertyType: PatternSpecPropertyType.RANGED,
+        specPropertyType: SpecPropertyType.RANGED,
     },
 }
 
 export {
-    standardPatternSpecAttributes,
+    standardSpecAttributes,
 }

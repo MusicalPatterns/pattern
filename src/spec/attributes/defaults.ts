@@ -1,9 +1,9 @@
-import { PatternSpecPropertyAttributes, PatternSpecPropertyType } from './types'
+import { SpecPropertyAttributes, SpecPropertyType } from './types'
 
-const defaultPatternSpecPropertyAttributes: PatternSpecPropertyAttributes = {
-    patternSpecPropertyType: PatternSpecPropertyType.RANGED,
+const defaultSpecPropertyAttributes: SpecPropertyAttributes = {
+    specPropertyType: SpecPropertyType.RANGED,
 }
 
 export {
-    defaultPatternSpecPropertyAttributes,
+    defaultSpecPropertyAttributes,
 }
