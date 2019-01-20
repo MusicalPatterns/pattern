@@ -27,10 +27,10 @@ const buildStandardScales: () => DictionaryOf<Scale> =
             scalars: numbers
                 .map(to.Power)
                 .map((power: Power): Scalar =>
-                    apply.Power(
+                    to.Scalar(from.Base(apply.Power(
                         OCTAVE,
                         to.Power(from.Index(offsetFromOneIndexedToZeroIndexed(to.Index(from.Power(power))))),
-                    ),
+                    ))),
                 ),
         }
 
