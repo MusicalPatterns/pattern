@@ -15,7 +15,7 @@ interface SpecPitchAdjustments extends AnyOtherProperties {
 // tslint:disable-next-line:no-magic-numbers
 type StandardContour = 2
 
-interface PatternMetadata {
+interface Metadata {
     description: string,
     formattedName: string,
     mostRecentPublish: string,
@@ -29,5 +29,5 @@ export {
     RenderingByBlockElement,
     SpecPitchAdjustments,
     StandardContour,
-    PatternMetadata,
+    Metadata,
 }

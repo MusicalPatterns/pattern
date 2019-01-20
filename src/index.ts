@@ -40,5 +40,5 @@ export {
     Segment,
     RenderingByBlockElement,
     Rendering,
-    PatternMetadata,
+    Metadata,
 } from './types'
