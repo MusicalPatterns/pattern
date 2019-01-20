@@ -1,5 +1,4 @@
-import { Id } from '@musical-patterns/registry'
-import { buildPatterns, filter, Patterns } from '../../src/indexForTest'
+import { buildPatterns, filter, Id, Patterns } from '../../src/indexForTest'
 
 describe('filter', () => {
     it('removes the development-only patterns', () => {

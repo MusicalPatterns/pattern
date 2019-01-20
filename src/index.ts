@@ -1,3 +1,4 @@
+export { Id } from './registry'
 export { unpackStandardContourElement, calculateTotalStandardContourDuration, standardRest } from './contours'
 export { adjustScalars } from './adjustScalars'
 export { buildStandardScales } from './scales'

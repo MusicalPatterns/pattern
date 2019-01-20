@@ -1,4 +1,4 @@
-import { Id } from '@musical-patterns/registry'
+import { Id } from './registry'
 import { Patterns, PatternsFilter } from './types'
 
 const patternIdsToFilter: Id[] = [

@@ -1,6 +1,6 @@
 import { Material, NoteSpec } from '@musical-patterns/compiler'
-import { Id } from '@musical-patterns/registry'
 import { AnyOtherProperties, Block, ContourPiece, Offset, Scalar } from '@musical-patterns/utilities'
+import { Id } from './registry'
 import { Spec, SpecDataFor, StandardSpec } from './spec'
 
 type Segment = NoteSpec[][]
