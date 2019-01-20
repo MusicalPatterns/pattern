@@ -1,6 +1,8 @@
 export { unpackStandardContourElement, calculateTotalStandardContourDuration, standardRest } from './contours'
 export { adjustScalars } from './adjustScalars'
 export { buildStandardScales } from './scales'
+export { filter } from './filter'
+export { buildPatterns } from './buildPatterns'
 export {
     standardSpecAttributes,
     standardInitialSpec,
@@ -41,4 +43,8 @@ export {
     RenderingByBlockElement,
     Rendering,
     Metadata,
+    Patterns,
+    PatternFor,
+    StandardPattern,
+    Pattern,
 } from './types'

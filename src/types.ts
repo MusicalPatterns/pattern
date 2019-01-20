@@ -1,5 +1,7 @@
-import { NoteSpec } from '@musical-patterns/compiler'
+import { Material, NoteSpec } from '@musical-patterns/compiler'
+import { Id } from '@musical-patterns/registry'
 import { AnyOtherProperties, Block, ContourPiece, Offset, Scalar } from '@musical-patterns/utilities'
+import { Spec, SpecDataFor, StandardSpec } from './spec'
 
 type Segment = NoteSpec[][]
 
@@ -23,6 +25,21 @@ interface Metadata {
     originalPublish: string,
 }
 
+interface PatternFor<SpecType> {
+    id: Id,
+    material: Material,
+    metadata: Metadata,
+    specData: SpecDataFor<SpecType>,
+}
+
+type StandardPattern = PatternFor<StandardSpec>
+
+type Pattern = PatternFor<Spec>
+
+type Patterns = { [key in Partial<Id>]: Pattern }
+
+type PatternsFilter = (patterns: Patterns) => Patterns
+
 export {
     Segment,
     Rendering,
@@ -30,4 +47,9 @@ export {
     SpecPitchAdjustments,
     StandardContour,
     Metadata,
+    Patterns,
+    PatternFor,
+    PatternsFilter,
+    StandardPattern,
+    Pattern,
 }
