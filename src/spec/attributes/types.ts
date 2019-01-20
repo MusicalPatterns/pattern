@@ -1,4 +1,4 @@
-import { AnyPatternSpec, PatternSpecPropertyMap, StandardPatternSpecProperties } from '../types'
+import { PatternSpec, PatternSpecPropertyMap, StandardPatternSpecProperties } from '../types'
 
 enum PatternSpecPropertyType {
     RANGED = 'RANGED',
@@ -53,13 +53,13 @@ type StandardPatternSpecAttributes = Partial<{
     [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: RangedPatternSpecPropertyAttributes,
 }>
 
-type PatternSpecAttributes<PatternSpecType> = StandardPatternSpecAttributes &
+type PatternSpecAttributesFor<PatternSpecType> = StandardPatternSpecAttributes &
     PatternSpecPropertyMap<PatternSpecType, PatternSpecPropertyAttributes>
 
-type AnyPatternSpecAttributes = PatternSpecAttributes<AnyPatternSpec>
+type PatternSpecAttributes = PatternSpecAttributesFor<PatternSpec>
 
 export {
-    PatternSpecAttributes,
+    PatternSpecAttributesFor,
     PatternSpecPropertyAttributes,
     OptionedPatternSpecPropertyAttributes,
     RangedPatternSpecPropertyAttributes,
@@ -69,6 +69,6 @@ export {
     Constraint,
     PatternSpecPropertyType,
     StandardPatternSpecAttributes,
-    AnyPatternSpecAttributes,
+    PatternSpecAttributes,
     OptionedConstraintOption,
 }

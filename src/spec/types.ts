@@ -1,5 +1,5 @@
 import { AnyOtherProperties, DictionaryOf, Maybe, Offset, Scalar } from '@musical-patterns/utilities'
-import { PatternSpecAttributes } from './attributes'
+import { PatternSpecAttributesFor } from './attributes'
 
 enum StandardPatternSpecProperties {
     PATTERN_DURATION_OFFSET = 'patternDurationOffset',
@@ -15,40 +15,40 @@ type StandardPatternSpec = Partial<{
     [ StandardPatternSpecProperties.PATTERN_PITCH_SCALAR ]: Scalar,
 }>
 
-interface AnyPatternSpec extends StandardPatternSpec, AnyOtherProperties {}
+interface PatternSpec extends StandardPatternSpec, AnyOtherProperties {}
 
 type PatternSpecPropertyMap<PatternSpecType, ValueType> = { [P in keyof PatternSpecType]: ValueType }
 
-type PatternSpecValidationResults<PatternSpecType> = Maybe<Partial<PatternSpecPropertyMap<PatternSpecType, string>>>
+type PatternSpecValidationResultsFor<PatternSpecType> = Maybe<Partial<PatternSpecPropertyMap<PatternSpecType, string>>>
 
-type PatternSpecValidationFunction<PatternSpecType> =
-    (patternSpec: PatternSpecType) => PatternSpecValidationResults<PatternSpecType>
+type PatternSpecValidationFunctionFor<PatternSpecType> =
+    (patternSpec: PatternSpecType) => PatternSpecValidationResultsFor<PatternSpecType>
 
-type AnyPatternSpecValidationFunction = PatternSpecValidationFunction<AnyPatternSpec>
+type PatternSpecValidationFunction = PatternSpecValidationFunctionFor<PatternSpec>
 
-type AnyPatternSpecValidationResults = PatternSpecValidationResults<AnyPatternSpec>
+type PatternSpecValidationResults = PatternSpecValidationResultsFor<PatternSpec>
 
-interface PatternSpecData<PatternSpecType> {
-    attributes: PatternSpecAttributes<PatternSpecType>,
+interface PatternSpecDataFor<PatternSpecType> {
+    attributes: PatternSpecAttributesFor<PatternSpecType>,
     initial: PatternSpecType,
     presets?: DictionaryOf<PatternSpecType>,
-    validationFunction?: PatternSpecValidationFunction<PatternSpecType>,
+    validationFunction?: PatternSpecValidationFunctionFor<PatternSpecType>,
 }
 
-type StandardPatternSpecData = PatternSpecData<StandardPatternSpec>
+type StandardPatternSpecData = PatternSpecDataFor<StandardPatternSpec>
 
-type AnyPatternSpecData = PatternSpecData<AnyPatternSpec>
+type PatternSpecData = PatternSpecDataFor<PatternSpec>
 
 export {
     StandardPatternSpec,
     StandardPatternSpecProperties,
+    PatternSpecValidationFunctionFor,
+    PatternSpecValidationResultsFor,
+    PatternSpecPropertyMap,
+    PatternSpec,
+    PatternSpecDataFor,
+    StandardPatternSpecData,
+    PatternSpecData,
     PatternSpecValidationFunction,
     PatternSpecValidationResults,
-    PatternSpecPropertyMap,
-    AnyPatternSpec,
-    PatternSpecData,
-    StandardPatternSpecData,
-    AnyPatternSpecData,
-    AnyPatternSpecValidationFunction,
-    AnyPatternSpecValidationResults,
 }
