@@ -1,7 +1,7 @@
-import { StandardSpecProperties } from '../types'
-import { SpecPropertyType, StandardSpecAttributes } from './types'
+import { StandardSpec, StandardSpecProperties } from '../types'
+import { SpecAttributesFor, SpecPropertyType } from './types'
 
-const standardSpecAttributes: StandardSpecAttributes = {
+const standardSpecAttributes: SpecAttributesFor<StandardSpec>  = {
     [ StandardSpecProperties.PATTERN_DURATION_OFFSET ]: {
         specPropertyType: SpecPropertyType.RANGED,
     },
