@@ -1,13 +1,13 @@
 import { to } from '@musical-patterns/utilities'
-import { DEFAULT_DURATION_SCALAR, DEFAULT_PITCH_SCALAR } from '../constants'
+import { DEFAULT_BASE_DURATION, DEFAULT_BASE_FREQUENCY } from '../constants'
 import { standardSpecAttributes } from './attributes'
 import { StandardSpec, StandardSpecData, StandardSpecProperties } from './types'
 
 const standardInitialSpec: StandardSpec = {
-    [ StandardSpecProperties.PATTERN_DURATION_OFFSET ]: to.Offset(0),
-    [ StandardSpecProperties.PATTERN_DURATION_SCALAR ]: DEFAULT_DURATION_SCALAR,
-    [ StandardSpecProperties.PATTERN_PITCH_OFFSET ]: to.Offset(0),
-    [ StandardSpecProperties.PATTERN_PITCH_SCALAR ]: DEFAULT_PITCH_SCALAR,
+    [ StandardSpecProperties.DURATION_OFFSET ]: to.Offset(0),
+    [ StandardSpecProperties.BASE_DURATION ]: DEFAULT_BASE_DURATION,
+    [ StandardSpecProperties.FREQUENCY_OFFSET ]: to.Offset(0),
+    [ StandardSpecProperties.BASE_FREQUENCY ]: DEFAULT_BASE_FREQUENCY,
 }
 
 const standardSpecData: StandardSpecData = {

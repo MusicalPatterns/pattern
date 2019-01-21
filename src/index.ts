@@ -37,7 +37,7 @@ export {
     DEFAULT_DURATIONS_SCALE_INDEX,
     DEFAULT_PITCH_SCALE_INDEX,
     FULL_GAIN,
-    DEFAULT_DURATION_SCALAR,
+    DEFAULT_BASE_DURATION,
 } from './constants'
 export {
     Segment,

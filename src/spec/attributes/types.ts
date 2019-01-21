@@ -47,10 +47,10 @@ type SpecPropertyAttributes =
     ToggledSpecPropertyAttributes
 
 interface StandardSpecAttributes {
-    [ StandardSpecProperties.PATTERN_DURATION_OFFSET ]: RangedSpecPropertyAttributes,
-    [ StandardSpecProperties.PATTERN_DURATION_SCALAR ]: RangedSpecPropertyAttributes,
-    [ StandardSpecProperties.PATTERN_PITCH_OFFSET ]: RangedSpecPropertyAttributes,
-    [ StandardSpecProperties.PATTERN_PITCH_SCALAR ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.DURATION_OFFSET ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.BASE_DURATION ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.FREQUENCY_OFFSET ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.BASE_FREQUENCY ]: RangedSpecPropertyAttributes,
 }
 
 type SpecAttributesFor<SpecType> = StandardSpecAttributes &
