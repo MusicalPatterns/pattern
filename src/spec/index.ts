@@ -1,6 +1,7 @@
 export {
     SpecAttributesFor,
     SpecPropertyAttributes,
+    SpecPropertyAttributesOrArrayThereof,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,
     ToggledSpecPropertyAttributes,

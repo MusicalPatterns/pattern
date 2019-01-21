@@ -3,6 +3,7 @@ export { defaultSpecPropertyAttributes } from './defaults'
 export {
     SpecAttributesFor,
     SpecPropertyAttributes,
+    SpecPropertyAttributesOrArrayThereof,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,
     ToggledSpecPropertyAttributes,

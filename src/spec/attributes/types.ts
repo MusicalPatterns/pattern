@@ -46,6 +46,8 @@ type SpecPropertyAttributes =
     OptionedSpecPropertyAttributes |
     ToggledSpecPropertyAttributes
 
+type SpecPropertyAttributesOrArrayThereof = SpecPropertyAttributes | SpecPropertyAttributes[]
+
 interface StandardSpecAttributes {
     [ StandardSpecProperties.DURATION_OFFSET ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.BASE_DURATION ]: RangedSpecPropertyAttributes,
@@ -54,13 +56,14 @@ interface StandardSpecAttributes {
 }
 
 type SpecAttributesFor<SpecType> = StandardSpecAttributes &
-    SpecPropertyMap<SpecType, SpecPropertyAttributes>
+    SpecPropertyMap<SpecType, SpecPropertyAttributesOrArrayThereof>
 
 type SpecAttributes = SpecAttributesFor<Spec>
 
 export {
     SpecAttributesFor,
     SpecPropertyAttributes,
+    SpecPropertyAttributesOrArrayThereof,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,
     ToggledSpecPropertyAttributes,
