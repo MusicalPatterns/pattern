@@ -46,12 +46,12 @@ type SpecPropertyAttributes =
     OptionedSpecPropertyAttributes |
     ToggledSpecPropertyAttributes
 
-type StandardSpecAttributes = Partial<{
+interface StandardSpecAttributes {
     [ StandardSpecProperties.PATTERN_DURATION_OFFSET ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.PATTERN_DURATION_SCALAR ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.PATTERN_PITCH_OFFSET ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.PATTERN_PITCH_SCALAR ]: RangedSpecPropertyAttributes,
-}>
+}
 
 type SpecAttributesFor<SpecType> = StandardSpecAttributes &
     SpecPropertyMap<SpecType, SpecPropertyAttributes>
