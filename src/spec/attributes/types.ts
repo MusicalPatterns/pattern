@@ -26,18 +26,21 @@ type Constraint = RangedConstraint | OptionedConstraint
 interface RangedSpecPropertyAttributes {
     constraint?: RangedConstraint,
     formattedName?: string,
+    isArray?: boolean,
     specPropertyType: SpecPropertyType.RANGED,
 }
 
 interface OptionedSpecPropertyAttributes {
     constraint: OptionedConstraint,
     formattedName?: string,
+    isArray?: boolean,
     specPropertyType: SpecPropertyType.OPTIONED,
 }
 
 interface ToggledSpecPropertyAttributes {
     constraint?: undefined,
     formattedName?: string,
+    isArray?: boolean,
     specPropertyType: SpecPropertyType.TOGGLED,
 }
 
@@ -45,8 +48,6 @@ type SpecPropertyAttributes =
     RangedSpecPropertyAttributes |
     OptionedSpecPropertyAttributes |
     ToggledSpecPropertyAttributes
-
-type SpecPropertyAttributesOrArrayThereof = SpecPropertyAttributes | SpecPropertyAttributes[]
 
 interface StandardSpecAttributes {
     [ StandardSpecProperties.DURATION_OFFSET ]: RangedSpecPropertyAttributes,
@@ -56,14 +57,13 @@ interface StandardSpecAttributes {
 }
 
 type SpecAttributesFor<SpecType> = StandardSpecAttributes &
-    SpecPropertyMap<SpecType, SpecPropertyAttributesOrArrayThereof>
+    SpecPropertyMap<SpecType, SpecPropertyAttributes>
 
 type SpecAttributes = SpecAttributesFor<Spec>
 
 export {
     SpecAttributesFor,
     SpecPropertyAttributes,
-    SpecPropertyAttributesOrArrayThereof,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,
     ToggledSpecPropertyAttributes,

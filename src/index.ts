@@ -9,7 +9,6 @@ export {
     standardInitialSpec,
     SpecAttributesFor,
     SpecPropertyAttributes,
-    SpecPropertyAttributesOrArrayThereof,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,
     ToggledSpecPropertyAttributes,
