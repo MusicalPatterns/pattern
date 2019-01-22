@@ -32,6 +32,7 @@ export {
     SpecValidationResults,
     standardSpecData,
     OptionedConstraintOption,
+    RangedInputType,
 } from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,

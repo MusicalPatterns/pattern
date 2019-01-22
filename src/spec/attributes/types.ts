@@ -6,6 +6,11 @@ enum SpecPropertyType {
     TOGGLED = 'TOGGLED',
 }
 
+enum RangedInputType {
+    NUMBER = 'NUMBER',
+    RANGE = 'RANGE',
+}
+
 interface RangedConstraint {
     excludeMax?: boolean,
     excludeMin?: boolean,
@@ -26,6 +31,7 @@ type Constraint = RangedConstraint | OptionedConstraint
 interface RangedSpecPropertyAttributes {
     constraint?: RangedConstraint,
     formattedName?: string,
+    hideInput?: RangedInputType,
     isArray?: boolean,
     specPropertyType: SpecPropertyType.RANGED,
 }
@@ -74,4 +80,5 @@ export {
     StandardSpecAttributes,
     SpecAttributes,
     OptionedConstraintOption,
+    RangedInputType,
 }

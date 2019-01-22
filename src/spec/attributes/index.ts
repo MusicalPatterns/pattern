@@ -13,4 +13,5 @@ export {
     StandardSpecAttributes,
     SpecAttributes,
     OptionedConstraintOption,
+    RangedInputType,
 } from './types'

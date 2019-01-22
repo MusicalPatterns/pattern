@@ -13,6 +13,7 @@ export {
     standardSpecAttributes,
     defaultSpecPropertyAttributes,
     OptionedConstraintOption,
+    RangedInputType,
 } from './attributes'
 export { standardInitialSpec, standardSpecData } from './standards'
 export {
