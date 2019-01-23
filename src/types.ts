@@ -17,9 +17,13 @@ interface SpecPitchAdjustments extends AnyOtherProperties {
 // tslint:disable-next-line:no-magic-numbers
 type StandardContour = 2
 
-interface Metadata {
+interface Presentable {
     description: string,
     formattedName: string,
+    order: number,
+}
+
+interface Metadata extends Partial<Presentable> {
     mostRecentPublish: string,
     musicalIdeaIllustrated: string,
     originalPublish: string,
@@ -52,4 +56,5 @@ export {
     PatternsFilter,
     StandardPattern,
     Pattern,
+    Presentable,
 }

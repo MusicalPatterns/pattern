@@ -1,4 +1,5 @@
 import { Units } from '@musical-patterns/utilities'
+import { Presentable } from '../../types'
 import { Spec, SpecPropertyMap, StandardSpecProperties } from '../types'
 
 enum SpecPropertyType {
@@ -20,8 +21,7 @@ interface RangedConstraint {
     min?: number,
 }
 
-interface OptionedConstraintOption {
-    formattedName: string,
+interface OptionedConstraintOption extends Partial<Presentable> {
     key: string,
 }
 
@@ -29,9 +29,7 @@ type OptionedConstraint = OptionedConstraintOption[]
 
 type Constraint = RangedConstraint | OptionedConstraint
 
-interface SharedSpecPropertyAttributes {
-    description?: string,
-    formattedName?: string,
+interface SharedSpecPropertyAttributes extends Partial<Presentable> {
     isArray?: boolean,
     units?: Units,
 }

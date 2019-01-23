@@ -49,4 +49,5 @@ export {
     PatternFor,
     StandardPattern,
     Pattern,
+    Presentable,
 } from './types'

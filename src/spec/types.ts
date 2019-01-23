@@ -1,4 +1,5 @@
 import { AnyOtherProperties, DictionaryOf, Frequency, Maybe, Millisecond, Offset } from '@musical-patterns/utilities'
+import { Presentable } from '../types'
 import { SpecAttributesFor } from './attributes'
 
 enum StandardSpecProperties {
@@ -28,10 +29,14 @@ type SpecValidationFunction = SpecValidationFunctionFor<Spec>
 
 type SpecValidationResults = SpecValidationResultsFor<Spec>
 
+interface Preset<SpecType> extends Partial<Presentable> {
+    spec: SpecType,
+}
+
 interface SpecDataFor<SpecType> {
     attributes: SpecAttributesFor<SpecType>,
     initial: SpecType,
-    presets?: DictionaryOf<SpecType>,
+    presets?: DictionaryOf<Preset<SpecType>>,
     validationFunction?: SpecValidationFunctionFor<SpecType>,
 }
 
@@ -40,6 +45,7 @@ type StandardSpecData = SpecDataFor<StandardSpec>
 type SpecData = SpecDataFor<Spec>
 
 export {
+    Preset,
     StandardSpec,
     StandardSpecProperties,
     SpecValidationFunctionFor,
