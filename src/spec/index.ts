@@ -29,4 +29,5 @@ export {
     SpecValidationFunction,
     SpecValidationResults,
     Preset,
+    PresetFor,
 } from './types'

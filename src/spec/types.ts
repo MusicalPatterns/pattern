@@ -29,14 +29,16 @@ type SpecValidationFunction = SpecValidationFunctionFor<Spec>
 
 type SpecValidationResults = SpecValidationResultsFor<Spec>
 
-interface Preset<SpecType> extends Partial<Presentable> {
+interface PresetFor<SpecType> extends Partial<Presentable> {
     spec: SpecType,
 }
+
+type Preset = PresetFor<Spec>
 
 interface SpecDataFor<SpecType> {
     attributes: SpecAttributesFor<SpecType>,
     initial: SpecType,
-    presets?: DictionaryOf<Preset<SpecType>>,
+    presets?: DictionaryOf<PresetFor<SpecType>>,
     validationFunction?: SpecValidationFunctionFor<SpecType>,
 }
 
@@ -46,6 +48,7 @@ type SpecData = SpecDataFor<Spec>
 
 export {
     Preset,
+    PresetFor,
     StandardSpec,
     StandardSpecProperties,
     SpecValidationFunctionFor,
