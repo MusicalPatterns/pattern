@@ -33,6 +33,7 @@ export {
     standardSpecData,
     OptionedConstraintOption,
     RangedInputType,
+    Preset,
 } from './spec'
 export {
     DEFAULT_DURATIONS_SCALE_INDEX,
