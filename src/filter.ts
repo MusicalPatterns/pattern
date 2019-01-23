@@ -1,5 +1,5 @@
 import { Id } from './registry'
-import { Patterns, PatternsFilter } from './types'
+import { Pattern, Patterns, PatternsFilter } from './types'
 
 const patternIdsToFilter: Id[] = [
     Id.HAFUHAFU_WITH_PITCH_CIRCULARITY,
@@ -16,7 +16,10 @@ const patternIdsToFilter: Id[] = [
 
 const filter: PatternsFilter =
     (patterns: Patterns): Patterns => {
-        const patternIds: Id[] = Object.keys(patterns) as Id[]
+        const patternIds: Id[] = Object.values(patterns)
+            .map((pattern: Pattern) =>
+                pattern.id)
+
         const filteredPatternIds: Id[] = patternIds
             .sort()
             .filter((id: Id): boolean =>

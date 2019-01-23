@@ -2,17 +2,19 @@ import { buildPatterns, filter, Id, Patterns } from '../../src/indexForTest'
 
 describe('filter', () => {
     it('removes the development-only patterns', () => {
-        const allPatterns: Patterns = buildPatterns({})
+        const patternAccumulator: Patterns = buildPatterns({})
         const patterns: Patterns = Object.keys(Id)
             .reduce(
-                (allPatternsAccumulator: Patterns, id: string): Patterns => ({
-                    ...allPatternsAccumulator,
+                (accumulator: Patterns, id: string): Patterns => ({
+                    ...accumulator,
                     [ id ]: {},
                 }),
-                allPatterns,
+                patternAccumulator,
             )
-        const filteredPatternIds: string[] = Object.keys(filter(patterns))
 
+        const filteredPatterns: Patterns = filter(patterns)
+
+        const filteredPatternIds: string[] = Object.keys(filteredPatterns)
         filteredPatternIds.forEach((filteredPatternId: string) => {
             expect(filteredPatternId.match(/PLAYROOM_TEST/))
                 .toBeFalsy()
