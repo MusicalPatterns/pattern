@@ -28,25 +28,26 @@ type OptionedConstraint = OptionedConstraintOption[]
 
 type Constraint = RangedConstraint | OptionedConstraint
 
-interface RangedSpecPropertyAttributes {
-    constraint?: RangedConstraint,
+interface SharedSpecPropertyAttributes {
+    description?: string,
     formattedName?: string,
-    hideInput?: RangedInputType,
     isArray?: boolean,
+    units?: string,
+}
+
+interface RangedSpecPropertyAttributes extends SharedSpecPropertyAttributes{
+    constraint?: RangedConstraint,
+    hideInput?: RangedInputType,
     specPropertyType: SpecPropertyType.RANGED,
 }
 
-interface OptionedSpecPropertyAttributes {
+interface OptionedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
     constraint: OptionedConstraint,
-    formattedName?: string,
-    isArray?: boolean,
     specPropertyType: SpecPropertyType.OPTIONED,
 }
 
-interface ToggledSpecPropertyAttributes {
+interface ToggledSpecPropertyAttributes extends SharedSpecPropertyAttributes{
     constraint?: undefined,
-    formattedName?: string,
-    isArray?: boolean,
     specPropertyType: SpecPropertyType.TOGGLED,
 }
 
