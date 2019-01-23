@@ -1,3 +1,4 @@
+import { Units } from '@musical-patterns/utilities'
 import { Spec, SpecPropertyMap, StandardSpecProperties } from '../types'
 
 enum SpecPropertyType {
@@ -32,7 +33,7 @@ interface SharedSpecPropertyAttributes {
     description?: string,
     formattedName?: string,
     isArray?: boolean,
-    units?: string,
+    units?: Units,
 }
 
 interface RangedSpecPropertyAttributes extends SharedSpecPropertyAttributes{
