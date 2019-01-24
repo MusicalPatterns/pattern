@@ -52,4 +52,5 @@ export {
     StandardPattern,
     Pattern,
     Presentable,
+    StandardContour,
 } from './types'
