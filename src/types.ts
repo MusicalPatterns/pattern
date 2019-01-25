@@ -40,7 +40,7 @@ type StandardPattern = PatternFor<StandardSpec>
 
 type Pattern = PatternFor<Spec>
 
-type Patterns = { [key in Partial<Id>]: Pattern }
+type Patterns = Partial<{ [key in Id]: Pattern }>
 
 type PatternsFilter = (patterns: Patterns) => Patterns
 

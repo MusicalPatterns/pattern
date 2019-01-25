@@ -3,7 +3,6 @@ export { unpackStandardContourElement, calculateTotalStandardContourDuration, st
 export { adjustScalars } from './adjustScalars'
 export { buildStandardScales } from './scales'
 export { filter } from './filter'
-export { buildPatterns } from './buildPatterns'
 export {
     standardSpecAttributes,
     standardInitialSpec,

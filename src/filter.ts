@@ -1,7 +1,8 @@
+import { Maybe } from '@musical-patterns/utilities'
 import { Id } from './registry'
 import { Pattern, Patterns, PatternsFilter } from './types'
 
-const patternIdsToFilter: Id[] = [
+const idsToFilter: Id[] = [
     Id.HAFUHAFU_WITH_PITCH_CIRCULARITY,
     Id.PLAYROOM_TEST_ONLY_PATTERN_PARTICULAR_SPEC,
     Id.PLAYROOM_TEST_ONLY_STANDARD_SPEC,
@@ -16,18 +17,25 @@ const patternIdsToFilter: Id[] = [
 
 const filter: PatternsFilter =
     (patterns: Patterns): Patterns => {
-        const patternIds: Id[] = Object.values(patterns)
-            .map((pattern: Pattern) =>
-                pattern.id)
+        const maybeIds: Array<Maybe<Id>> = Object.values(patterns)
+            .map((pattern: Maybe<Pattern>) =>
+                pattern && pattern.id)
 
-        const filteredPatternIds: Id[] = patternIds
+        const ids: Id[] = []
+        maybeIds.forEach((maybeId: Maybe<Id>): void => {
+            if (maybeId) {
+                ids.push(maybeId)
+            }
+        })
+
+        const filteredIds: Id[] = ids
             .sort()
             .filter((id: Id): boolean =>
-                patternIdsToFilter.every((filteredPatternId: Id): boolean =>
-                    id !== filteredPatternId),
+                idsToFilter.every((filteredId: Id): boolean =>
+                    id !== filteredId),
             )
 
-        return filteredPatternIds
+        return filteredIds
             .reduce(
                 (filteredPatterns: Patterns, id: Id): Patterns =>
                     ({ ...filteredPatterns, [ id ]: patterns[ id ] }),

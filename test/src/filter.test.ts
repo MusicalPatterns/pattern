@@ -1,8 +1,8 @@
-import { buildPatterns, filter, Id, Patterns } from '../../src/indexForTest'
+import { filter, Id, Patterns } from '../../src/indexForTest'
 
 describe('filter', () => {
     it('removes the development-only patterns', () => {
-        const patternAccumulator: Patterns = buildPatterns({})
+        const patternAccumulator: Patterns = {}
         const patterns: Patterns = Object.keys(Id)
             .reduce(
                 (accumulator: Patterns, id: string): Patterns => ({

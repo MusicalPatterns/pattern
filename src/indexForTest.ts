@@ -3,7 +3,6 @@
 export { buildStandardScales } from './scales'
 export { calculateTotalStandardContourDuration } from './contours'
 export { filter } from './filter'
-export { buildPatterns } from './buildPatterns'
 export { Id } from './registry'
 
 export {
