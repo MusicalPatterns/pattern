@@ -60,6 +60,8 @@ interface StandardSpecAttributes {
     [ StandardSpecProperties.BASE_DURATION ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.FREQUENCY_OFFSET ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.BASE_FREQUENCY ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.BASE_POSITION ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.BASE_POSITION_SCALAR ]: RangedSpecPropertyAttributes,
 }
 
 type SpecAttributesFor<SpecType> = StandardSpecAttributes &

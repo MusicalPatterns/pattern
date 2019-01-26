@@ -1,4 +1,12 @@
-import { AnyOtherProperties, DictionaryOf, Frequency, Maybe, Millisecond, Offset } from '@musical-patterns/utilities'
+import {
+    AnyOtherProperties,
+    DictionaryOf,
+    Frequency,
+    Maybe,
+    Millisecond,
+    Offset,
+    Scalar,
+} from '@musical-patterns/utilities'
 import { Presentable } from '../types'
 import { SpecAttributesFor } from './attributes'
 
@@ -7,6 +15,8 @@ enum StandardSpecProperties {
     BASE_DURATION = 'baseDuration',
     FREQUENCY_OFFSET = 'baseFrequencyOffset',
     BASE_FREQUENCY = 'baseFrequency',
+    BASE_POSITION = 'basePosition',
+    BASE_POSITION_SCALAR = 'basePositionScalar',
 }
 
 type StandardSpec = Partial<{
@@ -14,6 +24,8 @@ type StandardSpec = Partial<{
     [ StandardSpecProperties.BASE_DURATION ]: Millisecond,
     [ StandardSpecProperties.FREQUENCY_OFFSET ]: Offset,
     [ StandardSpecProperties.BASE_FREQUENCY ]: Frequency,
+    [ StandardSpecProperties.BASE_POSITION ]: Offset[],
+    [ StandardSpecProperties.BASE_POSITION_SCALAR ]: Scalar,
 }>
 
 interface Spec extends StandardSpec, AnyOtherProperties {}

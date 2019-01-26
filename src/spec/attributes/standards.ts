@@ -1,6 +1,6 @@
 import { Units } from '@musical-patterns/utilities'
 import { StandardSpec, StandardSpecProperties } from '../types'
-import { SpecAttributesFor, SpecPropertyType } from './types'
+import { RangedInputType, SpecAttributesFor, SpecPropertyType } from './types'
 
 const standardSpecAttributes: SpecAttributesFor<StandardSpec>  = {
     [ StandardSpecProperties.DURATION_OFFSET ]: {
@@ -28,6 +28,20 @@ const standardSpecAttributes: SpecAttributesFor<StandardSpec>  = {
         },
         specPropertyType: SpecPropertyType.RANGED,
         units: Units.HERTZ,
+    },
+    [ StandardSpecProperties.BASE_POSITION ]: {
+        description: 'where in your virtual space the pattern will be centered',
+        hideInput: RangedInputType.RANGE,
+        isArray: true,
+        order: 1,
+        specPropertyType: SpecPropertyType.RANGED,
+        units: Units.METERS,
+    },
+    [ StandardSpecProperties.BASE_POSITION_SCALAR ]: {
+        description: 'how far apart the voices will be placed',
+        order: 2,
+        specPropertyType: SpecPropertyType.RANGED,
+        units: Units.METERS,
     },
 }
 
