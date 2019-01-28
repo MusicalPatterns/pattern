@@ -29,6 +29,7 @@ const filter: PatternsFilter =
         })
 
         const filteredIds: Id[] = ids
+        // tslint:disable-next-line:no-misleading-array-reverse
             .sort()
             .filter((id: Id): boolean =>
                 idsToFilter.every((filteredId: Id): boolean =>

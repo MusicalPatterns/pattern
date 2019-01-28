@@ -64,6 +64,7 @@ interface StandardSpecAttributes {
     [ StandardSpecProperties.BASE_POSITION_SCALAR ]: RangedSpecPropertyAttributes,
 }
 
+// tslint:disable-next-line:no-useless-intersection
 type SpecAttributesFor<SpecType> = StandardSpecAttributes &
     SpecPropertyMap<SpecType, SpecPropertyAttributes>
 
