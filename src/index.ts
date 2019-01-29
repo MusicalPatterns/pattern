@@ -36,12 +36,9 @@ export {
     PresetFor,
 } from './spec'
 export {
-    DEFAULT_DURATIONS_SCALE_INDEX,
-    DEFAULT_PITCH_SCALE_INDEX,
-    DEFAULT_BASE_POSITION,
-    DEFAULT_BASE_POSITION_SCALAR,
+    STANDARD_DURATIONS_SCALE_INDEX,
+    STANDARD_PITCH_SCALE_INDEX,
     FULL_GAIN,
-    DEFAULT_BASE_DURATION,
 } from './constants'
 export {
     Segment,
