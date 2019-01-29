@@ -1,9 +1,9 @@
 // tslint:disable no-magic-numbers
 
-import { Frequency, Index, Millisecond, Offset, Scalar, to } from '@musical-patterns/utilities'
+import { Frequency, Index, Milliseconds, Offset, Scalar, to } from '@musical-patterns/utilities'
 
 const STANDARD_BASE_FREQUENCY: Frequency = to.Frequency(700)
-const STANDARD_BASE_DURATION: Millisecond = to.Millisecond(700)
+const STANDARD_BASE_DURATION: Milliseconds = to.Milliseconds(700)
 const STANDARD_BASE_POSITION: Offset[] = [ 0, 0, 0 ].map(to.Offset)
 const STANDARD_BASE_POSITION_SCALAR: Scalar = to.Scalar(1)
 const STANDARD_DURATION_OFFSET: Offset = to.Offset(0)

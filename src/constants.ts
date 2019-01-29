@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers
 
-import { Frequency, Index, Millisecond, Offset, Scalar, to } from '@musical-patterns/utilities'
+import { Frequency, Index, Milliseconds, Offset, Scalar, to } from '@musical-patterns/utilities'
 
 const FULL_GAIN: Scalar = to.Scalar(1)
 

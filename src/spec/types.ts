@@ -3,7 +3,7 @@ import {
     DictionaryOf,
     Frequency,
     Maybe,
-    Millisecond,
+    Milliseconds,
     Offset,
     Scalar,
 } from '@musical-patterns/utilities'
@@ -21,7 +21,7 @@ enum StandardSpecProperties {
 
 type StandardSpec = Partial<{
     [ StandardSpecProperties.DURATION_OFFSET ]: Offset,
-    [ StandardSpecProperties.BASE_DURATION ]: Millisecond,
+    [ StandardSpecProperties.BASE_DURATION ]: Milliseconds,
     [ StandardSpecProperties.FREQUENCY_OFFSET ]: Offset,
     [ StandardSpecProperties.BASE_FREQUENCY ]: Frequency,
     [ StandardSpecProperties.BASE_POSITION ]: Offset[],
