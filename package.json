@@ -9,7 +9,7 @@
     "url": "https://github.com/MusicalPatterns/pattern.git"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.388"
+    "@musical-patterns/cli": "^1.0.389"
   },
   "dependencies": {
     "@musical-patterns/compiler": "^1.0.82",
