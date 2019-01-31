@@ -4,6 +4,7 @@ import { Pattern, Patterns, PatternsFilter } from './types'
 
 const idsToFilter: Id[] = [
     Id.HAFUHAFU_WITH_PITCH_CIRCULARITY,
+    Id.PERFORMER_QA,
     Id.PLAYROOM_TEST_ONLY_PATTERN_PARTICULAR_SPEC,
     Id.PLAYROOM_TEST_ONLY_STANDARD_SPEC,
     Id.PLAYROOM_TEST_POST,
@@ -11,9 +12,7 @@ const idsToFilter: Id[] = [
     Id.PLAYROOM_TEST_SPEC_CONTROLS,
     Id.PLAYROOM_TEST_TIME_CONTROLS,
     Id.PLAYROOM_TEST_VALIDATION,
-    Id.PERFORMER_QA,
     Id.TEMPLATE,
-    Id.TSRAXCFAUBDJ,
 ]
 
 const filter: PatternsFilter =
