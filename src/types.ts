@@ -9,11 +9,6 @@ type Rendering<T> = (block: Block) => ContourPiece<T>
 
 type RenderingByBlockElement<T> = (blockElement: number) => ContourPiece<T>
 
-interface SpecPitchAdjustments extends AnyOtherProperties {
-    patternPitchOffset?: Offset,
-    patternPitchScalar?: Scalar,
-}
-
 // tslint:disable-next-line:no-magic-numbers
 type StandardContour = 2
 
@@ -48,7 +43,6 @@ export {
     Segment,
     Rendering,
     RenderingByBlockElement,
-    SpecPitchAdjustments,
     StandardContour,
     Metadata,
     Patterns,

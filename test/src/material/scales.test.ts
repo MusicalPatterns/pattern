@@ -1,6 +1,6 @@
 import { Scale } from '@musical-patterns/compiler'
 import { DictionaryOf, Scalar, to } from '@musical-patterns/utilities'
-import { buildStandardScales } from '../../src/indexForTest'
+import { buildStandardScales } from '../../../src/indexForTest'
 
 describe('standard scales', () => {
     describe('octave series scale', () => {

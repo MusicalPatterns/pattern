@@ -1,7 +1,10 @@
 export { Id } from './registry'
 export { unpackStandardContourElement, calculateTotalStandardContourDuration, standardRest } from './contours'
-export { adjustScalars } from './adjustScalars'
-export { buildStandardScales } from './scales'
+export {
+    adjustScalars,
+    buildStandardScales,
+    generateOctaveRepeatingScalars,
+} from './material'
 export { filter } from './filter'
 export {
     standardSpecAttributes,
