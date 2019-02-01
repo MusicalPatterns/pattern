@@ -32,7 +32,7 @@ const standardSpecAttributes: SpecAttributesFor<StandardSpec>  = {
     [ StandardSpecProperties.BASE_POSITION ]: {
         description: 'where in your virtual space the pattern will be centered',
         hideInput: RangedInputType.RANGE,
-        isArray: true,
+        isArrayed: true,
         order: 1,
         specPropertyType: SpecPropertyType.RANGED,
         units: Units.METERS,
