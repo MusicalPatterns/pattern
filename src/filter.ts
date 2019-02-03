@@ -13,6 +13,7 @@ const idsToFilter: Id[] = [
     Id.PLAYROOM_TEST_TIME_CONTROLS,
     Id.PLAYROOM_TEST_VALIDATION,
     Id.TEMPLATE,
+    Id.ZDAUBYAOS,
 ]
 
 const filter: PatternsFilter =
