@@ -3,9 +3,9 @@ import {
     apply,
     DictionaryOf,
     from,
-    numbers,
     OCTAVE,
     offsetFromOneIndexedToZeroIndexed,
+    positiveIntegers,
     Power,
     Scalar,
     to,
@@ -14,17 +14,17 @@ import {
 const buildStandardScales: () => DictionaryOf<Scale> =
     (): DictionaryOf<Scale> => {
         const subharmonicSeriesScale: Scale = {
-            scalars: numbers.map((n: number): Scalar => to.Scalar(1 / n)),
+            scalars: positiveIntegers.map((n: number): Scalar => to.Scalar(1 / n)),
         }
 
         const harmonicSeriesScale: Scale = {
-            scalars: numbers.map((n: number): Scalar => to.Scalar(n)),
+            scalars: positiveIntegers.map((n: number): Scalar => to.Scalar(n)),
         }
 
         const flatDurationsScale: Scale = harmonicSeriesScale
 
         const octaveSeriesScale: Scale = {
-            scalars: numbers
+            scalars: positiveIntegers
                 .map(to.Power)
                 .map((power: Power): Scalar =>
                     to.Scalar(from.Base(apply.Power(
