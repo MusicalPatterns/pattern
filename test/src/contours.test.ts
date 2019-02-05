@@ -1,5 +1,5 @@
 import { ContourPiece, to } from '@musical-patterns/utilities'
-import { calculateTotalStandardContourDuration } from '../../src/indexForTest'
+import { calculateTotalPitchDurationContourDuration } from '../../src/indexForTest'
 
 describe('calculate total standard contour duration', () => {
     it('totals the durations of the contour, standard where first element is pitch and second is duration', () => {
@@ -7,7 +7,7 @@ describe('calculate total standard contour duration', () => {
             [ 1, 3 ], [ 0, 4 ], [ 7, 3 ],
         ])
 
-        expect(calculateTotalStandardContourDuration(contour))
+        expect(calculateTotalPitchDurationContourDuration(contour))
             .toBe(10)
     })
 })

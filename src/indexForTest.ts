@@ -4,7 +4,7 @@ export {
     buildStandardScales,
     generateOctaveRepeatingScalars,
 } from './material/indexForTest'
-export { calculateTotalStandardContourDuration } from './contours'
+export { calculateTotalPitchDurationContourDuration } from './contours'
 export { filter } from './filter'
 export { Id } from './registry'
 

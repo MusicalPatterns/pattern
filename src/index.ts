@@ -1,5 +1,9 @@
 export { Id } from './registry'
-export { unpackStandardContourElement, calculateTotalStandardContourDuration, standardRest } from './contours'
+export {
+    unpackPitchDurationContourElement,
+    calculateTotalPitchDurationContourDuration,
+    pitchDurationRest,
+}from './contours'
 export {
     adjustScalars,
     buildStandardScales,
@@ -53,5 +57,18 @@ export {
     StandardPattern,
     Pattern,
     Presentable,
-    StandardContour,
+    PitchOnly,
+    DurationOnly,
+    GainOnly,
+    SustainOnly,
+    PitchDuration,
+    PitchGain,
+    PitchSustain,
+    DurationGain,
+    DurationSustain,
+    GainSustain,
+    PitchDurationGain,
+    PitchDurationSustain,
+    DurationGainSustain,
+    PitchDurationGainSustain,
 } from './types'

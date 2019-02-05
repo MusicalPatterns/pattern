@@ -1,5 +1,7 @@
+// tslint:disable no-magic-numbers
+
 import { Material, NoteSpec } from '@musical-patterns/compiler'
-import { AnyOtherProperties, Block, ContourPiece, Offset, Scalar } from '@musical-patterns/utilities'
+import { Block, ContourPiece } from '@musical-patterns/utilities'
 import { Id } from './registry'
 import { Spec, SpecDataFor, StandardSpec } from './spec'
 
@@ -9,8 +11,34 @@ type Rendering<T> = (block: Block) => ContourPiece<T>
 
 type RenderingByBlockElement<T> = (blockElement: number) => ContourPiece<T>
 
-// tslint:disable-next-line no-magic-numbers
-type StandardContour = 2
+enum _PitchOnlyBrand {}
+type PitchOnly = 1 & _PitchOnlyBrand
+enum _DurationOnlyBrand {}
+type DurationOnly = 1 & _DurationOnlyBrand
+enum _GainOnlyBrand {}
+type GainOnly = 1 & _GainOnlyBrand
+enum _SustainOnlyBrand {}
+type SustainOnly = 1 & _SustainOnlyBrand
+enum _PitchDurationBrand {}
+type PitchDuration = 2 & _PitchDurationBrand
+enum _PitchGainBrand {}
+type PitchGain = 2 & _PitchGainBrand
+enum _PitchSustainBrand {}
+type PitchSustain = 2 & _PitchSustainBrand
+enum _DurationGainBrand {}
+type DurationGain = 2 & _DurationGainBrand
+enum _DurationSustainBrand {}
+type DurationSustain = 2 & _DurationSustainBrand
+enum _GainSustainBrand {}
+type GainSustain = 2 & _GainSustainBrand
+enum _PitchDurationGainBrand {}
+type PitchDurationGain = 3 & _PitchDurationGainBrand
+enum _PitchDurationSustainBrand {}
+type PitchDurationSustain = 3 & _PitchDurationSustainBrand
+enum _DurationGainSustainBrand {}
+type DurationGainSustain = 3 & _DurationGainSustainBrand
+enum _PitchDurationGainSustainBrand {}
+type PitchDurationGainSustain = 4 & _PitchDurationGainSustainBrand
 
 interface Presentable {
     description: string,
@@ -43,7 +71,6 @@ export {
     Segment,
     Rendering,
     RenderingByBlockElement,
-    StandardContour,
     Metadata,
     Patterns,
     PatternFor,
@@ -51,4 +78,18 @@ export {
     StandardPattern,
     Pattern,
     Presentable,
+    PitchOnly,
+    DurationOnly,
+    GainOnly,
+    SustainOnly,
+    PitchDuration,
+    PitchGain,
+    PitchSustain,
+    DurationGain,
+    DurationSustain,
+    GainSustain,
+    PitchDurationGain,
+    PitchDurationSustain,
+    DurationGainSustain,
+    PitchDurationGainSustain,
 }

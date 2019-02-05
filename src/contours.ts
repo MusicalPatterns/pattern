@@ -1,29 +1,29 @@
 import { ContourElement, ContourPiece, DictionaryOf, to } from '@musical-patterns/utilities'
-import { StandardContour } from './types'
+import { PitchDuration } from './types'
 
-const unpackStandardContourElement: (contourElement: ContourElement<StandardContour>) => DictionaryOf<number> =
-    (contourElement: ContourElement<StandardContour>): DictionaryOf<number> => ({
+const unpackPitchDurationContourElement: (contourElement: ContourElement<PitchDuration>) => DictionaryOf<number> =
+    (contourElement: ContourElement<PitchDuration>): DictionaryOf<number> => ({
         duration: contourElement[ 1 ],
         pitch: contourElement[ 0 ],
     })
 
-const calculateTotalStandardContourDuration: (notes: ContourPiece<StandardContour>) => number =
-    (notes: ContourPiece<StandardContour>): number =>
+const calculateTotalPitchDurationContourDuration: (notes: ContourPiece<PitchDuration>) => number =
+    (notes: ContourPiece<PitchDuration>): number =>
         notes.reduce(
-            (accumulator: number, contourElement: ContourElement<StandardContour>) => {
-                const { duration } = unpackStandardContourElement(contourElement)
+            (accumulator: number, contourElement: ContourElement<PitchDuration>) => {
+                const { duration } = unpackPitchDurationContourElement(contourElement)
 
                 return accumulator + duration
             },
             0,
         )
 
-const standardRest: (duration: number) => ContourPiece<StandardContour> =
-    (duration: number): ContourPiece<StandardContour> =>
-        to.ContourPiece<StandardContour>([ [ 0, duration ] ])
+const pitchDurationRest: (duration: number) => ContourPiece<PitchDuration> =
+    (duration: number): ContourPiece<PitchDuration> =>
+        to.ContourPiece<PitchDuration>([ [ 0, duration ] ])
 
 export {
-    calculateTotalStandardContourDuration,
-    unpackStandardContourElement,
-    standardRest,
+    calculateTotalPitchDurationContourDuration,
+    unpackPitchDurationContourElement,
+    pitchDurationRest,
 }
