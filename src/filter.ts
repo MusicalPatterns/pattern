@@ -40,7 +40,7 @@ const filter: PatternsFilter =
             .reduce(
                 (filteredPatterns: Patterns, id: Id): Patterns =>
                     ({ ...filteredPatterns, [ id ]: patterns[ id ] }),
-                // tslint:disable-next-line:no-object-literal-type-assertion
+                // tslint:disable-next-line no-object-literal-type-assertion
                 {} as Patterns,
             )
     }

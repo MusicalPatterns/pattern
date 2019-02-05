@@ -1,4 +1,4 @@
-// tslint:disable:no-type-definitions-outside-types-modules
+// tslint:disable no-type-definitions-outside-types-modules
 
 enum Id {
     BEATEN_PATH = 'BEATEN_PATH',
