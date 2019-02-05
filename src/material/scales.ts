@@ -14,11 +14,11 @@ import {
 const buildStandardScales: () => DictionaryOf<Scale> =
     (): DictionaryOf<Scale> => {
         const subharmonicSeriesScale: Scale = {
-            scalars: positiveIntegers.map((n: number): Scalar => to.Scalar(1 / n)),
+            scalars: positiveIntegers.map((integer: number): Scalar => to.Scalar(1 / integer)),
         }
 
         const harmonicSeriesScale: Scale = {
-            scalars: positiveIntegers.map((n: number): Scalar => to.Scalar(n)),
+            scalars: positiveIntegers.map((integer: number): Scalar => to.Scalar(integer)),
         }
 
         const flatDurationsScale: Scale = harmonicSeriesScale
