@@ -1,11 +1,12 @@
+import { keys } from '@musical-patterns/utilities'
 import { filter, Id, Patterns } from '../../src/indexForTest'
 
 describe('filter', () => {
     it('removes the development-only patterns', () => {
         const patternAccumulator: Patterns = {}
-        const patterns: Patterns = Object.keys(Id)
+        const patterns: Patterns = keys(Id)
             .reduce(
-                (accumulator: Patterns, id: string): Patterns => ({
+                (accumulator: Patterns, id: keyof typeof Id): Patterns => ({
                     ...accumulator,
                     [ id ]: {},
                 }),
@@ -14,7 +15,7 @@ describe('filter', () => {
 
         const filteredPatterns: Patterns = filter(patterns)
 
-        const filteredPatternIds: string[] = Object.keys(filteredPatterns)
+        const filteredPatternIds: Id[] = keys(filteredPatterns)
         filteredPatternIds.forEach((filteredPatternId: string) => {
             expect(filteredPatternId.match(/PLAYROOM_TEST/))
                 .toBeFalsy()
