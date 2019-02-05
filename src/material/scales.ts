@@ -7,6 +7,7 @@ import {
     offsetFromOneIndexedToZeroIndexed,
     positiveIntegers,
     Power,
+    reciprocal,
     Scalar,
     to,
 } from '@musical-patterns/utilities'
@@ -14,7 +15,7 @@ import {
 const buildStandardScales: () => DictionaryOf<Scale> =
     (): DictionaryOf<Scale> => {
         const subharmonicSeriesScale: Scale = {
-            scalars: positiveIntegers.map((integer: number): Scalar => to.Scalar(1 / integer)),
+            scalars: positiveIntegers.map((integer: number): Scalar => to.Scalar(reciprocal(integer))),
         }
 
         const harmonicSeriesScale: Scale = {
