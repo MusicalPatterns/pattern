@@ -11,4 +11,5 @@ export { Id } from './registry'
 export {
     Segment,
     Patterns,
+    PitchDuration,
 } from './types'

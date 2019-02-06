@@ -11,34 +11,20 @@ type Rendering<T> = (block: Block) => ContourPiece<T>
 
 type RenderingByBlockElement<T> = (blockElement: number) => ContourPiece<T>
 
-enum _PitchOnlyBrand {}
-type PitchOnly = 1 & _PitchOnlyBrand
-enum _DurationOnlyBrand {}
-type DurationOnly = 1 & _DurationOnlyBrand
-enum _GainOnlyBrand {}
-type GainOnly = 1 & _GainOnlyBrand
-enum _SustainOnlyBrand {}
-type SustainOnly = 1 & _SustainOnlyBrand
-enum _PitchDurationBrand {}
-type PitchDuration = 2 & _PitchDurationBrand
-enum _PitchGainBrand {}
-type PitchGain = 2 & _PitchGainBrand
-enum _PitchSustainBrand {}
-type PitchSustain = 2 & _PitchSustainBrand
-enum _DurationGainBrand {}
-type DurationGain = 2 & _DurationGainBrand
-enum _DurationSustainBrand {}
-type DurationSustain = 2 & _DurationSustainBrand
-enum _GainSustainBrand {}
-type GainSustain = 2 & _GainSustainBrand
-enum _PitchDurationGainBrand {}
-type PitchDurationGain = 3 & _PitchDurationGainBrand
-enum _PitchDurationSustainBrand {}
-type PitchDurationSustain = 3 & _PitchDurationSustainBrand
-enum _DurationGainSustainBrand {}
-type DurationGainSustain = 3 & _DurationGainSustainBrand
-enum _PitchDurationGainSustainBrand {}
-type PitchDurationGainSustain = 4 & _PitchDurationGainSustainBrand
+type PitchOnly = 1 & { _PitchOnlyBrand: void }
+type DurationOnly = 1 & { _DurationOnlyBrand: void }
+type GainOnly = 1 & { _GainOnlyBrand: void }
+type SustainOnly = 1 & { _SustainOnlyBrand: void }
+type PitchDuration = 2 & { _PitchDurationBrand: void }
+type PitchGain = 2 & { _PitchGainBrand: void }
+type PitchSustain = 2 & { _PitchSustainBrand: void }
+type DurationGain = 2 & { _DurationGainBrand: void }
+type DurationSustain = 2 & { _DurationSustainBrand: void }
+type GainSustain = 2 & { _GainSustainBrand: void }
+type PitchDurationGain = 3 & { _PitchDurationGainBrand: void }
+type PitchDurationSustain = 3 & { _PitchDurationSustainBrand: void }
+type DurationGainSustain = 3 & { _DurationGainSustainBrand: void }
+type PitchDurationGainSustain = 4 & { _PitchDurationGainSustainBrand: void }
 
 interface Presentable {
     description: string,
