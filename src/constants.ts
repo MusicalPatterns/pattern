@@ -1,11 +1,11 @@
 // tslint:disable no-magic-numbers
 
-import { Index, Scalar, to } from '@musical-patterns/utilities'
+import { Ordinal, Scalar, to } from '@musical-patterns/utilities'
 
 const FULL_GAIN: Scalar = to.Scalar(1)
 
-const STANDARD_DURATIONS_SCALE_INDEX: Index = to.Index(1)
-const STANDARD_PITCH_SCALE_INDEX: Index = to.Index(2)
+const STANDARD_DURATIONS_SCALE_INDEX: Ordinal = to.Ordinal(1)
+const STANDARD_PITCH_SCALE_INDEX: Ordinal = to.Ordinal(2)
 
 export {
     FULL_GAIN,

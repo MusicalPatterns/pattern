@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/pattern",
-  "version": "1.0.152",
+  "version": "1.0.153",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -10,9 +10,8 @@
   },
   "devDependencies": {
     "@musical-patterns/cli": "^1.0.426",
-    "@musical-patterns/utilities": "^1.0.212"
+    "@musical-patterns/compiler": "^1.0.87",
+    "@musical-patterns/utilities": "^1.0.215"
   },
-  "dependencies": {
-    "@musical-patterns/compiler": "^1.0.86"
-  }
+  "dependencies": {}
 }

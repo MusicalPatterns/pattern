@@ -3,8 +3,8 @@ import { StandardSpec, StandardSpecProperties } from '../types'
 import { RangedInputType, SpecAttributesFor, SpecPropertyType } from './types'
 
 const standardSpecAttributes: SpecAttributesFor<StandardSpec>  = {
-    [ StandardSpecProperties.DURATION_OFFSET ]: {
-        description: 'flatly offset each duration by this amount (does not preserve temporal ratios)',
+    [ StandardSpecProperties.DURATION_TRANSLATION ]: {
+        description: 'translate each duration by this amount (does not preserve temporal ratios)',
         specPropertyType: SpecPropertyType.RANGED,
         units: Units.MILLISECONDS,
     },
@@ -16,8 +16,8 @@ const standardSpecAttributes: SpecAttributesFor<StandardSpec>  = {
         specPropertyType: SpecPropertyType.RANGED,
         units: Units.MILLISECONDS,
     },
-    [ StandardSpecProperties.FREQUENCY_OFFSET ]: {
-        description: 'flatly offset each pitch by this amount (does not preserve harmonic ratios)',
+    [ StandardSpecProperties.FREQUENCY_TRANSLATION ]: {
+        description: 'translate each pitch by this amount (does not preserve harmonic ratios)',
         specPropertyType: SpecPropertyType.RANGED,
         units: Units.HERTZ,
     },

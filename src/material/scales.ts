@@ -4,12 +4,12 @@ import {
     DictionaryOf,
     from,
     OCTAVE,
-    offsetFromOneIndexedToZeroIndexed,
     positiveIntegers,
     Power,
     reciprocal,
     Scalar,
     to,
+    translateFromOneIndexedToZeroIndexed,
 } from '@musical-patterns/utilities'
 
 const buildStandardScales: () => DictionaryOf<Scale> =
@@ -30,7 +30,7 @@ const buildStandardScales: () => DictionaryOf<Scale> =
                 .map((power: Power): Scalar =>
                     to.Scalar(from.Base(apply.Power(
                         OCTAVE,
-                        to.Power(from.Index(offsetFromOneIndexedToZeroIndexed(to.Index(from.Power(power))))),
+                        to.Power(from.Ordinal(translateFromOneIndexedToZeroIndexed(to.Ordinal(from.Power(power))))),
                     ))),
                 ),
         }

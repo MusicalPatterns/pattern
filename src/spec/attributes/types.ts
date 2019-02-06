@@ -56,9 +56,9 @@ type SpecPropertyAttributes =
     ToggledSpecPropertyAttributes
 
 interface StandardSpecAttributes {
-    [ StandardSpecProperties.DURATION_OFFSET ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.DURATION_TRANSLATION ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.BASE_DURATION ]: RangedSpecPropertyAttributes,
-    [ StandardSpecProperties.FREQUENCY_OFFSET ]: RangedSpecPropertyAttributes,
+    [ StandardSpecProperties.FREQUENCY_TRANSLATION ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.BASE_FREQUENCY ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.BASE_POSITION ]: RangedSpecPropertyAttributes,
     [ StandardSpecProperties.BASE_POSITION_SCALAR ]: RangedSpecPropertyAttributes,

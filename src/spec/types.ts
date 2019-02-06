@@ -4,27 +4,27 @@ import {
     Frequency,
     Maybe,
     Milliseconds,
-    Offset,
     Scalar,
+    Translation,
 } from '@musical-patterns/utilities'
 import { Presentable } from '../types'
 import { SpecAttributesFor } from './attributes'
 
 enum StandardSpecProperties {
-    DURATION_OFFSET = 'baseDurationOffset',
+    DURATION_TRANSLATION = 'baseDurationOffset',
     BASE_DURATION = 'baseDuration',
-    FREQUENCY_OFFSET = 'baseFrequencyOffset',
+    FREQUENCY_TRANSLATION = 'baseFrequencyOffset',
     BASE_FREQUENCY = 'baseFrequency',
     BASE_POSITION = 'basePosition',
     BASE_POSITION_SCALAR = 'basePositionScalar',
 }
 
 type StandardSpec = Partial<{
-    [ StandardSpecProperties.DURATION_OFFSET ]: Offset,
+    [ StandardSpecProperties.DURATION_TRANSLATION ]: Translation,
     [ StandardSpecProperties.BASE_DURATION ]: Milliseconds,
-    [ StandardSpecProperties.FREQUENCY_OFFSET ]: Offset,
+    [ StandardSpecProperties.FREQUENCY_TRANSLATION ]: Translation,
     [ StandardSpecProperties.BASE_FREQUENCY ]: Frequency,
-    [ StandardSpecProperties.BASE_POSITION ]: Offset[],
+    [ StandardSpecProperties.BASE_POSITION ]: Translation[],
     [ StandardSpecProperties.BASE_POSITION_SCALAR ]: Scalar,
 }>
 

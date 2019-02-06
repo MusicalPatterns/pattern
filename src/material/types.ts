@@ -1,8 +1,8 @@
-import { Offset, Scalar } from '@musical-patterns/utilities'
+import { Scalar, Translation } from '@musical-patterns/utilities'
 
 interface SpecPitchAdjustments {
-    patternPitchOffset?: Offset,
     patternPitchScalar?: Scalar,
+    patternPitchTranslation?: Translation,
 }
 
 export {
