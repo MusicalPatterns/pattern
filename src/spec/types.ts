@@ -11,9 +11,9 @@ import { Presentable } from '../types'
 import { SpecAttributesFor } from './attributes'
 
 enum StandardSpecProperties {
-    DURATION_TRANSLATION = 'baseDurationOffset',
+    DURATION_TRANSLATION = 'baseDurationTranslation',
     BASE_DURATION = 'baseDuration',
-    FREQUENCY_TRANSLATION = 'baseFrequencyOffset',
+    FREQUENCY_TRANSLATION = 'baseFrequencyTranslation',
     BASE_FREQUENCY = 'baseFrequency',
     BASE_POSITION = 'basePosition',
     BASE_POSITION_SCALAR = 'basePositionScalar',
