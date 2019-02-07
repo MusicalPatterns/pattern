@@ -9,7 +9,7 @@ type Segment = NoteSpec[][]
 
 type Rendering<T> = (block: Block) => ContourPiece<T>
 
-type RenderingByBlockElement<T> = (blockElement: number) => ContourPiece<T>
+type RenderingByBlockElement<T> = (cell: number) => ContourPiece<T>
 
 type PitchOnly = 1 & { _PitchOnlyBrand: void }
 type DurationOnly = 1 & { _DurationOnlyBrand: void }

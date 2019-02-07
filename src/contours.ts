@@ -1,4 +1,4 @@
-import { ContourElement, ContourPiece, DictionaryOf, to } from '@musical-patterns/utilities'
+import { ContourElement, ContourPiece, DictionaryOf, sum, to } from '@musical-patterns/utilities'
 import { PitchDuration } from './types'
 
 const unpackPitchDurationContourElement: (contourElement: ContourElement<PitchDuration>) => DictionaryOf<number> =
@@ -13,7 +13,7 @@ const calculateTotalPitchDurationContourDuration: (notes: ContourPiece<PitchDura
             (accumulator: number, contourElement: ContourElement<PitchDuration>) => {
                 const { duration } = unpackPitchDurationContourElement(contourElement)
 
-                return accumulator + duration
+                return sum(accumulator, duration)
             },
             0,
         )
