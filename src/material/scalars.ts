@@ -2,8 +2,10 @@ import { Scale } from '@musical-patterns/compiler'
 import {
     apply,
     from,
+    INITIAL,
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
     Maybe,
+    NEXT,
     OCTAVE,
     Ordinal,
     Scalar,
@@ -22,9 +24,9 @@ const generateOctaveRepeatingScalars: (scalars: Scalar[]) => Scalar[] =
     (scalars: Scalar[]): Scalar[] => {
         let octaveRepeatingScalars: Scalar[] = []
         for (
-            let index: Ordinal = to.Ordinal(0);
+            let index: Ordinal = INITIAL;
             from.Ordinal(index) < from.Cardinal(MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS);
-            index = apply.Translation(index, to.Translation(1))
+            index = apply.Translation(index, NEXT)
         ) {
             octaveRepeatingScalars = octaveRepeatingScalars.concat(scalars.map((scalar: Scalar): Scalar =>
                 apply.Scalar(scalar, to.Scalar(from.Base(apply.Power(OCTAVE, to.Power(from.Ordinal(index))))))))
