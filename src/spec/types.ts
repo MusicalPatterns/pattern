@@ -1,9 +1,9 @@
 import {
     AnyOtherProperties,
     DictionaryOf,
-    Frequency,
+    Hz,
     Maybe,
-    Milliseconds,
+    Ms,
     Scalar,
     Translation,
 } from '@musical-patterns/utilities'
@@ -21,9 +21,9 @@ enum StandardSpecProperties {
 
 type StandardSpec = Partial<{
     [ StandardSpecProperties.DURATION_TRANSLATION ]: Translation,
-    [ StandardSpecProperties.BASE_DURATION ]: Milliseconds,
+    [ StandardSpecProperties.BASE_DURATION ]: Ms,
     [ StandardSpecProperties.FREQUENCY_TRANSLATION ]: Translation,
-    [ StandardSpecProperties.BASE_FREQUENCY ]: Frequency,
+    [ StandardSpecProperties.BASE_FREQUENCY ]: Hz,
     [ StandardSpecProperties.BASE_POSITION ]: Translation[],
     [ StandardSpecProperties.BASE_POSITION_SCALAR ]: Scalar,
 }>
