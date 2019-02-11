@@ -3,6 +3,7 @@ import {
     apply,
     DictionaryOf,
     from,
+    Integer,
     OCTAVE,
     positiveIntegers,
     Power,
@@ -15,11 +16,11 @@ import {
 const buildStandardScales: () => DictionaryOf<Scale> =
     (): DictionaryOf<Scale> => {
         const subharmonicSeriesScale: Scale = {
-            scalars: positiveIntegers.map((integer: number): Scalar => to.Scalar(reciprocal(integer))),
+            scalars: positiveIntegers.map((integer: Integer): Scalar => to.Scalar(reciprocal(integer))),
         }
 
         const harmonicSeriesScale: Scale = {
-            scalars: positiveIntegers.map((integer: number): Scalar => to.Scalar(integer)),
+            scalars: positiveIntegers.map((integer: Integer): Scalar => to.Scalar(integer)),
         }
 
         const flatDurationsScale: Scale = harmonicSeriesScale
