@@ -10,7 +10,7 @@ import {
     reciprocal,
     Scalar,
     to,
-    translateFromOneIndexedToZeroIndexed,
+    zeroAndPositiveIntegers,
 } from '@musical-patterns/utilities'
 
 const buildStandardScales: () => DictionaryOf<Scale> =
@@ -26,12 +26,12 @@ const buildStandardScales: () => DictionaryOf<Scale> =
         const flatDurationsScale: Scale = harmonicSeriesScale
 
         const octaveSeriesScale: Scale = {
-            scalars: positiveIntegers
+            scalars: zeroAndPositiveIntegers
                 .map(to.Power)
                 .map((power: Power): Scalar =>
                     to.Scalar(from.Base(apply.Power(
                         OCTAVE,
-                        to.Power(from.Ordinal(translateFromOneIndexedToZeroIndexed(to.Ordinal(from.Power(power))))),
+                        power,
                     ))),
                 ),
         }

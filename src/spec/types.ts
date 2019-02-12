@@ -3,6 +3,7 @@ import {
     DictionaryOf,
     Hz,
     Maybe,
+    Meters,
     Ms,
     Scalar,
     Translation,
@@ -20,12 +21,12 @@ enum StandardSpecProperties {
 }
 
 type StandardSpec = Partial<{
-    [ StandardSpecProperties.DURATION_TRANSLATION ]: Translation,
-    [ StandardSpecProperties.BASE_DURATION ]: Ms,
-    [ StandardSpecProperties.FREQUENCY_TRANSLATION ]: Translation,
-    [ StandardSpecProperties.BASE_FREQUENCY ]: Hz,
-    [ StandardSpecProperties.BASE_POSITION ]: Translation[],
-    [ StandardSpecProperties.BASE_POSITION_SCALAR ]: Scalar,
+    [ StandardSpecProperties.DURATION_TRANSLATION ]: Translation<Ms>,
+    [ StandardSpecProperties.BASE_DURATION ]: Scalar<Ms>,
+    [ StandardSpecProperties.FREQUENCY_TRANSLATION ]: Translation<Hz>,
+    [ StandardSpecProperties.BASE_FREQUENCY ]: Scalar<Hz>,
+    [ StandardSpecProperties.BASE_POSITION ]: Array<Translation<Meters>>,
+    [ StandardSpecProperties.BASE_POSITION_SCALAR ]: Scalar<Meters>,
 }>
 
 interface Spec extends StandardSpec, AnyOtherProperties {}
