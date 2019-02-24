@@ -49,6 +49,7 @@ export {
     STANDARD_DURATIONS_SCALE_INDEX,
     STANDARD_PITCH_SCALE_INDEX,
     FULL_GAIN,
+    PITCH_INDEX_INDICATING_REST,
 } from './constants'
 export {
     Segment,
