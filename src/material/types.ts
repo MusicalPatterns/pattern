@@ -5,6 +5,12 @@ interface SpecPitchAdjustments {
     patternPitchTranslation?: Translation,
 }
 
+interface BuildScalesOptions {
+    durationScalars?: Scalar[],
+    pitchScalars?: Scalar[],
+}
+
 export {
     SpecPitchAdjustments,
+    BuildScalesOptions,
 }

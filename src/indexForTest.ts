@@ -1,7 +1,7 @@
 // tslint:disable no-reaching-imports
 
 export {
-    buildStandardScales,
+    buildOctaveSeriesScale,
     generateOctaveRepeatingScalars,
 } from './material/indexForTest'
 export { calculateTotalPitchDurationContourDuration } from './contours'

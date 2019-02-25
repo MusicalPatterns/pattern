@@ -10,6 +10,11 @@ export {
 export {
     adjustScalars,
     buildStandardScales,
+    buildNonScale,
+    buildFlatDurationsScale,
+    buildHarmonicSeriesScale,
+    buildOctaveSeriesScale,
+    buildSubharmonicSeriesScale,
     generateOctaveRepeatingScalars,
 } from './material'
 export { filter } from './filter'

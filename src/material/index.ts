@@ -1,2 +1,9 @@
 export { adjustScalars, generateOctaveRepeatingScalars } from './scalars'
-export { buildStandardScales } from './scales'
+export {
+    buildStandardScales,
+    buildNonScale,
+    buildFlatDurationsScale,
+    buildHarmonicSeriesScale,
+    buildOctaveSeriesScale,
+    buildSubharmonicSeriesScale,
+} from './scales'

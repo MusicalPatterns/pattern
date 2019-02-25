@@ -1,4 +1,4 @@
 // tslint:disable no-reaching-imports
 
-export { buildStandardScales } from './scales'
+export { buildOctaveSeriesScale } from './scales'
 export { generateOctaveRepeatingScalars } from './scalars'
