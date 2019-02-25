@@ -1,5 +1,4 @@
 export {
-    SpecAttributesFor,
     SpecPropertyAttributes,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,
@@ -19,9 +18,6 @@ export { standardInitialSpec, standardSpecData } from './standards'
 export {
     StandardSpec,
     StandardSpecProperties,
-    SpecValidationFunctionFor,
-    SpecDataFor,
-    SpecValidationResultsFor,
     SpecPropertyMap,
     Spec,
     StandardSpecData,
@@ -29,5 +25,4 @@ export {
     SpecValidationFunction,
     SpecValidationResults,
     Preset,
-    PresetFor,
 } from './types'

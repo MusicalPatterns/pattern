@@ -16,7 +16,6 @@ export { filter } from './filter'
 export {
     standardSpecAttributes,
     standardInitialSpec,
-    SpecAttributesFor,
     SpecPropertyAttributes,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,
@@ -28,9 +27,6 @@ export {
     StandardSpec,
     StandardSpecProperties,
     defaultSpecPropertyAttributes,
-    SpecValidationFunctionFor,
-    SpecDataFor,
-    SpecValidationResultsFor,
     SpecPropertyMap,
     StandardSpecAttributes,
     StandardSpecData,
@@ -43,7 +39,6 @@ export {
     OptionedConstraintOption,
     RangedInputType,
     Preset,
-    PresetFor,
 } from './spec'
 export {
     STANDARD_DURATIONS_SCALE_INDEX,
@@ -57,7 +52,6 @@ export {
     Rendering,
     Metadata,
     Patterns,
-    PatternFor,
     StandardPattern,
     Pattern,
     Presentable,

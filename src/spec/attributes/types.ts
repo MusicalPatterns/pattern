@@ -65,13 +65,10 @@ interface StandardSpecAttributes {
 }
 
 // tslint:disable-next-line no-useless-intersection
-type SpecAttributesFor<SpecType> = StandardSpecAttributes &
+type SpecAttributes<SpecType = Spec> = StandardSpecAttributes &
     SpecPropertyMap<SpecType, SpecPropertyAttributes>
 
-type SpecAttributes = SpecAttributesFor<Spec>
-
 export {
-    SpecAttributesFor,
     SpecPropertyAttributes,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,

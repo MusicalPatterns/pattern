@@ -9,7 +9,7 @@ import {
     Translation,
 } from '@musical-patterns/utilities'
 import { Presentable } from '../types'
-import { SpecAttributesFor } from './attributes'
+import { SpecAttributes } from './attributes'
 
 enum StandardSpecProperties {
     DURATION_TRANSLATION = 'baseDurationTranslation',
@@ -33,42 +33,29 @@ interface Spec extends StandardSpec, AnyOtherProperties {}
 
 type SpecPropertyMap<SpecType, ValueType> = { [P in keyof SpecType]: ValueType }
 
-type SpecValidationResultsFor<SpecType> = Maybe<Partial<SpecPropertyMap<SpecType, string>>>
+type SpecValidationResults<SpecType = Spec> = Maybe<Partial<SpecPropertyMap<SpecType, string>>>
 
-type SpecValidationFunctionFor<SpecType> =
-    (spec: SpecType) => SpecValidationResultsFor<SpecType>
+type SpecValidationFunction<SpecType = Spec> = (spec: SpecType) => SpecValidationResults<SpecType>
 
-type SpecValidationFunction = SpecValidationFunctionFor<Spec>
-
-type SpecValidationResults = SpecValidationResultsFor<Spec>
-
-interface PresetFor<SpecType> extends Partial<Presentable> {
+interface Preset<SpecType = Spec> extends Partial<Presentable> {
     spec: SpecType,
 }
 
-type Preset = PresetFor<Spec>
-
-interface SpecDataFor<SpecType> {
-    attributes: SpecAttributesFor<SpecType>,
+interface SpecData<SpecType = Spec> {
+    attributes: SpecAttributes<SpecType>,
     initial: SpecType,
-    presets?: DictionaryOf<PresetFor<SpecType>>,
-    validationFunction?: SpecValidationFunctionFor<SpecType>,
+    presets?: DictionaryOf<Preset<SpecType>>,
+    validationFunction?: SpecValidationFunction<SpecType>,
 }
 
-type StandardSpecData = SpecDataFor<StandardSpec>
-
-type SpecData = SpecDataFor<Spec>
+type StandardSpecData = SpecData<StandardSpec>
 
 export {
     Preset,
-    PresetFor,
     StandardSpec,
     StandardSpecProperties,
-    SpecValidationFunctionFor,
-    SpecValidationResultsFor,
     SpecPropertyMap,
     Spec,
-    SpecDataFor,
     StandardSpecData,
     SpecData,
     SpecValidationFunction,

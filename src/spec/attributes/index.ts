@@ -1,7 +1,6 @@
 export { standardSpecAttributes } from './standards'
 export { defaultSpecPropertyAttributes } from './defaults'
 export {
-    SpecAttributesFor,
     SpecPropertyAttributes,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,
