@@ -1,9 +1,9 @@
 // tslint:disable no-magic-numbers
 
-import { negative, Ordinal, Scalar, to } from '@musical-patterns/utilities'
+import { Amplitude, negative, Ordinal, Scalar, to } from '@musical-patterns/utilities'
 
-const FULL_GAIN: Scalar = to.Scalar(1)
-const SILENT: Scalar = to.Scalar(0)
+const FULL_GAIN: Scalar<Amplitude> = to.Scalar(to.Amplitude(1))
+const SILENT: Scalar<Amplitude> = to.Scalar(to.Amplitude(0))
 
 const STANDARD_PITCH_INDEX_INDICATING_REST: Ordinal = to.Ordinal(negative(1))
 
