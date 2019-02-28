@@ -3,7 +3,8 @@
 import {
     apply,
     Base,
-    Cardinal, from,
+    Cardinal,
+    from,
     negative,
     reciprocal,
     SQUARE_ROOT_OF_TWO,

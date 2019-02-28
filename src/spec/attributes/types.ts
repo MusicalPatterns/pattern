@@ -34,7 +34,7 @@ interface SharedSpecPropertyAttributes extends Partial<Presentable> {
     units?: Units,
 }
 
-interface RangedSpecPropertyAttributes extends SharedSpecPropertyAttributes{
+interface RangedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
     constraint?: RangedConstraint,
     hideInput?: RangedInputType,
     specPropertyType: SpecPropertyType.RANGED,
@@ -45,7 +45,7 @@ interface OptionedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
     specPropertyType: SpecPropertyType.OPTIONED,
 }
 
-interface ToggledSpecPropertyAttributes extends SharedSpecPropertyAttributes{
+interface ToggledSpecPropertyAttributes extends SharedSpecPropertyAttributes {
     constraint?: undefined,
     specPropertyType: SpecPropertyType.TOGGLED,
 }
