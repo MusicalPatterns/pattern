@@ -6,7 +6,7 @@ export {
     unpackPitchDurationXYZContourElement,
     calculateTotalPitchDurationContourDuration,
     pitchDurationRest,
-}from './contours'
+} from './contours'
 export {
     adjustScalars,
     buildStandardScales,
@@ -16,6 +16,8 @@ export {
     buildOctaveSeriesScale,
     buildSubharmonicSeriesScale,
     generateOctaveRepeatingScalars,
+    PitchCircularTechnique,
+    pitchCirculate,
 } from './material'
 export { filter } from './filter'
 export {

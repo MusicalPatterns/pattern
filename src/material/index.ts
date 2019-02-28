@@ -7,3 +7,7 @@ export {
     buildOctaveSeriesScale,
     buildSubharmonicSeriesScale,
 } from './scales'
+export {
+    PitchCircularTechnique,
+    pitchCirculate,
+} from './custom'

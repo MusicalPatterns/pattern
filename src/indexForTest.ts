@@ -3,6 +3,8 @@
 export {
     buildOctaveSeriesScale,
     generateOctaveRepeatingScalars,
+    pitchCirculate,
+    PitchCircularTechnique,
 } from './material/indexForTest'
 export { calculateTotalPitchDurationContourDuration } from './contours'
 export { filter } from './filter'
