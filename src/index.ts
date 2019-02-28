@@ -34,7 +34,6 @@ export {
     StandardSpec,
     StandardSpecProperties,
     defaultSpecPropertyAttributes,
-    SpecPropertyMap,
     StandardSpecAttributes,
     StandardSpecData,
     Spec,

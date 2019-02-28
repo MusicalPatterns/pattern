@@ -5,6 +5,7 @@ import {
     Maybe,
     Meters,
     Ms,
+    PropertyMap,
     Scalar,
     Translation,
 } from '@musical-patterns/utilities'
@@ -31,9 +32,7 @@ type StandardSpec = Partial<{
 
 interface Spec extends StandardSpec, AnyOtherProperties {}
 
-type SpecPropertyMap<SpecType, ValueType> = { [P in keyof SpecType]: ValueType }
-
-type SpecValidationResults<SpecType = Spec> = Maybe<Partial<SpecPropertyMap<SpecType, string>>>
+type SpecValidationResults<SpecType = Spec> = Maybe<Partial<PropertyMap<SpecType, string>>>
 
 type SpecValidationFunction<SpecType = Spec> = (spec: SpecType) => SpecValidationResults<SpecType>
 
@@ -54,7 +53,6 @@ export {
     Preset,
     StandardSpec,
     StandardSpecProperties,
-    SpecPropertyMap,
     Spec,
     StandardSpecData,
     SpecData,

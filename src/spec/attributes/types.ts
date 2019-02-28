@@ -1,6 +1,6 @@
-import { Units } from '@musical-patterns/utilities'
+import { PropertyMap, Units } from '@musical-patterns/utilities'
 import { Presentable } from '../../types'
-import { Spec, SpecPropertyMap, StandardSpecProperties } from '../types'
+import { Spec, StandardSpecProperties } from '../types'
 
 enum SpecPropertyType {
     RANGED = 'RANGED',
@@ -66,7 +66,7 @@ interface StandardSpecAttributes {
 
 // tslint:disable-next-line no-useless-intersection
 type SpecAttributes<SpecType = Spec> = StandardSpecAttributes &
-    SpecPropertyMap<SpecType, SpecPropertyAttributes>
+    PropertyMap<SpecType, SpecPropertyAttributes>
 
 export {
     SpecPropertyAttributes,

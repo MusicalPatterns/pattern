@@ -18,7 +18,6 @@ export { standardInitialSpec, standardSpecData } from './standards'
 export {
     StandardSpec,
     StandardSpecProperties,
-    SpecPropertyMap,
     Spec,
     StandardSpecData,
     SpecData,
