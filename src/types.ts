@@ -144,6 +144,7 @@ interface Metadata extends Partial<Presentable> {
     mostRecentPublish: string,
     musicalIdeaIllustrated: string,
     originalPublish: string,
+    version: string,
 }
 
 interface Pattern<SpecType = Spec> {
