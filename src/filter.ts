@@ -3,7 +3,6 @@ import { Id } from './registry'
 import { Pattern, Patterns, PatternsFilter } from './types'
 
 const idsToFilter: Id[] = [
-    Id.LAB_ABOUT_PAGE,
     Id.PERFORMER_QA,
     Id.PLAYROOM_TEST_ONLY_PATTERN_PARTICULAR_SPEC,
     Id.PLAYROOM_TEST_ONLY_STANDARD_SPEC,
