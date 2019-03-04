@@ -32,7 +32,7 @@ type StandardSpec = Partial<{
 
 interface Spec extends StandardSpec, AnyOtherProperties {}
 
-type SpecValidationResults<SpecType = Spec> = Maybe<Partial<PropertyMap<SpecType, string>>>
+type SpecValidationResults<SpecType = Spec> = Maybe<Partial<PropertyMap<SpecType, string | string[]>>>
 
 type SpecValidationFunction<SpecType = Spec> = (spec: SpecType) => SpecValidationResults<SpecType>
 
