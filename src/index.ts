@@ -2,8 +2,6 @@
 
 export { Id } from './registry'
 export {
-    unpackPitchDurationContourElement,
-    unpackPitchDurationXYZContourElement,
     calculateTotalPitchDurationContourDuration,
     pitchDurationRest,
 } from './contours'
