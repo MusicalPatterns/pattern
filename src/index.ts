@@ -43,6 +43,9 @@ export {
     OptionedConstraintOption,
     RangedInputType,
     Preset,
+    SingularPropertyInvalidSpecMessage,
+    ArrayedPropertyInvalidSpecMessage,
+    InvalidSpecMessage,
 } from './spec'
 export {
     STANDARD_DURATIONS_SCALE_INDEX,

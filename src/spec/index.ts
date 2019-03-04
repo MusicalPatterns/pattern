@@ -24,4 +24,7 @@ export {
     SpecValidationFunction,
     SpecValidationResults,
     Preset,
+    SingularPropertyInvalidSpecMessage,
+    ArrayedPropertyInvalidSpecMessage,
+    InvalidSpecMessage,
 } from './types'

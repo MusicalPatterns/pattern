@@ -32,7 +32,13 @@ type StandardSpec = Partial<{
 
 interface Spec extends StandardSpec, AnyOtherProperties {}
 
-type SpecValidationResults<SpecType = Spec> = Maybe<Partial<PropertyMap<SpecType, string | string[]>>>
+type SingularPropertyInvalidSpecMessage = string | undefined
+
+type ArrayedPropertyInvalidSpecMessage = SingularPropertyInvalidSpecMessage[] | undefined
+
+type InvalidSpecMessage = SingularPropertyInvalidSpecMessage | ArrayedPropertyInvalidSpecMessage
+
+type SpecValidationResults<SpecType = Spec> = Maybe<PropertyMap<SpecType, InvalidSpecMessage>>
 
 type SpecValidationFunction<SpecType = Spec> = (spec: SpecType) => SpecValidationResults<SpecType>
 
@@ -58,4 +64,7 @@ export {
     SpecData,
     SpecValidationFunction,
     SpecValidationResults,
+    SingularPropertyInvalidSpecMessage,
+    ArrayedPropertyInvalidSpecMessage,
+    InvalidSpecMessage,
 }
