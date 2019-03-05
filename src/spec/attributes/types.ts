@@ -23,8 +23,8 @@ interface RangedConstraint {
 }
 
 interface StringedConstraint {
-    maxLength: number,
-    minLength: number,
+    maxLength?: number,
+    minLength?: number,
 }
 
 interface OptionedConstraintOption extends Partial<Presentable> {
