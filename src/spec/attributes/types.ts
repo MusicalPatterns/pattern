@@ -53,7 +53,7 @@ interface OptionedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
 }
 
 interface StringedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
-    constraint: StringedConstraint,
+    constraint?: StringedConstraint,
     specPropertyType: SpecPropertyType.STRINGED,
 }
 
