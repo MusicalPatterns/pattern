@@ -9,6 +9,7 @@ import {
     Maybe,
     NEXT,
     OCTAVE,
+    Operand,
     Ordinal,
     Scalar,
     to,
@@ -35,8 +36,7 @@ const generateOctaveRepeatingScalars: (scalars: Array<Scalar<Frequency>>) => Arr
                 scalars.map((scalar: Scalar<Frequency>): Scalar<Frequency> =>
                     apply.Scalar(
                         scalar,
-                        // @ts-ignore
-                        to.Scalar(from.Base(nextOctave)),
+                        to.Scalar(from.Base<Operand, Base>(nextOctave)),
                     ),
                 ),
             )

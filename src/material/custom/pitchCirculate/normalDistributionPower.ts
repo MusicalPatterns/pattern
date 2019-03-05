@@ -1,4 +1,15 @@
-import { apply, DOUBLE, Frequency, from, Ordinal, Power, Scalar, SQUARED, to } from '@musical-patterns/utilities'
+import {
+    apply,
+    DOUBLE,
+    Frequency,
+    from,
+    Operand,
+    Ordinal,
+    Power,
+    Scalar,
+    SQUARED,
+    to,
+} from '@musical-patterns/utilities'
 import { KINDA_GUESSING_AT_A_GOOD_SIGMA, NEGATIVE_POINT_FIVE_TRANSLATION, PITCH_CIRCULAR_TIER_COUNT } from './constants'
 import {
     ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters,
@@ -37,8 +48,7 @@ const calculateNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByW
         )
         const circledPitchScalarProportionOfTotalPitchCount: number = from.Scalar(apply.Base(
             circledPitchScalar,
-            // @ts-ignore
-            to.Base(from.Scalar(from.Frequency(maximumPitchAcrossAllTiers))),
+            to.Base(from.Scalar<Operand, Scalar>(from.Frequency(maximumPitchAcrossAllTiers))),
         ))
         const pitchProportionOfTotalTranslatedToBePositiveIfGreaterThanMedianAndNegativeIfLesser: number =
             apply.Translation(circledPitchScalarProportionOfTotalPitchCount, NEGATIVE_POINT_FIVE_TRANSLATION)
