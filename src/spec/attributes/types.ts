@@ -5,6 +5,7 @@ import { Spec, StandardSpecProperties } from '../types'
 enum SpecPropertyType {
     RANGED = 'RANGED',
     OPTIONED = 'OPTIONED',
+    STRINGED = 'STRINGED',
     TOGGLED = 'TOGGLED',
 }
 
@@ -21,13 +22,18 @@ interface RangedConstraint {
     min?: number,
 }
 
+interface StringedConstraint {
+    maxLength: number,
+    minLength: number,
+}
+
 interface OptionedConstraintOption extends Partial<Presentable> {
     key: string,
 }
 
 type OptionedConstraint = OptionedConstraintOption[]
 
-type Constraint = RangedConstraint | OptionedConstraint
+type Constraint = RangedConstraint | OptionedConstraint | StringedConstraint
 
 interface SharedSpecPropertyAttributes extends Partial<Presentable> {
     arrayedNewElementInitialValue?: string | number | boolean,
@@ -46,6 +52,11 @@ interface OptionedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
     specPropertyType: SpecPropertyType.OPTIONED,
 }
 
+interface StringedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
+    constraint: StringedConstraint,
+    specPropertyType: SpecPropertyType.STRINGED,
+}
+
 interface ToggledSpecPropertyAttributes extends SharedSpecPropertyAttributes {
     constraint?: undefined,
     specPropertyType: SpecPropertyType.TOGGLED,
@@ -54,6 +65,7 @@ interface ToggledSpecPropertyAttributes extends SharedSpecPropertyAttributes {
 type SpecPropertyAttributes =
     RangedSpecPropertyAttributes |
     OptionedSpecPropertyAttributes |
+    StringedSpecPropertyAttributes |
     ToggledSpecPropertyAttributes
 
 interface StandardSpecAttributes {
@@ -73,9 +85,11 @@ export {
     SpecPropertyAttributes,
     OptionedSpecPropertyAttributes,
     RangedSpecPropertyAttributes,
+    StringedSpecPropertyAttributes,
     ToggledSpecPropertyAttributes,
     RangedConstraint,
     OptionedConstraint,
+    StringedConstraint,
     Constraint,
     SpecPropertyType,
     StandardSpecAttributes,
