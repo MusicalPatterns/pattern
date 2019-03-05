@@ -38,7 +38,7 @@ type ArrayedPropertyInvalidSpecMessage = SingularPropertyInvalidSpecMessage[] | 
 
 type InvalidSpecMessage = SingularPropertyInvalidSpecMessage | ArrayedPropertyInvalidSpecMessage
 
-type SpecValidationResults<SpecType = Spec> = Maybe<PropertyMap<SpecType, InvalidSpecMessage>>
+type SpecValidationResults<SpecType = Spec> = Maybe<Partial<PropertyMap<SpecType, InvalidSpecMessage>>>
 
 type SpecValidationFunction<SpecType = Spec> = (spec: SpecType) => SpecValidationResults<SpecType>
 
