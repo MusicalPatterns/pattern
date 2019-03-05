@@ -1,6 +1,6 @@
-import { PropertyMap, Units } from '@musical-patterns/utilities'
+import { DomValueOrChecked, PropertyMap, Units } from '@musical-patterns/utilities'
 import { Presentable } from '../../types'
-import { DomValueOrChecked, Spec, StandardSpecProperties } from '../types'
+import { Spec, StandardSpecProperties } from '../types'
 
 enum SpecPropertyType {
     RANGED = 'RANGED',

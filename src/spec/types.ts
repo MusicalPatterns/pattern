@@ -1,5 +1,6 @@
 import {
     DictionaryOf,
+    DomValueOrChecked,
     Hz,
     Maybe,
     Meters,
@@ -10,11 +11,6 @@ import {
 } from '@musical-patterns/utilities'
 import { Presentable } from '../types'
 import { SpecAttributes } from './attributes'
-
-// tslint:disable-next-line ban-types
-type DomValue<T extends string = string, U extends Number = Number> = T | U
-
-type DomValueOrChecked = DomValue | boolean
 
 type SpecValue = DomValueOrChecked | DomValueOrChecked[]
 
@@ -75,7 +71,5 @@ export {
     SingularPropertyInvalidSpecMessage,
     ArrayedPropertyInvalidSpecMessage,
     InvalidSpecMessage,
-    DomValue,
-    DomValueOrChecked,
     SpecValue,
 }
