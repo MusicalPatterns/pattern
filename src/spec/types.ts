@@ -32,9 +32,9 @@ type StandardSpec = Partial<{
 
 interface Spec extends StandardSpec, AnyOtherProperties {}
 
-type SingularPropertyInvalidSpecMessage = string | undefined
+type SingularPropertyInvalidSpecMessage = Maybe<string>
 
-type ArrayedPropertyInvalidSpecMessage = SingularPropertyInvalidSpecMessage[] | undefined
+type ArrayedPropertyInvalidSpecMessage = Maybe<SingularPropertyInvalidSpecMessage[]>
 
 type InvalidSpecMessage = SingularPropertyInvalidSpecMessage | ArrayedPropertyInvalidSpecMessage
 
