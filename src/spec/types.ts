@@ -1,5 +1,4 @@
 import {
-    AnyOtherProperties,
     DictionaryOf,
     Hz,
     Maybe,
@@ -11,6 +10,13 @@ import {
 } from '@musical-patterns/utilities'
 import { Presentable } from '../types'
 import { SpecAttributes } from './attributes'
+
+// tslint:disable-next-line ban-types
+type DomValue<T extends string = string, U extends Number = Number> = T | U
+
+type DomValueOrChecked = DomValue | boolean
+
+type SpecValue = DomValueOrChecked | DomValueOrChecked[]
 
 enum StandardSpecProperties {
     DURATION_TRANSLATION = 'baseDurationTranslation',
@@ -30,7 +36,9 @@ type StandardSpec = Partial<{
     [ StandardSpecProperties.BASE_POSITION_SCALAR ]: Scalar<Meters>,
 }>
 
-interface Spec extends StandardSpec, AnyOtherProperties {}
+interface Spec extends StandardSpec {
+    [ index: string ]: Maybe<SpecValue>,
+}
 
 type SingularPropertyInvalidSpecMessage = Maybe<string>
 
@@ -67,4 +75,7 @@ export {
     SingularPropertyInvalidSpecMessage,
     ArrayedPropertyInvalidSpecMessage,
     InvalidSpecMessage,
+    DomValue,
+    DomValueOrChecked,
+    SpecValue,
 }

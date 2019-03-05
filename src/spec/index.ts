@@ -29,4 +29,7 @@ export {
     SingularPropertyInvalidSpecMessage,
     ArrayedPropertyInvalidSpecMessage,
     InvalidSpecMessage,
+    DomValue,
+    DomValueOrChecked,
+    SpecValue,
 } from './types'

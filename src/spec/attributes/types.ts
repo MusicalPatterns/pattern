@@ -1,6 +1,6 @@
 import { PropertyMap, Units } from '@musical-patterns/utilities'
 import { Presentable } from '../../types'
-import { Spec, StandardSpecProperties } from '../types'
+import { DomValueOrChecked, Spec, StandardSpecProperties } from '../types'
 
 enum SpecPropertyType {
     RANGED = 'RANGED',
@@ -28,7 +28,7 @@ interface StringedConstraint {
 }
 
 interface OptionedConstraintOption extends Partial<Presentable> {
-    key: string,
+    key: DomValueOrChecked,
 }
 
 type OptionedConstraint = OptionedConstraintOption[]
@@ -36,7 +36,7 @@ type OptionedConstraint = OptionedConstraintOption[]
 type Constraint = RangedConstraint | OptionedConstraint | StringedConstraint
 
 interface SharedSpecPropertyAttributes extends Partial<Presentable> {
-    arrayedNewElementInitialValue?: string | number | boolean,
+    arrayedNewElementInitialValue?: DomValueOrChecked,
     isArrayed?: boolean,
     units?: Units,
 }
