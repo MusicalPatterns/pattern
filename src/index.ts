@@ -49,6 +49,9 @@ export {
     ArrayedPropertyInvalidSpecMessage,
     InvalidSpecMessage,
     SpecValue,
+    SingularSpecValue,
+    ArrayedSpecValue,
+    DomSpec,
 } from './spec'
 export {
     STANDARD_DURATIONS_SCALE_INDEX,

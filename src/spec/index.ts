@@ -30,4 +30,7 @@ export {
     ArrayedPropertyInvalidSpecMessage,
     InvalidSpecMessage,
     SpecValue,
+    SingularSpecValue,
+    ArrayedSpecValue,
+    DomSpec,
 } from './types'

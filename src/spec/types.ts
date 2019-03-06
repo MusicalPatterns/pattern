@@ -5,6 +5,7 @@ import {
     Maybe,
     Meters,
     Ms,
+    NominalNumber,
     PropertyMap,
     Scalar,
     Translation,
@@ -12,7 +13,11 @@ import {
 import { Presentable } from '../types'
 import { SpecAttributes } from './attributes'
 
-type SpecValue = DomValueOrChecked | DomValueOrChecked[]
+type SingularSpecValue = DomValueOrChecked | NominalNumber
+
+type ArrayedSpecValue = SingularSpecValue[]
+
+type SpecValue = SingularSpecValue | ArrayedSpecValue
 
 enum StandardSpecProperties {
     DURATION_TRANSLATION = 'baseDurationTranslation',
@@ -34,6 +39,10 @@ type StandardSpec = Partial<{
 
 interface Spec extends StandardSpec {
     [ index: string ]: Maybe<SpecValue>,
+}
+
+interface DomSpec extends PropertyMap<StandardSpec, DomValueOrChecked> {
+    [ index: string ]: Maybe<DomValueOrChecked>
 }
 
 type SingularPropertyInvalidSpecMessage = Maybe<string>
@@ -72,4 +81,7 @@ export {
     ArrayedPropertyInvalidSpecMessage,
     InvalidSpecMessage,
     SpecValue,
+    SingularSpecValue,
+    ArrayedSpecValue,
+    DomSpec,
 }
