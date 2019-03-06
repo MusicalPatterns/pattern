@@ -28,7 +28,7 @@ interface StringedConstraint {
 }
 
 interface OptionedConstraintOption extends Partial<Presentable> {
-    key: DomValueOrChecked,
+    key: string,
 }
 
 type OptionedConstraint = OptionedConstraintOption[]
