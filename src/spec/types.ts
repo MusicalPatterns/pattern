@@ -14,10 +14,12 @@ import { Presentable } from '../types'
 import { SpecAttributes } from './attributes'
 
 type SingularSpecValue = DomValueOrChecked | NominalNumber
-
 type ArrayedSpecValue = SingularSpecValue[]
-
 type SpecValue = SingularSpecValue | ArrayedSpecValue
+
+type SingularDomSpecValue = DomValueOrChecked
+type ArrayedDomSpecValue = SingularDomSpecValue[]
+type DomSpecValue = SingularDomSpecValue | ArrayedDomSpecValue
 
 enum StandardSpecProperties {
     DURATION_TRANSLATION = 'baseDurationTranslation',
@@ -41,8 +43,8 @@ interface Spec extends StandardSpec {
     [ index: string ]: Maybe<SpecValue>,
 }
 
-interface DomSpec extends PropertyMap<StandardSpec, DomValueOrChecked> {
-    [ index: string ]: Maybe<DomValueOrChecked>
+interface DomSpec extends PropertyMap<StandardSpec, DomSpecValue> {
+    [ index: string ]: Maybe<DomSpecValue>
 }
 
 type SingularPropertyInvalidSpecMessage = Maybe<string>
@@ -84,4 +86,7 @@ export {
     SingularSpecValue,
     ArrayedSpecValue,
     DomSpec,
+    SingularDomSpecValue,
+    ArrayedDomSpecValue,
+    DomSpecValue,
 }

@@ -33,4 +33,7 @@ export {
     SingularSpecValue,
     ArrayedSpecValue,
     DomSpec,
+    SingularDomSpecValue,
+    ArrayedDomSpecValue,
+    DomSpecValue,
 } from './types'

@@ -52,6 +52,9 @@ export {
     SingularSpecValue,
     ArrayedSpecValue,
     DomSpec,
+    SingularDomSpecValue,
+    ArrayedDomSpecValue,
+    DomSpecValue,
 } from './spec'
 export {
     STANDARD_DURATIONS_SCALE_INDEX,
