@@ -156,7 +156,7 @@ interface Pattern<SpecType = Spec> {
 
 type StandardPattern = Pattern<StandardSpec>
 
-type Patterns = Partial<{ [key in Id]: Pattern }>
+type Patterns = { [key in Id]: Pattern }
 
 type PatternsFilter = (patterns: Patterns) => Patterns
 

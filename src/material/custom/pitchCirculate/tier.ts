@@ -29,7 +29,7 @@ const buildTierWithTechniqueIndexTranslationByPitchClassCount:
                 ...noteSpec,
                 gainSpec: {
                     ...noteSpec.gainSpec,
-                    scalar: from.Amplitude(pitchCircledGainScalar) as Scalar,
+                    scalar: from.Amplitude<Scalar, Scalar<Amplitude>>(pitchCircledGainScalar),
                 },
                 pitchSpec: {
                     ...noteSpec.pitchSpec,
@@ -62,11 +62,11 @@ const buildTierWithTechniqueScalarScalingByWindowSize:
                 ...noteSpec,
                 gainSpec: {
                     ...noteSpec.gainSpec,
-                    scalar: from.Amplitude(pitchCircledGainScalar) as Scalar,
+                    scalar: from.Amplitude<Scalar, Scalar<Amplitude>>(pitchCircledGainScalar),
                 },
                 pitchSpec: {
                     ...noteSpec.pitchSpec,
-                    scalar: from.Frequency(circledPitchScalar) as Scalar,
+                    scalar: from.Frequency<Scalar, Scalar<Frequency>>(circledPitchScalar),
                 },
             }
         })

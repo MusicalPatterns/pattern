@@ -1,4 +1,4 @@
-import { Maybe } from '@musical-patterns/utilities'
+import { Maybe, reduce } from '@musical-patterns/utilities'
 import { Id } from './registry'
 import { Pattern, Patterns, PatternsFilter } from './types'
 
@@ -37,13 +37,12 @@ const filter: PatternsFilter =
                     id !== filteredId),
             )
 
-        return filteredIds
-            .reduce(
-                (filteredPatterns: Patterns, id: Id): Patterns =>
-                    ({ ...filteredPatterns, [ id ]: patterns[ id ] }),
-                // tslint:disable-next-line no-object-literal-type-assertion
-                {} as Patterns,
-            )
+        return reduce(
+            filteredIds,
+            (filteredPatterns: Patterns, id: Id): Patterns =>
+                ({ ...filteredPatterns, [ id ]: patterns[ id ] }),
+            {},
+        )
     }
 
 export {

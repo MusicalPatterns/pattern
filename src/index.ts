@@ -64,6 +64,9 @@ export {
     STANDARD_PITCH_INDEX_INDICATING_REST,
 } from './constants'
 export {
+    isId,
+} from './typeGuards'
+export {
     Segment,
     RenderingByBlockElement,
     Rendering,

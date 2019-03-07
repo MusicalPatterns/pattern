@@ -60,15 +60,15 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
             const QUIETEST_IN_THE_HIGH_PART_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_CLOSER_TO_BEING_GONE_THERE: Scalar = to.Scalar(0.028)
 
             testIsCloseTo(
-                outputParts[ 0 ][ 0 ].gainSpec!.scalar,
+                outputParts[ 0 ][ 0 ].gainSpec!.scalar!,
                 apply.Scalar(MEDIUM_LOUD_IN_THE_LOW_PART_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_ITS_ALMOST_INTO_THE_LOUD_MIDDLE, originalGain),
             )
             testIsCloseTo(
-                outputParts[ 1 ][ 0 ].gainSpec!.scalar,
+                outputParts[ 1 ][ 0 ].gainSpec!.scalar!,
                 apply.Scalar(LOUDEST_IN_THE_MIDDLE_BUT_NOT_FULL_GAIN_SINCE_ITS_CLOSER_TO_HIGH_PART, originalGain),
             )
             testIsCloseTo(
-                outputParts[ 2 ][ 0 ].gainSpec!.scalar,
+                outputParts[ 2 ][ 0 ].gainSpec!.scalar!,
                 apply.Scalar(QUIETEST_IN_THE_HIGH_PART_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_CLOSER_TO_BEING_GONE_THERE, originalGain),
             )
         })
@@ -253,38 +253,38 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
         it('the gain of the low part at the end connects back up with the gain of the middle part at the beginning, and the gain at the end of the middle part connects back up with the gain of the high part at the beginning', () => {
             const [ lowPart, middlePart, highPart ] = outputParts
 
-            testIsCloseTo(lowPart[ 0 ].gainSpec!.scalar, A)
-            testIsCloseTo(lowPart[ 1 ].gainSpec!.scalar, B)
-            testIsCloseTo(lowPart[ 2 ].gainSpec!.scalar, C)
-            testIsCloseTo(lowPart[ 3 ].gainSpec!.scalar, D)
-            testIsCloseTo(lowPart[ 4 ].gainSpec!.scalar, E)
-            testIsCloseTo(lowPart[ 5 ].gainSpec!.scalar, F)
-            testIsCloseTo(lowPart[ 6 ].gainSpec!.scalar, G)
-            testIsCloseTo(lowPart[ 7 ].gainSpec!.scalar, H)
-            testIsCloseTo(lowPart[ 8 ].gainSpec!.scalar, I)
-            testIsCloseTo(lowPart[ 9 ].gainSpec!.scalar, J)
+            testIsCloseTo(lowPart[ 0 ].gainSpec!.scalar!, A)
+            testIsCloseTo(lowPart[ 1 ].gainSpec!.scalar!, B)
+            testIsCloseTo(lowPart[ 2 ].gainSpec!.scalar!, C)
+            testIsCloseTo(lowPart[ 3 ].gainSpec!.scalar!, D)
+            testIsCloseTo(lowPart[ 4 ].gainSpec!.scalar!, E)
+            testIsCloseTo(lowPart[ 5 ].gainSpec!.scalar!, F)
+            testIsCloseTo(lowPart[ 6 ].gainSpec!.scalar!, G)
+            testIsCloseTo(lowPart[ 7 ].gainSpec!.scalar!, H)
+            testIsCloseTo(lowPart[ 8 ].gainSpec!.scalar!, I)
+            testIsCloseTo(lowPart[ 9 ].gainSpec!.scalar!, J)
 
-            testIsCloseTo(middlePart[ 0 ].gainSpec!.scalar, K)
-            testIsCloseTo(middlePart[ 1 ].gainSpec!.scalar, L)
-            testIsCloseTo(middlePart[ 2 ].gainSpec!.scalar, M)
-            testIsCloseTo(middlePart[ 3 ].gainSpec!.scalar, N)
-            testIsCloseTo(middlePart[ 4 ].gainSpec!.scalar, O)
-            testIsCloseTo(middlePart[ 5 ].gainSpec!.scalar, P)
-            testIsCloseTo(middlePart[ 6 ].gainSpec!.scalar, O)
-            testIsCloseTo(middlePart[ 7 ].gainSpec!.scalar, N)
-            testIsCloseTo(middlePart[ 8 ].gainSpec!.scalar, M)
-            testIsCloseTo(middlePart[ 9 ].gainSpec!.scalar, L)
+            testIsCloseTo(middlePart[ 0 ].gainSpec!.scalar!, K)
+            testIsCloseTo(middlePart[ 1 ].gainSpec!.scalar!, L)
+            testIsCloseTo(middlePart[ 2 ].gainSpec!.scalar!, M)
+            testIsCloseTo(middlePart[ 3 ].gainSpec!.scalar!, N)
+            testIsCloseTo(middlePart[ 4 ].gainSpec!.scalar!, O)
+            testIsCloseTo(middlePart[ 5 ].gainSpec!.scalar!, P)
+            testIsCloseTo(middlePart[ 6 ].gainSpec!.scalar!, O)
+            testIsCloseTo(middlePart[ 7 ].gainSpec!.scalar!, N)
+            testIsCloseTo(middlePart[ 8 ].gainSpec!.scalar!, M)
+            testIsCloseTo(middlePart[ 9 ].gainSpec!.scalar!, L)
 
-            testIsCloseTo(highPart[ 0 ].gainSpec!.scalar, K)
-            testIsCloseTo(highPart[ 1 ].gainSpec!.scalar, J)
-            testIsCloseTo(highPart[ 2 ].gainSpec!.scalar, I)
-            testIsCloseTo(highPart[ 3 ].gainSpec!.scalar, H)
-            testIsCloseTo(highPart[ 4 ].gainSpec!.scalar, G)
-            testIsCloseTo(highPart[ 5 ].gainSpec!.scalar, F)
-            testIsCloseTo(highPart[ 6 ].gainSpec!.scalar, E)
-            testIsCloseTo(highPart[ 7 ].gainSpec!.scalar, D)
-            testIsCloseTo(highPart[ 8 ].gainSpec!.scalar, C)
-            testIsCloseTo(highPart[ 9 ].gainSpec!.scalar, B)
+            testIsCloseTo(highPart[ 0 ].gainSpec!.scalar!, K)
+            testIsCloseTo(highPart[ 1 ].gainSpec!.scalar!, J)
+            testIsCloseTo(highPart[ 2 ].gainSpec!.scalar!, I)
+            testIsCloseTo(highPart[ 3 ].gainSpec!.scalar!, H)
+            testIsCloseTo(highPart[ 4 ].gainSpec!.scalar!, G)
+            testIsCloseTo(highPart[ 5 ].gainSpec!.scalar!, F)
+            testIsCloseTo(highPart[ 6 ].gainSpec!.scalar!, E)
+            testIsCloseTo(highPart[ 7 ].gainSpec!.scalar!, D)
+            testIsCloseTo(highPart[ 8 ].gainSpec!.scalar!, C)
+            testIsCloseTo(highPart[ 9 ].gainSpec!.scalar!, B)
         })
     })
 
@@ -311,23 +311,23 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
         it('works', () => {
             const [ lowPart, middlePart, highPart ] = outputParts
 
-            testIsCloseTo(lowPart[ 0 ].gainSpec!.scalar, A)
-            testIsCloseTo(lowPart[ 1 ].gainSpec!.scalar, C)
-            testIsCloseTo(lowPart[ 2 ].gainSpec!.scalar, E)
-            testIsCloseTo(lowPart[ 3 ].gainSpec!.scalar, G)
-            testIsCloseTo(lowPart[ 4 ].gainSpec!.scalar, I)
+            testIsCloseTo(lowPart[ 0 ].gainSpec!.scalar!, A)
+            testIsCloseTo(lowPart[ 1 ].gainSpec!.scalar!, C)
+            testIsCloseTo(lowPart[ 2 ].gainSpec!.scalar!, E)
+            testIsCloseTo(lowPart[ 3 ].gainSpec!.scalar!, G)
+            testIsCloseTo(lowPart[ 4 ].gainSpec!.scalar!, I)
 
-            testIsCloseTo(middlePart[ 0 ].gainSpec!.scalar, K)
-            testIsCloseTo(middlePart[ 1 ].gainSpec!.scalar, M)
-            testIsCloseTo(middlePart[ 2 ].gainSpec!.scalar, O)
-            testIsCloseTo(middlePart[ 3 ].gainSpec!.scalar, O)
-            testIsCloseTo(middlePart[ 4 ].gainSpec!.scalar, M)
+            testIsCloseTo(middlePart[ 0 ].gainSpec!.scalar!, K)
+            testIsCloseTo(middlePart[ 1 ].gainSpec!.scalar!, M)
+            testIsCloseTo(middlePart[ 2 ].gainSpec!.scalar!, O)
+            testIsCloseTo(middlePart[ 3 ].gainSpec!.scalar!, O)
+            testIsCloseTo(middlePart[ 4 ].gainSpec!.scalar!, M)
 
-            testIsCloseTo(highPart[ 0 ].gainSpec!.scalar, K)
-            testIsCloseTo(highPart[ 1 ].gainSpec!.scalar, I)
-            testIsCloseTo(highPart[ 2 ].gainSpec!.scalar, G)
-            testIsCloseTo(highPart[ 3 ].gainSpec!.scalar, E)
-            testIsCloseTo(highPart[ 4 ].gainSpec!.scalar, C)
+            testIsCloseTo(highPart[ 0 ].gainSpec!.scalar!, K)
+            testIsCloseTo(highPart[ 1 ].gainSpec!.scalar!, I)
+            testIsCloseTo(highPart[ 2 ].gainSpec!.scalar!, G)
+            testIsCloseTo(highPart[ 3 ].gainSpec!.scalar!, E)
+            testIsCloseTo(highPart[ 4 ].gainSpec!.scalar!, C)
         })
     })
 })
