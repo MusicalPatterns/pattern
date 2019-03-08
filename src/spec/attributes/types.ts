@@ -36,7 +36,7 @@ type OptionedConstraint = OptionedConstraintOption[]
 type Constraint = RangedConstraint | OptionedConstraint | StringedConstraint
 
 interface SharedSpecPropertyAttributes extends Partial<Presentable> {
-    arrayedNewElementInitialValue?: DomValueOrChecked,
+    arrayedNewFieldInitialValue?: DomValueOrChecked,
     isArrayed?: boolean,
     units?: Units,
 }
