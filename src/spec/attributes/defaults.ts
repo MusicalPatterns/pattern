@@ -1,9 +1,9 @@
-import { SpecPropertyAttributes, SpecPropertyType } from './types'
+import { PropertyAttributes, PropertyType } from './types'
 
-const defaultSpecPropertyAttributes: SpecPropertyAttributes = {
-    specPropertyType: SpecPropertyType.RANGED,
+const defaultPropertyAttributes: PropertyAttributes = {
+    propertyType: PropertyType.RANGED,
 }
 
 export {
-    defaultSpecPropertyAttributes,
+    defaultPropertyAttributes,
 }

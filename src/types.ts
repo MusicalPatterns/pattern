@@ -3,7 +3,7 @@
 import { Material, NoteSpec } from '@musical-patterns/compiler'
 import { Block, ContourPiece } from '@musical-patterns/utilities'
 import { Id } from './registry'
-import { Spec, SpecData, StandardSpec } from './spec'
+import { Data, Spec, StandardSpec } from './spec'
 
 type Segment = NoteSpec[][]
 
@@ -148,10 +148,10 @@ interface Metadata extends Partial<Presentable> {
 }
 
 interface Pattern<SpecType = Spec> {
+    data: Data<SpecType>,
     id: Id,
     material: Material,
     metadata: Metadata,
-    specData: SpecData<SpecType>,
 }
 
 type StandardPattern = Pattern<StandardSpec>

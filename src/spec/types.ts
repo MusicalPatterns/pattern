@@ -2,16 +2,16 @@ import {
     DictionaryOf,
     DomValueOrChecked,
     Hz,
+    KeyMap,
     Maybe,
     Meters,
     Ms,
     NominalNumber,
-    PropertyMap,
     Scalar,
     Translation,
 } from '@musical-patterns/utilities'
 import { Presentable } from '../types'
-import { SpecAttributes } from './attributes'
+import { Attributes } from './attributes'
 
 type SingularSpecValue = DomValueOrChecked | NominalNumber
 type ArrayedSpecValue = SingularSpecValue[]
@@ -21,7 +21,7 @@ type SingularDomSpecValue = DomValueOrChecked
 type ArrayedDomSpecValue = SingularDomSpecValue[]
 type DomSpecValue = SingularDomSpecValue | ArrayedDomSpecValue
 
-enum StandardSpecProperties {
+enum StandardProperties {
     DURATION_TRANSLATION = 'baseDurationTranslation',
     BASE_DURATION = 'baseDuration',
     FREQUENCY_TRANSLATION = 'baseFrequencyTranslation',
@@ -31,19 +31,19 @@ enum StandardSpecProperties {
 }
 
 type StandardSpec = Partial<{
-    [ StandardSpecProperties.DURATION_TRANSLATION ]: Translation<Ms>,
-    [ StandardSpecProperties.BASE_DURATION ]: Scalar<Ms>,
-    [ StandardSpecProperties.FREQUENCY_TRANSLATION ]: Translation<Hz>,
-    [ StandardSpecProperties.BASE_FREQUENCY ]: Scalar<Hz>,
-    [ StandardSpecProperties.BASE_POSITION ]: Array<Translation<Meters>>,
-    [ StandardSpecProperties.BASE_POSITION_SCALAR ]: Scalar<Meters>,
+    [ StandardProperties.DURATION_TRANSLATION ]: Translation<Ms>,
+    [ StandardProperties.BASE_DURATION ]: Scalar<Ms>,
+    [ StandardProperties.FREQUENCY_TRANSLATION ]: Translation<Hz>,
+    [ StandardProperties.BASE_FREQUENCY ]: Scalar<Hz>,
+    [ StandardProperties.BASE_POSITION ]: Array<Translation<Meters>>,
+    [ StandardProperties.BASE_POSITION_SCALAR ]: Scalar<Meters>,
 }>
 
 interface Spec extends StandardSpec {
     [ index: string ]: Maybe<SpecValue>,
 }
 
-interface DomSpec extends PropertyMap<StandardSpec, DomSpecValue> {
+interface DomSpec extends KeyMap<StandardSpec, DomSpecValue> {
     [ index: string ]: Maybe<DomSpecValue>
 }
 
@@ -53,7 +53,7 @@ type ArrayedValidationResult = Maybe<SingularValidationResult[]>
 
 type ValidationResult = SingularValidationResult | ArrayedValidationResult
 
-type ValidationResults<SpecType = Spec> = Maybe<Partial<PropertyMap<SpecType, ValidationResult>>>
+type ValidationResults<SpecType = Spec> = Maybe<Partial<KeyMap<SpecType, ValidationResult>>>
 
 type ValidationFunction<SpecType = Spec> = (spec: SpecType) => ValidationResults<SpecType>
 
@@ -61,22 +61,22 @@ interface Preset<SpecType = Spec> extends Partial<Presentable> {
     spec: SpecType,
 }
 
-interface SpecData<SpecType = Spec> {
-    attributes: SpecAttributes<SpecType>,
+interface Data<SpecType = Spec> {
+    attributes: Attributes<SpecType>,
     initial: SpecType,
     presets?: DictionaryOf<Preset<SpecType>>,
     validationFunction?: ValidationFunction<SpecType>,
 }
 
-type StandardSpecData = SpecData<StandardSpec>
+type StandardData = Data<StandardSpec>
 
 export {
     Preset,
     StandardSpec,
-    StandardSpecProperties,
+    StandardProperties,
     Spec,
-    StandardSpecData,
-    SpecData,
+    StandardData,
+    Data,
     ValidationFunction,
     ValidationResults,
     SingularValidationResult,

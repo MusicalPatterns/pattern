@@ -1,18 +1,18 @@
-export { standardSpecAttributes } from './standards'
-export { defaultSpecPropertyAttributes } from './defaults'
+export { standardAttributes } from './standards'
+export { defaultPropertyAttributes } from './defaults'
 export {
-    SpecPropertyAttributes,
-    OptionedSpecPropertyAttributes,
-    RangedSpecPropertyAttributes,
-    StringedSpecPropertyAttributes,
-    ToggledSpecPropertyAttributes,
+    PropertyAttributes,
+    OptionedPropertyAttributes,
+    RangedPropertyAttributes,
+    StringedPropertyAttributes,
+    ToggledPropertyAttributes,
     RangedConstraint,
     OptionedConstraint,
     StringedConstraint,
     Constraint,
-    SpecPropertyType,
-    StandardSpecAttributes,
-    SpecAttributes,
+    PropertyType,
+    StandardAttributes,
+    Attributes,
     OptionedConstraintOption,
     RangedInputType,
 } from './types'

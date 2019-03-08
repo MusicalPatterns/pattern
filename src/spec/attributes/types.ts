@@ -1,8 +1,8 @@
-import { DomValueOrChecked, PropertyMap, Units } from '@musical-patterns/utilities'
+import { DomValueOrChecked, KeyMap, Units } from '@musical-patterns/utilities'
 import { Presentable } from '../../types'
-import { Spec, StandardSpecProperties } from '../types'
+import { Spec, StandardProperties } from '../types'
 
-enum SpecPropertyType {
+enum PropertyType {
     RANGED = 'RANGED',
     OPTIONED = 'OPTIONED',
     STRINGED = 'STRINGED',
@@ -35,65 +35,65 @@ type OptionedConstraint = OptionedConstraintOption[]
 
 type Constraint = RangedConstraint | OptionedConstraint | StringedConstraint
 
-interface SharedSpecPropertyAttributes extends Partial<Presentable> {
+interface SharedPropertyAttributes extends Partial<Presentable> {
     arrayedNewFieldInitialValue?: DomValueOrChecked,
     isArrayed?: boolean,
     units?: Units,
 }
 
-interface RangedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
+interface RangedPropertyAttributes extends SharedPropertyAttributes {
     constraint?: RangedConstraint,
     hideInput?: RangedInputType,
-    specPropertyType: SpecPropertyType.RANGED,
+    propertyType: PropertyType.RANGED,
 }
 
-interface OptionedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
+interface OptionedPropertyAttributes extends SharedPropertyAttributes {
     constraint: OptionedConstraint,
-    specPropertyType: SpecPropertyType.OPTIONED,
+    propertyType: PropertyType.OPTIONED,
 }
 
-interface StringedSpecPropertyAttributes extends SharedSpecPropertyAttributes {
+interface StringedPropertyAttributes extends SharedPropertyAttributes {
     constraint?: StringedConstraint,
-    specPropertyType: SpecPropertyType.STRINGED,
+    propertyType: PropertyType.STRINGED,
 }
 
-interface ToggledSpecPropertyAttributes extends SharedSpecPropertyAttributes {
+interface ToggledPropertyAttributes extends SharedPropertyAttributes {
     constraint?: undefined,
-    specPropertyType: SpecPropertyType.TOGGLED,
+    propertyType: PropertyType.TOGGLED,
 }
 
-type SpecPropertyAttributes =
-    RangedSpecPropertyAttributes |
-    OptionedSpecPropertyAttributes |
-    StringedSpecPropertyAttributes |
-    ToggledSpecPropertyAttributes
+type PropertyAttributes =
+    RangedPropertyAttributes |
+    OptionedPropertyAttributes |
+    StringedPropertyAttributes |
+    ToggledPropertyAttributes
 
-interface StandardSpecAttributes {
-    [ StandardSpecProperties.DURATION_TRANSLATION ]: RangedSpecPropertyAttributes,
-    [ StandardSpecProperties.BASE_DURATION ]: RangedSpecPropertyAttributes,
-    [ StandardSpecProperties.FREQUENCY_TRANSLATION ]: RangedSpecPropertyAttributes,
-    [ StandardSpecProperties.BASE_FREQUENCY ]: RangedSpecPropertyAttributes,
-    [ StandardSpecProperties.BASE_POSITION ]: RangedSpecPropertyAttributes,
-    [ StandardSpecProperties.BASE_POSITION_SCALAR ]: RangedSpecPropertyAttributes,
+interface StandardAttributes {
+    [ StandardProperties.DURATION_TRANSLATION ]: RangedPropertyAttributes,
+    [ StandardProperties.BASE_DURATION ]: RangedPropertyAttributes,
+    [ StandardProperties.FREQUENCY_TRANSLATION ]: RangedPropertyAttributes,
+    [ StandardProperties.BASE_FREQUENCY ]: RangedPropertyAttributes,
+    [ StandardProperties.BASE_POSITION ]: RangedPropertyAttributes,
+    [ StandardProperties.BASE_POSITION_SCALAR ]: RangedPropertyAttributes,
 }
 
 // tslint:disable-next-line no-useless-intersection
-type SpecAttributes<SpecType = Spec> = StandardSpecAttributes &
-    PropertyMap<SpecType, SpecPropertyAttributes>
+type Attributes<SpecType = Spec> = StandardAttributes &
+    KeyMap<SpecType, PropertyAttributes>
 
 export {
-    SpecPropertyAttributes,
-    OptionedSpecPropertyAttributes,
-    RangedSpecPropertyAttributes,
-    StringedSpecPropertyAttributes,
-    ToggledSpecPropertyAttributes,
+    PropertyAttributes,
+    OptionedPropertyAttributes,
+    RangedPropertyAttributes,
+    StringedPropertyAttributes,
+    ToggledPropertyAttributes,
     RangedConstraint,
     OptionedConstraint,
     StringedConstraint,
     Constraint,
-    SpecPropertyType,
-    StandardSpecAttributes,
-    SpecAttributes,
+    PropertyType,
+    StandardAttributes,
+    Attributes,
     OptionedConstraintOption,
     RangedInputType,
 }
