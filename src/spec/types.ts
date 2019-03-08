@@ -47,15 +47,15 @@ interface DomSpec extends PropertyMap<StandardSpec, DomSpecValue> {
     [ index: string ]: Maybe<DomSpecValue>
 }
 
-type SingularPropertyInvalidSpecMessage = Maybe<string>
+type SingularValidationResult = Maybe<string>
 
-type ArrayedPropertyInvalidSpecMessage = Maybe<SingularPropertyInvalidSpecMessage[]>
+type ArrayedValidationResult = Maybe<SingularValidationResult[]>
 
-type InvalidSpecMessage = SingularPropertyInvalidSpecMessage | ArrayedPropertyInvalidSpecMessage
+type ValidationResult = SingularValidationResult | ArrayedValidationResult
 
-type SpecValidationResults<SpecType = Spec> = Maybe<Partial<PropertyMap<SpecType, InvalidSpecMessage>>>
+type ValidationResults<SpecType = Spec> = Maybe<Partial<PropertyMap<SpecType, ValidationResult>>>
 
-type SpecValidationFunction<SpecType = Spec> = (spec: SpecType) => SpecValidationResults<SpecType>
+type ValidationFunction<SpecType = Spec> = (spec: SpecType) => ValidationResults<SpecType>
 
 interface Preset<SpecType = Spec> extends Partial<Presentable> {
     spec: SpecType,
@@ -65,7 +65,7 @@ interface SpecData<SpecType = Spec> {
     attributes: SpecAttributes<SpecType>,
     initial: SpecType,
     presets?: DictionaryOf<Preset<SpecType>>,
-    validationFunction?: SpecValidationFunction<SpecType>,
+    validationFunction?: ValidationFunction<SpecType>,
 }
 
 type StandardSpecData = SpecData<StandardSpec>
@@ -77,11 +77,11 @@ export {
     Spec,
     StandardSpecData,
     SpecData,
-    SpecValidationFunction,
-    SpecValidationResults,
-    SingularPropertyInvalidSpecMessage,
-    ArrayedPropertyInvalidSpecMessage,
-    InvalidSpecMessage,
+    ValidationFunction,
+    ValidationResults,
+    SingularValidationResult,
+    ArrayedValidationResult,
+    ValidationResult,
     SpecValue,
     SingularSpecValue,
     ArrayedSpecValue,
