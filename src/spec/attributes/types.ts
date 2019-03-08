@@ -1,4 +1,4 @@
-import { DomValueOrChecked, KeyMap, Units } from '@musical-patterns/utilities'
+import { HtmlValueOrChecked, KeyMap, Units } from '@musical-patterns/utilities'
 import { Presentable } from '../../types'
 import { Spec, StandardProperties } from '../types'
 
@@ -36,7 +36,7 @@ type OptionedConstraint = OptionedConstraintOption[]
 type Constraint = RangedConstraint | OptionedConstraint | StringedConstraint
 
 interface SharedPropertyAttributes extends Partial<Presentable> {
-    arrayedNewFieldInitialValue?: DomValueOrChecked,
+    arrayedNewFieldInitialValue?: HtmlValueOrChecked,
     isArrayed?: boolean,
     units?: Units,
 }

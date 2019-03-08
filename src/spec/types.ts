@@ -1,6 +1,6 @@
 import {
     DictionaryOf,
-    DomValueOrChecked,
+    HtmlValueOrChecked,
     Hz,
     KeyMap,
     Maybe,
@@ -13,13 +13,13 @@ import {
 import { Presentable } from '../types'
 import { Attributes } from './attributes'
 
-type SingularSpecValue = DomValueOrChecked | NominalNumber
-type ArrayedSpecValue = SingularSpecValue[]
-type SpecValue = SingularSpecValue | ArrayedSpecValue
+type SingularValue = HtmlValueOrChecked | NominalNumber
+type ArrayedValue = SingularValue[]
+type Value = SingularValue | ArrayedValue
 
-type SingularDomSpecValue = DomValueOrChecked
-type ArrayedDomSpecValue = SingularDomSpecValue[]
-type DomSpecValue = SingularDomSpecValue | ArrayedDomSpecValue
+type SingularDomValue = HtmlValueOrChecked
+type ArrayedDomValue = SingularDomValue[]
+type DomValue = SingularDomValue | ArrayedDomValue
 
 enum StandardProperties {
     DURATION_TRANSLATION = 'baseDurationTranslation',
@@ -40,11 +40,11 @@ type StandardSpec = Partial<{
 }>
 
 interface Spec extends StandardSpec {
-    [ index: string ]: Maybe<SpecValue>,
+    [ index: string ]: Maybe<Value>,
 }
 
-interface DomSpec extends KeyMap<StandardSpec, DomSpecValue> {
-    [ index: string ]: Maybe<DomSpecValue>
+interface DomSpec extends KeyMap<StandardSpec, DomValue> {
+    [ index: string ]: Maybe<DomValue>
 }
 
 type SingularValidationResult = Maybe<string>
@@ -82,11 +82,11 @@ export {
     SingularValidationResult,
     ArrayedValidationResult,
     ValidationResult,
-    SpecValue,
-    SingularSpecValue,
-    ArrayedSpecValue,
+    Value,
+    SingularValue,
+    ArrayedValue,
     DomSpec,
-    SingularDomSpecValue,
-    ArrayedDomSpecValue,
-    DomSpecValue,
+    SingularDomValue,
+    ArrayedDomValue,
+    DomValue,
 }
