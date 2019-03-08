@@ -8,8 +8,8 @@ import {
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
     Maybe,
     NEXT,
+    NoOperation,
     OCTAVE,
-    Operand,
     Ordinal,
     Scalar,
     to,
@@ -36,7 +36,7 @@ const generateOctaveRepeatingScalars: (scalars: Array<Scalar<Frequency>>) => Arr
                 scalars.map((scalar: Scalar<Frequency>): Scalar<Frequency> =>
                     apply.Scalar(
                         scalar,
-                        to.Scalar(from.Base<Operand, Base>(nextOctave)),
+                        to.Scalar(from.Base<NoOperation, Base>(nextOctave)),
                     ),
                 ),
             )
