@@ -57,7 +57,7 @@ type ValidationResults<SpecType = Spec> = Maybe<Partial<KeyMap<SpecType, Validat
 
 type ValidationFunction<SpecType = Spec> = (spec: SpecType) => ValidationResults<SpecType>
 
-interface Preset<SpecType = Spec> extends Partial<Presentable> {
+interface Preset<SpecType = Spec> extends Presentable {
     spec: SpecType,
 }
 

@@ -135,12 +135,12 @@ type PitchDurationGainSustainXYScale = 7 & { _PitchDurationGainSustainXYScaleBra
 type PitchDurationGainSustainXYZScale = 8 & { _PitchDurationGainSustainXYZScaleBrand: void }
 
 interface Presentable {
-    description: string,
-    formattedName: string,
-    order: number,
+    description?: string,
+    formattedName?: string,
+    order?: number,
 }
 
-interface Metadata extends Partial<Presentable> {
+interface Metadata extends Presentable {
     mostRecentPublish: string,
     musicalIdeaIllustrated: string,
     originalPublish: string,

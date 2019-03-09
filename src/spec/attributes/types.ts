@@ -27,7 +27,7 @@ interface StringedConstraint {
     minLength?: number,
 }
 
-interface OptionedConstraintOption extends Partial<Presentable> {
+interface OptionedConstraintOption extends Presentable {
     key: string,
 }
 
@@ -35,7 +35,7 @@ type OptionedConstraint = OptionedConstraintOption[]
 
 type Constraint = RangedConstraint | OptionedConstraint | StringedConstraint
 
-interface SharedPropertyAttributes extends Partial<Presentable> {
+interface SharedPropertyAttributes extends Presentable {
     arrayedNewFieldInitialValue?: HtmlValueOrChecked,
     isArrayed?: boolean,
     units?: Units,
