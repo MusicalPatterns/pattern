@@ -21,7 +21,7 @@ type SingularDomValue = HtmlValueOrChecked
 type ArrayedDomValue = SingularDomValue[]
 type DomValue = SingularDomValue | ArrayedDomValue
 
-enum StandardProperties {
+enum StandardProperty {
     DURATION_TRANSLATION = 'baseDurationTranslation',
     BASE_DURATION = 'baseDuration',
     FREQUENCY_TRANSLATION = 'baseFrequencyTranslation',
@@ -31,12 +31,12 @@ enum StandardProperties {
 }
 
 type StandardSpec = Partial<{
-    [ StandardProperties.DURATION_TRANSLATION ]: Translation<Ms>,
-    [ StandardProperties.BASE_DURATION ]: Scalar<Ms>,
-    [ StandardProperties.FREQUENCY_TRANSLATION ]: Translation<Hz>,
-    [ StandardProperties.BASE_FREQUENCY ]: Scalar<Hz>,
-    [ StandardProperties.BASE_POSITION ]: Array<Translation<Meters>>,
-    [ StandardProperties.BASE_POSITION_SCALAR ]: Scalar<Meters>,
+    [ StandardProperty.DURATION_TRANSLATION ]: Translation<Ms>,
+    [ StandardProperty.BASE_DURATION ]: Scalar<Ms>,
+    [ StandardProperty.FREQUENCY_TRANSLATION ]: Translation<Hz>,
+    [ StandardProperty.BASE_FREQUENCY ]: Scalar<Hz>,
+    [ StandardProperty.BASE_POSITION ]: Array<Translation<Meters>>,
+    [ StandardProperty.BASE_POSITION_SCALAR ]: Scalar<Meters>,
 }>
 
 interface Spec extends StandardSpec {
@@ -73,7 +73,7 @@ type StandardData = Data<StandardSpec>
 export {
     Preset,
     StandardSpec,
-    StandardProperties,
+    StandardProperty,
     Spec,
     StandardData,
     Data,

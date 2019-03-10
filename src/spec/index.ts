@@ -19,7 +19,7 @@ export {
 export { standardInitialSpec, standardData } from './standards'
 export {
     StandardSpec,
-    StandardProperties,
+    StandardProperty,
     Spec,
     StandardData,
     Data,

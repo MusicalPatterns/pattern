@@ -1,6 +1,6 @@
 import { HtmlValueOrChecked, KeyMap, Units } from '@musical-patterns/utilities'
 import { Presentable } from '../../types'
-import { Spec, StandardProperties } from '../types'
+import { Spec, StandardProperty } from '../types'
 
 enum PropertyType {
     RANGED = 'RANGED',
@@ -69,12 +69,12 @@ type PropertyAttributes =
     ToggledPropertyAttributes
 
 interface StandardAttributes {
-    [ StandardProperties.DURATION_TRANSLATION ]: RangedPropertyAttributes,
-    [ StandardProperties.BASE_DURATION ]: RangedPropertyAttributes,
-    [ StandardProperties.FREQUENCY_TRANSLATION ]: RangedPropertyAttributes,
-    [ StandardProperties.BASE_FREQUENCY ]: RangedPropertyAttributes,
-    [ StandardProperties.BASE_POSITION ]: RangedPropertyAttributes,
-    [ StandardProperties.BASE_POSITION_SCALAR ]: RangedPropertyAttributes,
+    [ StandardProperty.DURATION_TRANSLATION ]: RangedPropertyAttributes,
+    [ StandardProperty.BASE_DURATION ]: RangedPropertyAttributes,
+    [ StandardProperty.FREQUENCY_TRANSLATION ]: RangedPropertyAttributes,
+    [ StandardProperty.BASE_FREQUENCY ]: RangedPropertyAttributes,
+    [ StandardProperty.BASE_POSITION ]: RangedPropertyAttributes,
+    [ StandardProperty.BASE_POSITION_SCALAR ]: RangedPropertyAttributes,
 }
 
 // tslint:disable-next-line no-useless-intersection

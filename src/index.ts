@@ -32,7 +32,7 @@ export {
     Constraint,
     PropertyType,
     StandardSpec,
-    StandardProperties,
+    StandardProperty,
     defaultPropertyAttributes,
     StandardAttributes,
     StandardData,
