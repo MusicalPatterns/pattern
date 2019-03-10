@@ -1,5 +1,4 @@
 export { standardAttributes } from './standards'
-export { defaultPropertyAttributes } from './defaults'
 export {
     PropertyAttributes,
     OptionedPropertyAttributes,

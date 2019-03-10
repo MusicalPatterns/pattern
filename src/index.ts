@@ -33,7 +33,6 @@ export {
     PropertyType,
     StandardSpec,
     StandardProperty,
-    defaultPropertyAttributes,
     StandardAttributes,
     StandardData,
     Spec,

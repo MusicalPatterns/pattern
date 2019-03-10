@@ -12,7 +12,6 @@ export {
     StandardAttributes,
     Attributes,
     standardAttributes,
-    defaultPropertyAttributes,
     OptionedConstraintOption,
     RangedInputType,
 } from './attributes'
