@@ -28,7 +28,7 @@ interface StringedConstraint {
 }
 
 interface OptionedConstraintOption extends Presentable {
-    key: string,
+    value: string,
 }
 
 type OptionedConstraint = OptionedConstraintOption[]
