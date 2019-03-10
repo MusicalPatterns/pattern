@@ -38,7 +38,7 @@ const standardAttributes: Attributes<StandardSpec> = {
         units: Units.METERS,
     },
     [ StandardProperty.BASE_POSITION_SCALAR ]: {
-        description: 'how far apart the voices will be placed',
+        description: 'how far away the sounds will come from',
         order: 2,
         propertyType: PropertyType.RANGED,
         units: Units.METERS,

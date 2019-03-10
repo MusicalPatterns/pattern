@@ -1,11 +1,11 @@
 // tslint:disable number-literal-format
 
-import { NoteSpec } from '@musical-patterns/compiler'
+import { Note } from '@musical-patterns/compiler'
 import { apply, buildEqualDivisionScalars, Scalar, testIsCloseTo, to } from '@musical-patterns/utilities'
 import { PitchCircularTechnique, pitchCirculate } from '../../../../../src/indexForTest'
 
 describe('pitch circulate, using the technique of scalar scaling by window size', () => {
-    let outputParts: NoteSpec[][]
+    let outputSetOfNotes: Note[][]
 
     const A: Scalar = to.Scalar(0.011)
     const B: Scalar = to.Scalar(0.020)
@@ -24,20 +24,20 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
     const O: Scalar = to.Scalar(0.980)
     const P: Scalar = to.Scalar(1.000)
 
-    describe('given a part, will return a set of parts which together constitute the pitch circled version of it', () => {
+    describe('given some notes, will return a set of version of those notes which together constitute the pitch circled version of it', () => {
         const originalGain: Scalar = to.Scalar(0.5)
         beforeEach(() => {
-            const inputPart: NoteSpec[] = [ {
-                gainSpec: {
+            const inputNotes: Note[] = [ {
+                gain: {
                     scalar: originalGain,
                 },
-                pitchSpec: {
+                pitch: {
                     scalar: to.Scalar(57),
                 },
             } ]
 
-            outputParts = pitchCirculate(
-                inputPart,
+            outputSetOfNotes = pitchCirculate(
+                inputNotes,
                 {
                     technique: PitchCircularTechnique.SCALAR_SCALING_BY_WINDOW_SIZE,
                     windowSize: to.Scalar(to.Frequency(2)),
@@ -45,58 +45,58 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
             )
         })
 
-        it('scales the pitches so that each part is off from the next by the window size (and for now always returning three parts, starting with the lowest possible part)', () => {
-            expect(outputParts[ 0 ][ 0 ].pitchSpec!.scalar)
+        it('scales the pitches so that each set of notes is off from the next by the window size (and for now always returning three sets of notes, starting with the lowest possible set of notes)', () => {
+            expect(outputSetOfNotes[ 0 ][ 0 ].pitch!.scalar)
                 .toEqual(to.Scalar(57 / 32))
-            expect(outputParts[ 1 ][ 0 ].pitchSpec!.scalar)
+            expect(outputSetOfNotes[ 1 ][ 0 ].pitch!.scalar)
                 .toEqual(to.Scalar(57 / 16))
-            expect(outputParts[ 2 ][ 0 ].pitchSpec!.scalar)
+            expect(outputSetOfNotes[ 2 ][ 0 ].pitch!.scalar)
                 .toEqual(to.Scalar(57 / 8))
         })
 
-        it('maps the gain to a normal distribution curve, so that the center part is loud, and the outer parts get quieter depending on how far from the center they are', () => {
-            const MEDIUM_LOUD_IN_THE_LOW_PART_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_ITS_ALMOST_INTO_THE_LOUD_MIDDLE: Scalar = to.Scalar(0.410)
-            const LOUDEST_IN_THE_MIDDLE_BUT_NOT_FULL_GAIN_SINCE_ITS_CLOSER_TO_HIGH_PART: Scalar = to.Scalar(0.800)
-            const QUIETEST_IN_THE_HIGH_PART_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_CLOSER_TO_BEING_GONE_THERE: Scalar = to.Scalar(0.028)
+        it('maps the gain to a normal distribution curve, so that the center set of notes is loud, and the outer sets of notes get quieter depending on how far from the center they are', () => {
+            const MEDIUM_LOUD_IN_THE_LOW_NOTES_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_ITS_ALMOST_INTO_THE_LOUD_MIDDLE: Scalar = to.Scalar(0.410)
+            const LOUDEST_IN_THE_MIDDLE_BUT_NOT_FULL_GAIN_SINCE_ITS_CLOSER_TO_HIGH_NOTES: Scalar = to.Scalar(0.800)
+            const QUIETEST_IN_THE_HIGH_NOTES_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_CLOSER_TO_BEING_GONE_THERE: Scalar = to.Scalar(0.028)
 
             testIsCloseTo(
-                outputParts[ 0 ][ 0 ].gainSpec!.scalar!,
-                apply.Scalar(MEDIUM_LOUD_IN_THE_LOW_PART_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_ITS_ALMOST_INTO_THE_LOUD_MIDDLE, originalGain),
+                outputSetOfNotes[ 0 ][ 0 ].gain!.scalar!,
+                apply.Scalar(MEDIUM_LOUD_IN_THE_LOW_NOTES_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_ITS_ALMOST_INTO_THE_LOUD_MIDDLE, originalGain),
             )
             testIsCloseTo(
-                outputParts[ 1 ][ 0 ].gainSpec!.scalar!,
-                apply.Scalar(LOUDEST_IN_THE_MIDDLE_BUT_NOT_FULL_GAIN_SINCE_ITS_CLOSER_TO_HIGH_PART, originalGain),
+                outputSetOfNotes[ 1 ][ 0 ].gain!.scalar!,
+                apply.Scalar(LOUDEST_IN_THE_MIDDLE_BUT_NOT_FULL_GAIN_SINCE_ITS_CLOSER_TO_HIGH_NOTES, originalGain),
             )
             testIsCloseTo(
-                outputParts[ 2 ][ 0 ].gainSpec!.scalar!,
-                apply.Scalar(QUIETEST_IN_THE_HIGH_PART_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_CLOSER_TO_BEING_GONE_THERE, originalGain),
+                outputSetOfNotes[ 2 ][ 0 ].gain!.scalar!,
+                apply.Scalar(QUIETEST_IN_THE_HIGH_NOTES_BECAUSE_WITHIN_SCALE_ITS_CLOSER_TO_HIGH_SO_CLOSER_TO_BEING_GONE_THERE, originalGain),
             )
         })
     })
 
     describe('preserving all the other information (besides pitch scalar and gain scalar)', () => {
         beforeEach(() => {
-            const inputPart: NoteSpec[] = [
+            const inputNotes: Note[] = [
                 {
-                    durationSpec: {
+                    duration: {
                         index: to.Ordinal(3),
                         scalar: to.Scalar(4),
                         scaleIndex: to.Ordinal(5),
                     },
-                    gainSpec: {
+                    gain: {
                         index: to.Ordinal(9),
                         scaleIndex: to.Ordinal(5),
                     },
-                    pitchSpec: {
+                    pitch: {
                         index: to.Ordinal(11),
                         scaleIndex: to.Ordinal(10),
                     },
-                    positionSpec: [ {
+                    position: [ {
                         index: to.Ordinal(2),
                         scalar: to.Scalar(4),
                         scaleIndex: to.Ordinal(6),
                     } ],
-                    sustainSpec: {
+                    sustain: {
                         index: to.Ordinal(6),
                         scalar: to.Scalar(7),
                         scaleIndex: to.Ordinal(8),
@@ -104,8 +104,8 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
                 },
             ]
 
-            outputParts = pitchCirculate(
-                inputPart,
+            outputSetOfNotes = pitchCirculate(
+                inputNotes,
                 {
                     technique: PitchCircularTechnique.SCALAR_SCALING_BY_WINDOW_SIZE,
                     windowSize: to.Scalar(to.Frequency(2)),
@@ -113,20 +113,20 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
             )
         })
 
-        it('copies the duration spec into each part', () => {
-            expect(outputParts[ 0 ][ 0 ].durationSpec)
+        it('copies the duration into each set of notes', () => {
+            expect(outputSetOfNotes[ 0 ][ 0 ].duration)
                 .toEqual({
                     index: to.Ordinal(3),
                     scalar: to.Scalar(4),
                     scaleIndex: to.Ordinal(5),
                 })
-            expect(outputParts[ 1 ][ 0 ].durationSpec)
+            expect(outputSetOfNotes[ 1 ][ 0 ].duration)
                 .toEqual({
                     index: to.Ordinal(3),
                     scalar: to.Scalar(4),
                     scaleIndex: to.Ordinal(5),
                 })
-            expect(outputParts[ 2 ][ 0 ].durationSpec)
+            expect(outputSetOfNotes[ 2 ][ 0 ].duration)
                 .toEqual({
                     index: to.Ordinal(3),
                     scalar: to.Scalar(4),
@@ -134,20 +134,20 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
                 })
         })
 
-        it('copies the sustain spec into each part', () => {
-            expect(outputParts[ 0 ][ 0 ].sustainSpec)
+        it('copies the sustain into each set of notes', () => {
+            expect(outputSetOfNotes[ 0 ][ 0 ].sustain)
                 .toEqual({
                     index: to.Ordinal(6),
                     scalar: to.Scalar(7),
                     scaleIndex: to.Ordinal(8),
                 })
-            expect(outputParts[ 1 ][ 0 ].sustainSpec)
+            expect(outputSetOfNotes[ 1 ][ 0 ].sustain)
                 .toEqual({
                     index: to.Ordinal(6),
                     scalar: to.Scalar(7),
                     scaleIndex: to.Ordinal(8),
                 })
-            expect(outputParts[ 2 ][ 0 ].sustainSpec)
+            expect(outputSetOfNotes[ 2 ][ 0 ].sustain)
                 .toEqual({
                     index: to.Ordinal(6),
                     scalar: to.Scalar(7),
@@ -155,20 +155,20 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
                 })
         })
 
-        it('copies the position spec into each part', () => {
-            expect(outputParts[ 0 ][ 0 ].positionSpec)
+        it('copies the position into each set of notes', () => {
+            expect(outputSetOfNotes[ 0 ][ 0 ].position)
                 .toEqual([ {
                     index: to.Ordinal(2),
                     scalar: to.Scalar(4),
                     scaleIndex: to.Ordinal(6),
                 } ])
-            expect(outputParts[ 1 ][ 0 ].positionSpec)
+            expect(outputSetOfNotes[ 1 ][ 0 ].position)
                 .toEqual([ {
                     index: to.Ordinal(2),
                     scalar: to.Scalar(4),
                     scaleIndex: to.Ordinal(6),
                 } ])
-            expect(outputParts[ 2 ][ 0 ].positionSpec)
+            expect(outputSetOfNotes[ 2 ][ 0 ].position)
                 .toEqual([ {
                     index: to.Ordinal(2),
                     scalar: to.Scalar(4),
@@ -176,39 +176,39 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
                 } ])
         })
 
-        it('copies the pitch scale index into each part', () => {
-            expect(outputParts[ 0 ][ 0 ].pitchSpec!.scaleIndex)
+        it('copies the pitch scale index into each set of notes', () => {
+            expect(outputSetOfNotes[ 0 ][ 0 ].pitch!.scaleIndex)
                 .toEqual(to.Ordinal(10))
-            expect(outputParts[ 1 ][ 0 ].pitchSpec!.scaleIndex)
+            expect(outputSetOfNotes[ 1 ][ 0 ].pitch!.scaleIndex)
                 .toEqual(to.Ordinal(10))
-            expect(outputParts[ 2 ][ 0 ].pitchSpec!.scaleIndex)
+            expect(outputSetOfNotes[ 2 ][ 0 ].pitch!.scaleIndex)
                 .toEqual(to.Ordinal(10))
         })
 
-        it('copies the pitch index into each part', () => {
-            expect(outputParts[ 0 ][ 0 ].pitchSpec!.index)
+        it('copies the pitch index into each set of notes', () => {
+            expect(outputSetOfNotes[ 0 ][ 0 ].pitch!.index)
                 .toEqual(to.Ordinal(11))
-            expect(outputParts[ 1 ][ 0 ].pitchSpec!.index)
+            expect(outputSetOfNotes[ 1 ][ 0 ].pitch!.index)
                 .toEqual(to.Ordinal(11))
-            expect(outputParts[ 2 ][ 0 ].pitchSpec!.index)
+            expect(outputSetOfNotes[ 2 ][ 0 ].pitch!.index)
                 .toEqual(to.Ordinal(11))
         })
 
-        it('copies the gain scale index into each part', () => {
-            expect(outputParts[ 0 ][ 0 ].gainSpec!.scaleIndex)
+        it('copies the gain scale index into each set of notes', () => {
+            expect(outputSetOfNotes[ 0 ][ 0 ].gain!.scaleIndex)
                 .toEqual(to.Ordinal(5))
-            expect(outputParts[ 1 ][ 0 ].gainSpec!.scaleIndex)
+            expect(outputSetOfNotes[ 1 ][ 0 ].gain!.scaleIndex)
                 .toEqual(to.Ordinal(5))
-            expect(outputParts[ 2 ][ 0 ].gainSpec!.scaleIndex)
+            expect(outputSetOfNotes[ 2 ][ 0 ].gain!.scaleIndex)
                 .toEqual(to.Ordinal(5))
         })
 
-        it('copies the gain index into each part', () => {
-            expect(outputParts[ 0 ][ 0 ].gainSpec!.index)
+        it('copies the gain index into each set of notes', () => {
+            expect(outputSetOfNotes[ 0 ][ 0 ].gain!.index)
                 .toEqual(to.Ordinal(9))
-            expect(outputParts[ 1 ][ 0 ].gainSpec!.index)
+            expect(outputSetOfNotes[ 1 ][ 0 ].gain!.index)
                 .toEqual(to.Ordinal(9))
-            expect(outputParts[ 2 ][ 0 ].gainSpec!.index)
+            expect(outputSetOfNotes[ 2 ][ 0 ].gain!.index)
                 .toEqual(to.Ordinal(9))
         })
     })
@@ -216,22 +216,22 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
     describe('gain goes in a cycle', () => {
         beforeEach(() => {
             const tenEdScalars: Scalar[] = buildEqualDivisionScalars(to.Denominator(10))
-            const inputPart: NoteSpec[] = [
-                { pitchSpec: { scalar: tenEdScalars[ 0 ] } },
-                { pitchSpec: { scalar: tenEdScalars[ 1 ] } },
-                { pitchSpec: { scalar: tenEdScalars[ 2 ] } },
-                { pitchSpec: { scalar: tenEdScalars[ 3 ] } },
-                { pitchSpec: { scalar: tenEdScalars[ 4 ] } },
-                { pitchSpec: { scalar: tenEdScalars[ 5 ] } },
-                { pitchSpec: { scalar: tenEdScalars[ 6 ] } },
-                { pitchSpec: { scalar: tenEdScalars[ 7 ] } },
-                { pitchSpec: { scalar: tenEdScalars[ 8 ] } },
-                { pitchSpec: { scalar: tenEdScalars[ 9 ] } },
-                { pitchSpec: { scalar: to.Scalar(2) } },
+            const inputNotes: Note[] = [
+                { pitch: { scalar: tenEdScalars[ 0 ] } },
+                { pitch: { scalar: tenEdScalars[ 1 ] } },
+                { pitch: { scalar: tenEdScalars[ 2 ] } },
+                { pitch: { scalar: tenEdScalars[ 3 ] } },
+                { pitch: { scalar: tenEdScalars[ 4 ] } },
+                { pitch: { scalar: tenEdScalars[ 5 ] } },
+                { pitch: { scalar: tenEdScalars[ 6 ] } },
+                { pitch: { scalar: tenEdScalars[ 7 ] } },
+                { pitch: { scalar: tenEdScalars[ 8 ] } },
+                { pitch: { scalar: tenEdScalars[ 9 ] } },
+                { pitch: { scalar: to.Scalar(2) } },
             ]
 
-            outputParts = pitchCirculate(
-                inputPart,
+            outputSetOfNotes = pitchCirculate(
+                inputNotes,
                 {
                     technique: PitchCircularTechnique.SCALAR_SCALING_BY_WINDOW_SIZE,
                     windowSize: to.Scalar(to.Frequency(2)),
@@ -240,67 +240,67 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
         })
 
         it('it should return the same result after one loop around the pitch classes', () => {
-            const [ lowPart, middlePart, highPart ] = outputParts
+            const [ lowNotes, middleNotes, highNotes ] = outputSetOfNotes
 
-            expect(lowPart[ 0 ].gainSpec!.scalar)
-                .toEqual(lowPart[ 10 ].gainSpec!.scalar)
-            expect(middlePart[ 0 ].gainSpec!.scalar)
-                .toEqual(middlePart[ 10 ].gainSpec!.scalar)
-            expect(highPart[ 0 ].gainSpec!.scalar)
-                .toEqual(highPart[ 10 ].gainSpec!.scalar)
+            expect(lowNotes[ 0 ].gain!.scalar)
+                .toEqual(lowNotes[ 10 ].gain!.scalar)
+            expect(middleNotes[ 0 ].gain!.scalar)
+                .toEqual(middleNotes[ 10 ].gain!.scalar)
+            expect(highNotes[ 0 ].gain!.scalar)
+                .toEqual(highNotes[ 10 ].gain!.scalar)
         })
 
-        it('the gain of the low part at the end connects back up with the gain of the middle part at the beginning, and the gain at the end of the middle part connects back up with the gain of the high part at the beginning', () => {
-            const [ lowPart, middlePart, highPart ] = outputParts
+        it('the gain of the low notes at the end connects back up with the gain of the middle notes at the beginning, and the gain at the end of the middle notes connects back up with the gain of the high notes at the beginning', () => {
+            const [ lowNotes, middleNotes, highNotes ] = outputSetOfNotes
 
-            testIsCloseTo(lowPart[ 0 ].gainSpec!.scalar!, A)
-            testIsCloseTo(lowPart[ 1 ].gainSpec!.scalar!, B)
-            testIsCloseTo(lowPart[ 2 ].gainSpec!.scalar!, C)
-            testIsCloseTo(lowPart[ 3 ].gainSpec!.scalar!, D)
-            testIsCloseTo(lowPart[ 4 ].gainSpec!.scalar!, E)
-            testIsCloseTo(lowPart[ 5 ].gainSpec!.scalar!, F)
-            testIsCloseTo(lowPart[ 6 ].gainSpec!.scalar!, G)
-            testIsCloseTo(lowPart[ 7 ].gainSpec!.scalar!, H)
-            testIsCloseTo(lowPart[ 8 ].gainSpec!.scalar!, I)
-            testIsCloseTo(lowPart[ 9 ].gainSpec!.scalar!, J)
+            testIsCloseTo(lowNotes[ 0 ].gain!.scalar!, A)
+            testIsCloseTo(lowNotes[ 1 ].gain!.scalar!, B)
+            testIsCloseTo(lowNotes[ 2 ].gain!.scalar!, C)
+            testIsCloseTo(lowNotes[ 3 ].gain!.scalar!, D)
+            testIsCloseTo(lowNotes[ 4 ].gain!.scalar!, E)
+            testIsCloseTo(lowNotes[ 5 ].gain!.scalar!, F)
+            testIsCloseTo(lowNotes[ 6 ].gain!.scalar!, G)
+            testIsCloseTo(lowNotes[ 7 ].gain!.scalar!, H)
+            testIsCloseTo(lowNotes[ 8 ].gain!.scalar!, I)
+            testIsCloseTo(lowNotes[ 9 ].gain!.scalar!, J)
 
-            testIsCloseTo(middlePart[ 0 ].gainSpec!.scalar!, K)
-            testIsCloseTo(middlePart[ 1 ].gainSpec!.scalar!, L)
-            testIsCloseTo(middlePart[ 2 ].gainSpec!.scalar!, M)
-            testIsCloseTo(middlePart[ 3 ].gainSpec!.scalar!, N)
-            testIsCloseTo(middlePart[ 4 ].gainSpec!.scalar!, O)
-            testIsCloseTo(middlePart[ 5 ].gainSpec!.scalar!, P)
-            testIsCloseTo(middlePart[ 6 ].gainSpec!.scalar!, O)
-            testIsCloseTo(middlePart[ 7 ].gainSpec!.scalar!, N)
-            testIsCloseTo(middlePart[ 8 ].gainSpec!.scalar!, M)
-            testIsCloseTo(middlePart[ 9 ].gainSpec!.scalar!, L)
+            testIsCloseTo(middleNotes[ 0 ].gain!.scalar!, K)
+            testIsCloseTo(middleNotes[ 1 ].gain!.scalar!, L)
+            testIsCloseTo(middleNotes[ 2 ].gain!.scalar!, M)
+            testIsCloseTo(middleNotes[ 3 ].gain!.scalar!, N)
+            testIsCloseTo(middleNotes[ 4 ].gain!.scalar!, O)
+            testIsCloseTo(middleNotes[ 5 ].gain!.scalar!, P)
+            testIsCloseTo(middleNotes[ 6 ].gain!.scalar!, O)
+            testIsCloseTo(middleNotes[ 7 ].gain!.scalar!, N)
+            testIsCloseTo(middleNotes[ 8 ].gain!.scalar!, M)
+            testIsCloseTo(middleNotes[ 9 ].gain!.scalar!, L)
 
-            testIsCloseTo(highPart[ 0 ].gainSpec!.scalar!, K)
-            testIsCloseTo(highPart[ 1 ].gainSpec!.scalar!, J)
-            testIsCloseTo(highPart[ 2 ].gainSpec!.scalar!, I)
-            testIsCloseTo(highPart[ 3 ].gainSpec!.scalar!, H)
-            testIsCloseTo(highPart[ 4 ].gainSpec!.scalar!, G)
-            testIsCloseTo(highPart[ 5 ].gainSpec!.scalar!, F)
-            testIsCloseTo(highPart[ 6 ].gainSpec!.scalar!, E)
-            testIsCloseTo(highPart[ 7 ].gainSpec!.scalar!, D)
-            testIsCloseTo(highPart[ 8 ].gainSpec!.scalar!, C)
-            testIsCloseTo(highPart[ 9 ].gainSpec!.scalar!, B)
+            testIsCloseTo(highNotes[ 0 ].gain!.scalar!, K)
+            testIsCloseTo(highNotes[ 1 ].gain!.scalar!, J)
+            testIsCloseTo(highNotes[ 2 ].gain!.scalar!, I)
+            testIsCloseTo(highNotes[ 3 ].gain!.scalar!, H)
+            testIsCloseTo(highNotes[ 4 ].gain!.scalar!, G)
+            testIsCloseTo(highNotes[ 5 ].gain!.scalar!, F)
+            testIsCloseTo(highNotes[ 6 ].gain!.scalar!, E)
+            testIsCloseTo(highNotes[ 7 ].gain!.scalar!, D)
+            testIsCloseTo(highNotes[ 8 ].gain!.scalar!, C)
+            testIsCloseTo(highNotes[ 9 ].gain!.scalar!, B)
         })
     })
 
     describe('gain curve is almost zero at the edges and slopes nicely up to a 1 in the middle, for other pitch class counts too', () => {
         beforeEach(() => {
             const fiveEdScalars: Scalar[] = buildEqualDivisionScalars(to.Denominator(5))
-            const inputPart: NoteSpec[] = [
-                { pitchSpec: { scalar: fiveEdScalars[ 0 ] } },
-                { pitchSpec: { scalar: fiveEdScalars[ 1 ] } },
-                { pitchSpec: { scalar: fiveEdScalars[ 2 ] } },
-                { pitchSpec: { scalar: fiveEdScalars[ 3 ] } },
-                { pitchSpec: { scalar: fiveEdScalars[ 4 ] } },
+            const inputNotes: Note[] = [
+                { pitch: { scalar: fiveEdScalars[ 0 ] } },
+                { pitch: { scalar: fiveEdScalars[ 1 ] } },
+                { pitch: { scalar: fiveEdScalars[ 2 ] } },
+                { pitch: { scalar: fiveEdScalars[ 3 ] } },
+                { pitch: { scalar: fiveEdScalars[ 4 ] } },
             ]
 
-            outputParts = pitchCirculate(
-                inputPart,
+            outputSetOfNotes = pitchCirculate(
+                inputNotes,
                 {
                     technique: PitchCircularTechnique.SCALAR_SCALING_BY_WINDOW_SIZE,
                     windowSize: to.Scalar(to.Frequency(2)),
@@ -309,25 +309,25 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
         })
 
         it('works', () => {
-            const [ lowPart, middlePart, highPart ] = outputParts
+            const [ lowNotes, middleNotes, highNotes ] = outputSetOfNotes
 
-            testIsCloseTo(lowPart[ 0 ].gainSpec!.scalar!, A)
-            testIsCloseTo(lowPart[ 1 ].gainSpec!.scalar!, C)
-            testIsCloseTo(lowPart[ 2 ].gainSpec!.scalar!, E)
-            testIsCloseTo(lowPart[ 3 ].gainSpec!.scalar!, G)
-            testIsCloseTo(lowPart[ 4 ].gainSpec!.scalar!, I)
+            testIsCloseTo(lowNotes[ 0 ].gain!.scalar!, A)
+            testIsCloseTo(lowNotes[ 1 ].gain!.scalar!, C)
+            testIsCloseTo(lowNotes[ 2 ].gain!.scalar!, E)
+            testIsCloseTo(lowNotes[ 3 ].gain!.scalar!, G)
+            testIsCloseTo(lowNotes[ 4 ].gain!.scalar!, I)
 
-            testIsCloseTo(middlePart[ 0 ].gainSpec!.scalar!, K)
-            testIsCloseTo(middlePart[ 1 ].gainSpec!.scalar!, M)
-            testIsCloseTo(middlePart[ 2 ].gainSpec!.scalar!, O)
-            testIsCloseTo(middlePart[ 3 ].gainSpec!.scalar!, O)
-            testIsCloseTo(middlePart[ 4 ].gainSpec!.scalar!, M)
+            testIsCloseTo(middleNotes[ 0 ].gain!.scalar!, K)
+            testIsCloseTo(middleNotes[ 1 ].gain!.scalar!, M)
+            testIsCloseTo(middleNotes[ 2 ].gain!.scalar!, O)
+            testIsCloseTo(middleNotes[ 3 ].gain!.scalar!, O)
+            testIsCloseTo(middleNotes[ 4 ].gain!.scalar!, M)
 
-            testIsCloseTo(highPart[ 0 ].gainSpec!.scalar!, K)
-            testIsCloseTo(highPart[ 1 ].gainSpec!.scalar!, I)
-            testIsCloseTo(highPart[ 2 ].gainSpec!.scalar!, G)
-            testIsCloseTo(highPart[ 3 ].gainSpec!.scalar!, E)
-            testIsCloseTo(highPart[ 4 ].gainSpec!.scalar!, C)
+            testIsCloseTo(highNotes[ 0 ].gain!.scalar!, K)
+            testIsCloseTo(highNotes[ 1 ].gain!.scalar!, I)
+            testIsCloseTo(highNotes[ 2 ].gain!.scalar!, G)
+            testIsCloseTo(highNotes[ 3 ].gain!.scalar!, E)
+            testIsCloseTo(highNotes[ 4 ].gain!.scalar!, C)
         })
     })
 })

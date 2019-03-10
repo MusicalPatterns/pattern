@@ -7,7 +7,7 @@ export {
 } from './contours'
 export {
     adjustScalars,
-    buildStandardScales,
+    materializeStandardScales,
     buildNonScale,
     buildFlatDurationsScale,
     buildHarmonicSeriesScale,

@@ -1,6 +1,6 @@
 export { adjustScalars, generateOctaveRepeatingScalars } from './scalars'
 export {
-    buildStandardScales,
+    materializeStandardScales,
     buildNonScale,
     buildFlatDurationsScale,
     buildHarmonicSeriesScale,

@@ -1,11 +1,11 @@
 // tslint:disable no-magic-numbers max-file-line-count
 
-import { Material, NoteSpec } from '@musical-patterns/compiler'
+import { Material, Note } from '@musical-patterns/compiler'
 import { Block, ContourPiece } from '@musical-patterns/utilities'
 import { Id } from './registry'
 import { Data, Spec, StandardSpec } from './spec'
 
-type Segment = NoteSpec[][]
+type Segment = Note[][]
 
 type Rendering<T> = (block: Block) => ContourPiece<T>
 
