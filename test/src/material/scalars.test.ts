@@ -1,8 +1,8 @@
 import { Frequency, Scalar, to } from '@musical-patterns/utilities'
-import { generateOctaveRepeatingScalars } from '../../../src/indexForTest'
+import { computeOctaveRepeatingScalars } from '../../../src/indexForTest'
 
-describe('generate octave repeating scalars', () => {
-    it('given scalars, will generate 10 octaves worth of them repeating', () => {
+describe('octave repeating scalars', () => {
+    it('given scalars, will provide 10 octaves worth of them repeating', () => {
         const scalars: Array<Scalar<Frequency>> = [
             1,
             4 / 3,
@@ -11,7 +11,7 @@ describe('generate octave repeating scalars', () => {
             .map(to.Scalar)
             .map(to.Frequency)
 
-        const actualScalars: Array<Scalar<Frequency>> = generateOctaveRepeatingScalars(scalars)
+        const actualScalars: Array<Scalar<Frequency>> = computeOctaveRepeatingScalars(scalars)
         expect(actualScalars)
             .toEqual(
                 [

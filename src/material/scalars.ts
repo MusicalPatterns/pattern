@@ -23,7 +23,7 @@ const adjustScalars: (scalars: Maybe<Scalar[]>, spec: SpecPitchAdjustments) => S
         translation: patternPitchTranslation,
     })
 
-const generateOctaveRepeatingScalars: (scalars: Array<Scalar<Frequency>>) => Array<Scalar<Frequency>> =
+const computeOctaveRepeatingScalars: (scalars: Array<Scalar<Frequency>>) => Array<Scalar<Frequency>> =
     (scalars: Array<Scalar<Frequency>>): Array<Scalar<Frequency>> => {
         let octaveRepeatingScalars: Array<Scalar<Frequency>> = []
         for (
@@ -47,5 +47,5 @@ const generateOctaveRepeatingScalars: (scalars: Array<Scalar<Frequency>>) => Arr
 
 export {
     adjustScalars,
-    generateOctaveRepeatingScalars,
+    computeOctaveRepeatingScalars,
 }

@@ -13,7 +13,7 @@ export {
     computeHarmonicSeriesScale,
     computeOctaveSeriesScale,
     computeSubharmonicSeriesScale,
-    generateOctaveRepeatingScalars,
+    computeOctaveRepeatingScalars,
     PitchCircularTechnique,
     pitchCirculate,
 } from './material'

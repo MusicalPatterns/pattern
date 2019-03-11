@@ -2,7 +2,7 @@
 
 export {
     computeOctaveSeriesScale,
-    generateOctaveRepeatingScalars,
+    computeOctaveRepeatingScalars,
     pitchCirculate,
     PitchCircularTechnique,
 } from './material/indexForTest'

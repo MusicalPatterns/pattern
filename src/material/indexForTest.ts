@@ -1,7 +1,7 @@
 // tslint:disable no-reaching-imports
 
 export { computeOctaveSeriesScale } from './scales'
-export { generateOctaveRepeatingScalars } from './scalars'
+export { computeOctaveRepeatingScalars } from './scalars'
 
 export {
     PitchCircularTechnique,
