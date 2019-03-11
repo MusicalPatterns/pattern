@@ -1,11 +1,11 @@
 import { Scale } from '@musical-patterns/compiler'
 import { Scalar, to } from '@musical-patterns/utilities'
-import { buildOctaveSeriesScale } from '../../../src/indexForTest'
+import { computeOctaveSeriesScale } from '../../../src/indexForTest'
 
 describe('standard scales', () => {
     describe('octave series scale', () => {
         it('scalars increase by factor of 2 each step', () => {
-            const octaveSeriesScale: Scale = buildOctaveSeriesScale()
+            const octaveSeriesScale: Scale = computeOctaveSeriesScale()
 
             const scalars: Scalar[] = octaveSeriesScale.scalars!
             expect(scalars[ 0 ])

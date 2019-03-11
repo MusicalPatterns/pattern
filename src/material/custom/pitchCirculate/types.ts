@@ -11,12 +11,12 @@ interface PitchCirculateOptions {
     windowSize?: Scalar<Frequency>,
 }
 
-interface CalculateCircledPitchIndexParameters {
+interface ComputeCircledPitchIndexParameters {
     pitchClassCount: Cardinal,
     tierIndex: Ordinal,
 }
 
-interface CalculateCircledPitchScalarParameters {
+interface ComputeCircledPitchScalarParameters {
     tierIndex: Ordinal,
     windowSize: Scalar<Frequency>,
 }
@@ -34,8 +34,8 @@ interface ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParam
 export {
     PitchCircularTechnique,
     PitchCirculateOptions,
-    CalculateCircledPitchIndexParameters,
-    CalculateCircledPitchScalarParameters,
+    ComputeCircledPitchIndexParameters,
+    ComputeCircledPitchScalarParameters,
     ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters,
     ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters,
 }

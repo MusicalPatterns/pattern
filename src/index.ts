@@ -2,17 +2,17 @@
 
 export { Id } from './registry'
 export {
-    calculateTotalPitchDurationContourDuration,
+    computeTotalPitchDurationContourDuration,
     pitchDurationRest,
 } from './contours'
 export {
     adjustScalars,
     materializeStandardScales,
-    buildNonScale,
-    buildFlatDurationsScale,
-    buildHarmonicSeriesScale,
-    buildOctaveSeriesScale,
-    buildSubharmonicSeriesScale,
+    computeNonScale,
+    computeFlatDurationsScale,
+    computeHarmonicSeriesScale,
+    computeOctaveSeriesScale,
+    computeSubharmonicSeriesScale,
     generateOctaveRepeatingScalars,
     PitchCircularTechnique,
     pitchCirculate,

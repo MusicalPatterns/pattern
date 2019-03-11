@@ -1,7 +1,7 @@
 // tslint:disable number-literal-format
 
 import { Note } from '@musical-patterns/compiler'
-import { apply, buildEqualDivisionScalars, Scalar, testIsCloseTo, to } from '@musical-patterns/utilities'
+import { apply, computeEqualDivisionScalars, Scalar, testIsCloseTo, to } from '@musical-patterns/utilities'
 import { PitchCircularTechnique, pitchCirculate } from '../../../../../src/indexForTest'
 
 describe('pitch circulate, using the technique of scalar scaling by window size', () => {
@@ -215,7 +215,7 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
 
     describe('gain goes in a cycle', () => {
         beforeEach(() => {
-            const tenEdScalars: Scalar[] = buildEqualDivisionScalars(to.Denominator(10))
+            const tenEdScalars: Scalar[] = computeEqualDivisionScalars(to.Denominator(10))
             const inputNotes: Note[] = [
                 { pitch: { scalar: tenEdScalars[ 0 ] } },
                 { pitch: { scalar: tenEdScalars[ 1 ] } },
@@ -290,7 +290,7 @@ describe('pitch circulate, using the technique of scalar scaling by window size'
 
     describe('gain curve is almost zero at the edges and slopes nicely up to a 1 in the middle, for other pitch class counts too', () => {
         beforeEach(() => {
-            const fiveEdScalars: Scalar[] = buildEqualDivisionScalars(to.Denominator(5))
+            const fiveEdScalars: Scalar[] = computeEqualDivisionScalars(to.Denominator(5))
             const inputNotes: Note[] = [
                 { pitch: { scalar: fiveEdScalars[ 0 ] } },
                 { pitch: { scalar: fiveEdScalars[ 1 ] } },

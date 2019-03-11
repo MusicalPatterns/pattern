@@ -5,7 +5,7 @@ import {
     ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters,
 } from './types'
 
-const calculateNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount:
+const computeNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount:
     (parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters) => number =
     (parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters): number => {
         const { pitchClassCount, circledPitchIndex } = parameters
@@ -27,7 +27,7 @@ const calculateNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslation
         )
     }
 
-const calculateNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize:
+const computeNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize:
     (parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters) => number =
     (parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters): number => {
         const { windowSize, circledPitchScalar } = parameters
@@ -53,23 +53,23 @@ const calculateNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByW
         )
     }
 
-const calculatePowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount:
+const computePowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount:
     (parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters) => Power =
     (parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters): Power =>
         to.Power(
-            calculateNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount(parameters) /
+            computeNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount(parameters) /
             from.Base(apply.Scalar(apply.Power(KINDA_GUESSING_AT_A_GOOD_SIGMA, SQUARED), DOUBLE)),
         )
 
-const calculatePowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize:
+const computePowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize:
     (parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters) => Power =
     (parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters): Power =>
         to.Power(
-            calculateNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize(parameters) /
+            computeNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize(parameters) /
             from.Base(apply.Scalar(apply.Power(KINDA_GUESSING_AT_A_GOOD_SIGMA, SQUARED), DOUBLE)),
         )
 
 export {
-    calculatePowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount,
-    calculatePowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize,
+    computePowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount,
+    computePowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize,
 }

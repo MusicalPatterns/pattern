@@ -2,8 +2,8 @@ import { Note } from '@musical-patterns/compiler'
 import { from, INITIAL, Ordinal, slice, to, zeroAndPositiveIntegers } from '@musical-patterns/utilities'
 import { PITCH_CIRCULAR_TIER_COUNT } from './constants'
 import {
-    buildTierWithTechniqueIndexTranslationByPitchClassCount,
-    buildTierWithTechniqueScalarScalingByWindowSize,
+    computeTierWithTechniqueIndexTranslationByPitchClassCount,
+    computeTierWithTechniqueScalarScalingByWindowSize,
 } from './tier'
 import { PitchCircularTechnique, PitchCirculateOptions } from './types'
 
@@ -15,8 +15,8 @@ const pitchCirculate: (notes: Note[], options: PitchCirculateOptions) => Note[][
             .map(to.Ordinal)
             .map((tierIndex: Ordinal): Note[] =>
                 technique === PitchCircularTechnique.INDEX_TRANSLATION_BY_PITCH_CLASS_COUNT ?
-                    buildTierWithTechniqueIndexTranslationByPitchClassCount(notes, tierIndex, pitchClassCount) :
-                    buildTierWithTechniqueScalarScalingByWindowSize(notes, tierIndex, windowSize),
+                    computeTierWithTechniqueIndexTranslationByPitchClassCount(notes, tierIndex, pitchClassCount) :
+                    computeTierWithTechniqueScalarScalingByWindowSize(notes, tierIndex, windowSize),
             )
     }
 

@@ -6,7 +6,7 @@ import {
 } from './gainCurve'
 import { scalePitchScalarForTier, transposePitchIndexForTier } from './pitchCurve'
 
-const buildTierWithTechniqueIndexTranslationByPitchClassCount:
+const computeTierWithTechniqueIndexTranslationByPitchClassCount:
     (notes: Note[], tierIndex: Ordinal, pitchClassCount: Cardinal) => Note[] =
     (notes: Note[], tierIndex: Ordinal, pitchClassCount: Cardinal): Note[] =>
         notes.map((note: Note): Note => {
@@ -38,7 +38,7 @@ const buildTierWithTechniqueIndexTranslationByPitchClassCount:
             }
         })
 
-const buildTierWithTechniqueScalarScalingByWindowSize:
+const computeTierWithTechniqueScalarScalingByWindowSize:
     (notes: Note[], tierIndex: Ordinal, windowSize: Scalar<Frequency>) => Note[] =
     (notes: Note[], tierIndex: Ordinal, windowSize: Scalar<Frequency>): Note[] =>
         notes.map((note: Note): Note => {
@@ -72,6 +72,6 @@ const buildTierWithTechniqueScalarScalingByWindowSize:
         })
 
 export {
-    buildTierWithTechniqueIndexTranslationByPitchClassCount,
-    buildTierWithTechniqueScalarScalingByWindowSize,
+    computeTierWithTechniqueIndexTranslationByPitchClassCount,
+    computeTierWithTechniqueScalarScalingByWindowSize,
 }

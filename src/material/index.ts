@@ -1,11 +1,11 @@
 export { adjustScalars, generateOctaveRepeatingScalars } from './scalars'
 export {
     materializeStandardScales,
-    buildNonScale,
-    buildFlatDurationsScale,
-    buildHarmonicSeriesScale,
-    buildOctaveSeriesScale,
-    buildSubharmonicSeriesScale,
+    computeNonScale,
+    computeFlatDurationsScale,
+    computeHarmonicSeriesScale,
+    computeOctaveSeriesScale,
+    computeSubharmonicSeriesScale,
 } from './scales'
 export {
     PitchCircularTechnique,

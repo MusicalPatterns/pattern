@@ -1,12 +1,12 @@
 // tslint:disable no-reaching-imports
 
 export {
-    buildOctaveSeriesScale,
+    computeOctaveSeriesScale,
     generateOctaveRepeatingScalars,
     pitchCirculate,
     PitchCircularTechnique,
 } from './material/indexForTest'
-export { calculateTotalPitchDurationContourDuration } from './contours'
+export { computeTotalPitchDurationContourDuration } from './contours'
 export { filter } from './filter'
 export { Id } from './registry'
 

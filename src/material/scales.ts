@@ -16,25 +16,25 @@ import {
 import { Spec, StandardProperty } from '../spec'
 import { MaterializeStandardScalesOptions } from './types'
 
-const buildNonScale: () => Scale =
+const computeNonScale: () => Scale =
     (): Scale => ({})
 
-const buildHarmonicSeriesScale: () => Scale =
+const computeHarmonicSeriesScale: () => Scale =
     (): Scale => ({
         scalars: positiveIntegers.map((integer: Integer): Scalar => to.Scalar(integer)),
     })
 
-const buildSubharmonicSeriesScale: () => Scale =
+const computeSubharmonicSeriesScale: () => Scale =
     (): Scale => ({
         scalars: positiveIntegers.map((integer: Integer): Scalar => to.Scalar(reciprocal(integer))),
     })
 
-const buildFlatDurationsScale: () => Scale =
+const computeFlatDurationsScale: () => Scale =
     // tslint:disable-next-line no-unnecessary-callback-wrapper
     (): Scale =>
-        buildHarmonicSeriesScale()
+        computeHarmonicSeriesScale()
 
-const buildOctaveSeriesScale: () => Scale =
+const computeOctaveSeriesScale: () => Scale =
     (): Scale => ({
         scalars: zeroAndPositiveIntegers
             .map(to.Power)
@@ -48,7 +48,7 @@ const buildOctaveSeriesScale: () => Scale =
 
 const materializeStandardScales: (spec: Spec, options?: MaterializeStandardScalesOptions) => Scale[] =
     (spec: Spec, { durationScalars, pitchScalars }: MaterializeStandardScalesOptions = {}): Scale[] => {
-        const gainScale: Scale = buildNonScale()
+        const gainScale: Scale = computeNonScale()
         const durationScalar: Scalar =
             from.Ms(spec[ StandardProperty.BASE_DURATION ] || to.Scalar(to.Ms(1)))
         const durationTranslation: Translation =
@@ -77,9 +77,9 @@ const materializeStandardScales: (spec: Spec, options?: MaterializeStandardScale
 
 export {
     materializeStandardScales,
-    buildNonScale,
-    buildFlatDurationsScale,
-    buildHarmonicSeriesScale,
-    buildOctaveSeriesScale,
-    buildSubharmonicSeriesScale,
+    computeNonScale,
+    computeFlatDurationsScale,
+    computeHarmonicSeriesScale,
+    computeOctaveSeriesScale,
+    computeSubharmonicSeriesScale,
 }
