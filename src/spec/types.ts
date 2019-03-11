@@ -1,5 +1,4 @@
 import {
-    DictionaryOf,
     HtmlValueOrChecked,
     Hz,
     KeyMap,
@@ -7,6 +6,7 @@ import {
     Meters,
     Ms,
     NominalNumber,
+    ObjectOf,
     Scalar,
     Translation,
 } from '@musical-patterns/utilities'
@@ -64,7 +64,7 @@ interface Preset<SpecType = Spec> extends Presentable {
 interface Data<SpecType = Spec> {
     attributes: Attributes<SpecType>,
     initial: SpecType,
-    presets?: DictionaryOf<Preset<SpecType>>,
+    presets?: ObjectOf<Preset<SpecType>>,
     validationFunction?: ValidationFunction<SpecType>,
 }
 

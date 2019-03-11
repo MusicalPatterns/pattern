@@ -7,9 +7,9 @@ import { Data, Spec, StandardSpec } from './spec'
 
 type Segment = Note[][]
 
-type Rendering<T> = (block: Block) => ContourPiece<T>
+type Rendering<ContourType> = (block: Block) => ContourPiece<ContourType>
 
-type RenderingByBlockElement<T> = (cell: number) => ContourPiece<T>
+type RenderingByBlockElement<ContourType> = (cell: number) => ContourPiece<ContourType>
 
 type PitchOnly = 1 & { _PitchOnlyBrand: void }
 type DurationOnly = 1 & { _DurationOnlyBrand: void }
@@ -156,7 +156,7 @@ interface Pattern<SpecType = Spec> {
 
 type StandardPattern = Pattern<StandardSpec>
 
-type Patterns = { [key in Id]: Pattern }
+type Patterns = { [Index in Id]: Pattern }
 
 type PatternsFilter = (patterns: Patterns) => Patterns
 

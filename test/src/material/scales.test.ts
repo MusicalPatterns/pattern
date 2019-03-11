@@ -7,7 +7,7 @@ describe('standard scales', () => {
         it('scalars increase by factor of 2 each step', () => {
             const octaveSeriesScale: Scale = buildOctaveSeriesScale()
 
-            const scalars: Scalar[] = octaveSeriesScale.scalars || []
+            const scalars: Scalar[] = octaveSeriesScale.scalars!
             expect(scalars[ 0 ])
                 .toEqual(to.Scalar(1))
             expect(scalars[ 1 ])
