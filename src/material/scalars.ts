@@ -1,4 +1,3 @@
-import { Scale } from '@musical-patterns/compiler'
 import {
     apply,
     Base,
@@ -6,7 +5,6 @@ import {
     from,
     INITIAL,
     MAXIMUM_OCTAVE_RANGE_AUDIBLE_TO_HUMANS,
-    Maybe,
     NEXT,
     NoOperation,
     OCTAVE,
@@ -14,14 +12,6 @@ import {
     Scalar,
     to,
 } from '@musical-patterns/utilities'
-import { SpecPitchAdjustments } from './types'
-
-const adjustScalars: (scalars: Maybe<Scalar[]>, spec: SpecPitchAdjustments) => Scale =
-    (scalars: Maybe<Scalar[]>, { patternPitchScalar, patternPitchTranslation }: SpecPitchAdjustments): Scale => ({
-        scalar: patternPitchScalar,
-        scalars,
-        translation: patternPitchTranslation,
-    })
 
 const computeOctaveRepeatingScalars: (scalars: Array<Scalar<Frequency>>) => Array<Scalar<Frequency>> =
     (scalars: Array<Scalar<Frequency>>): Array<Scalar<Frequency>> => {
@@ -46,6 +36,5 @@ const computeOctaveRepeatingScalars: (scalars: Array<Scalar<Frequency>>) => Arra
     }
 
 export {
-    adjustScalars,
     computeOctaveRepeatingScalars,
 }

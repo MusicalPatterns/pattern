@@ -1,4 +1,4 @@
-export { adjustScalars, computeOctaveRepeatingScalars } from './scalars'
+export { computeOctaveRepeatingScalars } from './scalars'
 export {
     materializeStandardScales,
     computeNonScale,

@@ -1,4 +1,4 @@
-import { standardAttributes } from './attributes'
+import { standardConfigurations } from './configurations'
 import {
     STANDARD_BASE_DURATION,
     STANDARD_BASE_FREQUENCY,
@@ -7,23 +7,23 @@ import {
     STANDARD_DURATION_TRANSLATION,
     STANDARD_FREQUENCY_TRANSLATION,
 } from './constants'
-import { StandardData, StandardProperty, StandardSpec } from './types'
+import { Spec, StandardSpec, StandardSpecs } from './types'
 
-const standardInitialSpec: StandardSpec = {
-    [ StandardProperty.DURATION_TRANSLATION ]: STANDARD_DURATION_TRANSLATION,
-    [ StandardProperty.BASE_DURATION ]: STANDARD_BASE_DURATION,
-    [ StandardProperty.FREQUENCY_TRANSLATION ]: STANDARD_FREQUENCY_TRANSLATION,
-    [ StandardProperty.BASE_FREQUENCY ]: STANDARD_BASE_FREQUENCY,
-    [ StandardProperty.BASE_POSITION ]: STANDARD_BASE_POSITION,
-    [ StandardProperty.BASE_POSITION_SCALAR ]: STANDARD_BASE_POSITION_SCALAR,
+const standardInitialSpecs: StandardSpecs = {
+    [ StandardSpec.DURATION_TRANSLATION ]: STANDARD_DURATION_TRANSLATION,
+    [ StandardSpec.BASE_DURATION ]: STANDARD_BASE_DURATION,
+    [ StandardSpec.FREQUENCY_TRANSLATION ]: STANDARD_FREQUENCY_TRANSLATION,
+    [ StandardSpec.BASE_FREQUENCY ]: STANDARD_BASE_FREQUENCY,
+    [ StandardSpec.BASE_POSITION ]: STANDARD_BASE_POSITION,
+    [ StandardSpec.BASE_POSITION_SCALAR ]: STANDARD_BASE_POSITION_SCALAR,
 }
 
-const standardData: StandardData = {
-    attributes: standardAttributes,
-    initial: standardInitialSpec,
+const standardSpec: Spec<StandardSpecs> = {
+    configurations: standardConfigurations,
+    initial: standardInitialSpecs,
 }
 
 export {
-    standardInitialSpec,
-    standardData,
+    standardInitialSpecs,
+    standardSpec,
 }

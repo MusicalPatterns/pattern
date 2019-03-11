@@ -13,7 +13,7 @@ import {
     Translation,
     zeroAndPositiveIntegers,
 } from '@musical-patterns/utilities'
-import { Spec, StandardProperty } from '../spec'
+import { Specs, StandardSpec } from '../spec'
 import { MaterializeStandardScalesOptions } from './types'
 
 const computeNonScale: () => Scale =
@@ -46,22 +46,22 @@ const computeOctaveSeriesScale: () => Scale =
             ),
     })
 
-const materializeStandardScales: (spec: Spec, options?: MaterializeStandardScalesOptions) => Scale[] =
-    (spec: Spec, { durationScalars, pitchScalars }: MaterializeStandardScalesOptions = {}): Scale[] => {
+const materializeStandardScales: (specs: Specs, options?: MaterializeStandardScalesOptions) => Scale[] =
+    (specs: Specs, { durationScalars, pitchScalars }: MaterializeStandardScalesOptions = {}): Scale[] => {
         const gainScale: Scale = computeNonScale()
         const durationScalar: Scalar =
-            from.Ms(spec[ StandardProperty.BASE_DURATION ] || to.Scalar(to.Ms(1)))
+            from.Ms(specs[ StandardSpec.BASE_DURATION ] || to.Scalar(to.Ms(1)))
         const durationTranslation: Translation =
-            from.Ms(spec[ StandardProperty.DURATION_TRANSLATION ] || to.Ms(NO_TRANSLATION))
+            from.Ms(specs[ StandardSpec.DURATION_TRANSLATION ] || to.Ms(NO_TRANSLATION))
         const durationsScale: Scale = {
             scalar: durationScalar,
             scalars: durationScalars,
             translation: durationTranslation,
         }
         const pitchesScalar: Scalar =
-            from.Hz(spec[ StandardProperty.BASE_FREQUENCY ] || to.Scalar(to.Hz(1)))
+            from.Hz(specs[ StandardSpec.BASE_FREQUENCY ] || to.Scalar(to.Hz(1)))
         const pitchesTranslation: Translation =
-            from.Hz(spec[ StandardProperty.FREQUENCY_TRANSLATION ] || to.Hz(NO_TRANSLATION))
+            from.Hz(specs[ StandardSpec.FREQUENCY_TRANSLATION ] || to.Hz(NO_TRANSLATION))
         const pitchesScale: Scale = {
             scalar: pitchesScalar,
             scalars: pitchScalars,

@@ -11,17 +11,17 @@ import {
     Translation,
 } from '@musical-patterns/utilities'
 import { Presentable } from '../types'
-import { Attributes } from './attributes'
+import { Configurations } from './configurations'
 
 type SingularValue = HtmlValueOrChecked | NominalNumber
 type ArrayedValue = SingularValue[]
-type Value = SingularValue | ArrayedValue
+type SpecValue = SingularValue | ArrayedValue
 
-type SingularDomValue = HtmlValueOrChecked
-type ArrayedDomValue = SingularDomValue[]
-type DomValue = SingularDomValue | ArrayedDomValue
+type SingularDomSpecValue = HtmlValueOrChecked
+type ArrayedDomSpecValue = SingularDomSpecValue[]
+type DomSpecValue = SingularDomSpecValue | ArrayedDomSpecValue
 
-enum StandardProperty {
+enum StandardSpec {
     DURATION_TRANSLATION = 'baseDurationTranslation',
     BASE_DURATION = 'baseDuration',
     FREQUENCY_TRANSLATION = 'baseFrequencyTranslation',
@@ -30,63 +30,56 @@ enum StandardProperty {
     BASE_POSITION_SCALAR = 'basePositionScalar',
 }
 
-type StandardSpec = Partial<{
-    [ StandardProperty.DURATION_TRANSLATION ]: Translation<Ms>,
-    [ StandardProperty.BASE_DURATION ]: Scalar<Ms>,
-    [ StandardProperty.FREQUENCY_TRANSLATION ]: Translation<Hz>,
-    [ StandardProperty.BASE_FREQUENCY ]: Scalar<Hz>,
-    [ StandardProperty.BASE_POSITION ]: Array<Translation<Meters>>,
-    [ StandardProperty.BASE_POSITION_SCALAR ]: Scalar<Meters>,
+type StandardSpecs = Partial<{
+    [ StandardSpec.DURATION_TRANSLATION ]: Translation<Ms>,
+    [ StandardSpec.BASE_DURATION ]: Scalar<Ms>,
+    [ StandardSpec.FREQUENCY_TRANSLATION ]: Translation<Hz>,
+    [ StandardSpec.BASE_FREQUENCY ]: Scalar<Hz>,
+    [ StandardSpec.BASE_POSITION ]: Array<Translation<Meters>>,
+    [ StandardSpec.BASE_POSITION_SCALAR ]: Scalar<Meters>,
 }>
 
-interface Spec extends StandardSpec {
-    [ index: string ]: Maybe<Value>,
+interface Specs extends StandardSpecs, ObjectOf<Maybe<SpecValue>> {}
+
+interface DomSpecs extends KeyMap<StandardSpecs, DomSpecValue>, ObjectOf<Maybe<DomSpecValue>> {}
+
+type SingularValidation = Maybe<string>
+
+type ArrayedValidation = Maybe<SingularValidation[]>
+
+type Validation = SingularValidation | ArrayedValidation
+
+type Validations<SpecsType = Specs> = Maybe<Partial<KeyMap<SpecsType, Validation>>>
+
+type ComputeValidations<SpecsType = Specs> = (specs: SpecsType) => Validations<SpecsType>
+
+interface Preset<SpecsType = Specs> extends Presentable {
+    specs: SpecsType,
 }
 
-interface DomSpec extends KeyMap<StandardSpec, DomValue> {
-    [ index: string ]: Maybe<DomValue>
+interface Spec<SpecsType = Specs> {
+    computeValidations?: ComputeValidations<SpecsType>,
+    configurations: Configurations<SpecsType>,
+    initial: SpecsType,
+    presets?: ObjectOf<Preset<SpecsType>>,
 }
-
-type SingularValidationResult = Maybe<string>
-
-type ArrayedValidationResult = Maybe<SingularValidationResult[]>
-
-type ValidationResult = SingularValidationResult | ArrayedValidationResult
-
-type ValidationResults<SpecType = Spec> = Maybe<Partial<KeyMap<SpecType, ValidationResult>>>
-
-type ValidationFunction<SpecType = Spec> = (spec: SpecType) => ValidationResults<SpecType>
-
-interface Preset<SpecType = Spec> extends Presentable {
-    spec: SpecType,
-}
-
-interface Data<SpecType = Spec> {
-    attributes: Attributes<SpecType>,
-    initial: SpecType,
-    presets?: ObjectOf<Preset<SpecType>>,
-    validationFunction?: ValidationFunction<SpecType>,
-}
-
-type StandardData = Data<StandardSpec>
 
 export {
     Preset,
+    StandardSpecs,
     StandardSpec,
-    StandardProperty,
+    Specs,
     Spec,
-    StandardData,
-    Data,
-    ValidationFunction,
-    ValidationResults,
-    SingularValidationResult,
-    ArrayedValidationResult,
-    ValidationResult,
-    Value,
+    ComputeValidations,
+    Validations,
+    SingularValidation,
+    ArrayedValidation,
+    Validation,
+    SpecValue,
     SingularValue,
     ArrayedValue,
-    DomSpec,
-    SingularDomValue,
-    ArrayedDomValue,
-    DomValue,
+    DomSpecs,
+    SingularDomSpecValue,
+    ArrayedDomSpecValue,
+    DomSpecValue,
 }

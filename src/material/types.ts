@@ -1,9 +1,4 @@
-import { Scalar, Translation } from '@musical-patterns/utilities'
-
-interface SpecPitchAdjustments {
-    patternPitchScalar?: Scalar,
-    patternPitchTranslation?: Translation,
-}
+import { Scalar } from '@musical-patterns/utilities'
 
 interface MaterializeStandardScalesOptions {
     durationScalars?: Scalar[],
@@ -11,6 +6,5 @@ interface MaterializeStandardScalesOptions {
 }
 
 export {
-    SpecPitchAdjustments,
     MaterializeStandardScalesOptions,
 }
