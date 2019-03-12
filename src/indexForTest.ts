@@ -2,17 +2,16 @@
 
 export {
     computeOctaveSeriesScale,
-    computeOctaveRepeatingScalars,
     pitchCirculate,
     PitchCircularTechnique,
+    computeTotalPitchDurationContourDuration,
+    Segment,
+    PitchDuration,
 } from './material/indexForTest'
-export { computeTotalPitchDurationContourDuration } from './contours'
 export { filter } from './filter'
 export { Id } from './registry'
 
 export {
-    Segment,
     Pattern,
     Patterns,
-    PitchDuration,
 } from './types'

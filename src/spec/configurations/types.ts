@@ -1,5 +1,5 @@
 import { HtmlValueOrChecked, KeyMap, Units } from '@musical-patterns/utilities'
-import { Presentable } from '../../types'
+import { Presentable } from '../../metadata'
 import { Specs, StandardSpec } from '../types'
 
 enum InputType {

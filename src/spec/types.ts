@@ -10,7 +10,7 @@ import {
     Scalar,
     Translation,
 } from '@musical-patterns/utilities'
-import { Presentable } from '../types'
+import { Presentable } from '../metadata'
 import { Configurations } from './configurations'
 
 type SingularValue = HtmlValueOrChecked | NominalNumber
