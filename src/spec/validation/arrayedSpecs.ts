@@ -2,7 +2,7 @@ import { isUndefined } from '@musical-patterns/utilities'
 import { Configuration } from '../configuration'
 import { isSingularValidation } from '../typeGuards'
 import { ArrayedDomSpecValue, SingularDomSpecValue } from '../types'
-import { validateSpec } from './spec'
+import { validateSpec } from './specs'
 import { ArrayedValidation, SingularValidation, Validation } from './types'
 
 const validateArrayedSpec: (arrayedDomSpecValue: ArrayedDomSpecValue, configuration: Configuration) => Validation =
