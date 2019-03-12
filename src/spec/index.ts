@@ -14,19 +14,34 @@ export {
     standardConfigurations,
     OptionedConstraintOption,
     RangedInputType,
-} from './configurations'
+} from './configuration'
+export {
+    Preset,
+} from './preset'
 export { standardInitialSpecs, standardSpec } from './standards'
+export {
+    isArrayedSpecValue,
+    isArrayedDomSpecValue,
+    isArrayedValidation,
+    isSingularDomSpecValue,
+    isSingularSpecValue,
+    isSingularValidation,
+} from './typeGuards'
+export {
+    ComputeValidations,
+    Validations,
+    SingularValidation,
+    ArrayedValidation,
+    Validation,
+    validateSpecs,
+    ValidationsResult,
+} from './validation'
+
 export {
     StandardSpecs,
     StandardSpec,
     Specs,
     Spec,
-    ComputeValidations,
-    Validations,
-    Preset,
-    SingularValidation,
-    ArrayedValidation,
-    Validation,
     SpecValue,
     SingularSpecValue,
     ArrayedSpecValue,

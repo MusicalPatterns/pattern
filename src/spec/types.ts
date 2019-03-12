@@ -10,8 +10,9 @@ import {
     Scalar,
     Translation,
 } from '@musical-patterns/utilities'
-import { Presentable } from '../metadata'
-import { Configurations } from './configurations'
+import { Configurations } from './configuration'
+import { Preset } from './preset'
+import { ComputeValidations } from './validation'
 
 type SingularSpecValue = HtmlValueOrChecked | NominalNumber
 type ArrayedSpecValue = SingularSpecValue[]
@@ -43,20 +44,6 @@ interface Specs extends StandardSpecs, ObjectOf<Maybe<SpecValue>> {}
 
 interface DomSpecs extends KeyMap<StandardSpecs, DomSpecValue>, ObjectOf<Maybe<DomSpecValue>> {}
 
-type SingularValidation = Maybe<string>
-
-type ArrayedValidation = Maybe<SingularValidation[]>
-
-type Validation = SingularValidation | ArrayedValidation
-
-type Validations<SpecsType = Specs> = Maybe<Partial<KeyMap<SpecsType, Validation>>>
-
-type ComputeValidations<SpecsType = Specs> = (specs: SpecsType) => Validations<SpecsType>
-
-interface Preset<SpecsType = Specs> extends Presentable {
-    specs: SpecsType,
-}
-
 interface Spec<SpecsType = Specs> {
     computeValidations?: ComputeValidations<SpecsType>,
     configurations: Configurations<SpecsType>,
@@ -65,16 +52,10 @@ interface Spec<SpecsType = Specs> {
 }
 
 export {
-    Preset,
     StandardSpecs,
     StandardSpec,
     Specs,
     Spec,
-    ComputeValidations,
-    Validations,
-    SingularValidation,
-    ArrayedValidation,
-    Validation,
     SpecValue,
     SingularSpecValue,
     ArrayedSpecValue,

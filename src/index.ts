@@ -186,6 +186,14 @@ export {
     SingularDomSpecValue,
     ArrayedDomSpecValue,
     DomSpecValue,
+    isArrayedSpecValue,
+    isArrayedDomSpecValue,
+    isArrayedValidation,
+    isSingularDomSpecValue,
+    isSingularSpecValue,
+    isSingularValidation,
+    validateSpecs,
+    ValidationsResult,
 } from './spec'
 
 export {

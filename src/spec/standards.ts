@@ -1,4 +1,4 @@
-import { standardConfigurations } from './configurations'
+import { standardConfigurations } from './configuration'
 import {
     STANDARD_BASE_DURATION,
     STANDARD_BASE_FREQUENCY,
