@@ -13,9 +13,9 @@ import {
 import { Presentable } from '../metadata'
 import { Configurations } from './configurations'
 
-type SingularValue = HtmlValueOrChecked | NominalNumber
-type ArrayedValue = SingularValue[]
-type SpecValue = SingularValue | ArrayedValue
+type SingularSpecValue = HtmlValueOrChecked | NominalNumber
+type ArrayedSpecValue = SingularSpecValue[]
+type SpecValue = SingularSpecValue | ArrayedSpecValue
 
 type SingularDomSpecValue = HtmlValueOrChecked
 type ArrayedDomSpecValue = SingularDomSpecValue[]
@@ -76,8 +76,8 @@ export {
     ArrayedValidation,
     Validation,
     SpecValue,
-    SingularValue,
-    ArrayedValue,
+    SingularSpecValue,
+    ArrayedSpecValue,
     DomSpecs,
     SingularDomSpecValue,
     ArrayedDomSpecValue,
