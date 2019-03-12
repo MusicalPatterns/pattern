@@ -5,7 +5,7 @@ import { DomSpecValue, Specs } from '../types'
 import { validateArrayedSpec } from './arrayedSpecs'
 import { validByRangedConstraint } from './rangedConstraints'
 import { validByStringedConstraint } from './stringedConstraints'
-import { ValidateSpecsParameters, Validation, Validations, ValidationsResult } from './types'
+import { ValidateSpecsParameters, Validation, Validations } from './types'
 
 const validationRequired: (configuration: Maybe<Configuration>) => configuration is Configuration =
     (configuration: Maybe<Configuration>): configuration is Configuration => {
@@ -43,11 +43,11 @@ const validateSpec: (domSpecValue: DomSpecValue, configuration: Maybe<Configurat
         return validByRangedConstraint(numericValue, constraint as Maybe<RangedConstraint>)
     }
 
-const validateSpecs: (parameters: ValidateSpecsParameters) => ValidationsResult =
-    (parameters: ValidateSpecsParameters): ValidationsResult => {
-        const { specs, configurations, computeValidations, specKey } = parameters
+const validateSpecs: (parameters: ValidateSpecsParameters) => Validations =
+    (parameters: ValidateSpecsParameters): Validations => {
+        const { specs, configurations, computeValidations } = parameters
 
-        const reevaluatedValidations: Validations = reduce(
+        const reevaluatedValidationsPerIndividualSpec: Validations = reduce(
             entries(specs),
             (accumulator: Validations, [ key, val ]: [ string, DomSpecValue ]) => ({
                 ...accumulator,
@@ -56,23 +56,14 @@ const validateSpecs: (parameters: ValidateSpecsParameters) => ValidationsResult 
             {},
         )
 
-        const validationForTheSpecInAndOfItself: Validation =
-            reevaluatedValidations && reevaluatedValidations[ specKey ]
-
         let validationsFromFunctionOverAllSpecs: Validations
         if (computeValidations) {
             validationsFromFunctionOverAllSpecs = computeValidations(specs as Specs)
         }
 
-        const validations: Validations = {
-            ...reevaluatedValidations,
-            [ specKey ]: validationForTheSpecInAndOfItself,
-            ...validationsFromFunctionOverAllSpecs,
-        }
-
         return {
-            isValid: !validationForTheSpecInAndOfItself && !validationsFromFunctionOverAllSpecs,
-            validations,
+            ...reevaluatedValidationsPerIndividualSpec,
+            ...validationsFromFunctionOverAllSpecs,
         }
     }
 

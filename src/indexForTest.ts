@@ -1,5 +1,6 @@
 // tslint:disable no-reaching-imports
 
+export { filter, Id } from './id/indexForTest'
 export {
     computeOctaveSeriesScale,
     pitchCirculate,
@@ -8,7 +9,10 @@ export {
     Segment,
     PitchDuration,
 } from './material/indexForTest'
-export { filter, Id } from './id/indexForTest'
+export {
+    validateSpecs,
+    Validations,
+} from './spec/indexForTest'
 
 export {
     Pattern,
