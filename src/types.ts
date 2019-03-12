@@ -1,6 +1,6 @@
 import { Material } from '@musical-patterns/compiler'
+import { Id } from './id'
 import { Metadata } from './metadata'
-import { Id } from './registry'
 import { Spec, Specs, StandardSpecs } from './spec'
 
 interface Pattern<SpecsType = Specs> {
@@ -14,11 +14,8 @@ type StandardPattern = Pattern<StandardSpecs>
 
 type Patterns = { [Index in Id]: Pattern }
 
-type PatternsFilter = (patterns: Patterns) => Patterns
-
 export {
     Patterns,
-    PatternsFilter,
     StandardPattern,
     Pattern,
 }

@@ -1,6 +1,10 @@
 // tslint:disable max-file-line-count
 
-export { Id } from './registry'
+export {
+    Id,
+    isId,
+    filter,
+} from './id'
 export {
     computeTotalPitchDurationContourDuration,
     pitchDurationRest,
@@ -147,7 +151,6 @@ export {
     Metadata,
     Presentable,
 } from './metadata'
-export { filter } from './filter'
 export {
     standardConfigurations,
     standardInitialSpecs,
@@ -184,9 +187,7 @@ export {
     ArrayedDomSpecValue,
     DomSpecValue,
 } from './spec'
-export {
-    isId,
-} from './typeGuards'
+
 export {
     Patterns,
     StandardPattern,

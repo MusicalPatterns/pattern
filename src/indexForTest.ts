@@ -8,8 +8,7 @@ export {
     Segment,
     PitchDuration,
 } from './material/indexForTest'
-export { filter } from './filter'
-export { Id } from './registry'
+export { filter, Id } from './id/indexForTest'
 
 export {
     Pattern,
