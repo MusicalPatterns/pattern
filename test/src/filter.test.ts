@@ -15,7 +15,7 @@ describe('filter', () => {
         const filteredPatterns: Patterns = filter(patterns)
 
         const filteredPatternIds: Id[] = keys(filteredPatterns)
-        filteredPatternIds.forEach((filteredPatternId: string) => {
+        filteredPatternIds.forEach((filteredPatternId: Id) => {
             expect(filteredPatternId.match(/PLAYROOM_TEST/))
                 .toBeFalsy()
         })
