@@ -10,7 +10,7 @@ type Validation = SingularValidation | ArrayedValidation
 
 type Validations<SpecsType = Specs> = Maybe<Partial<KeyMap<SpecsType, Validation>>>
 
-type ComputeValidations<SpecsType = Specs> = (specs: SpecsType) => Validations<SpecsType>
+type ComputeValidations<SpecsType = DomSpecs> = (specs: SpecsType) => Validations<SpecsType>
 
 interface ValidateSpecsParameters<SpecsType = DomSpecs> {
     computeValidations: Maybe<ComputeValidations<SpecsType>>,
