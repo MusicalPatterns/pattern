@@ -1,8 +1,8 @@
 import { Units } from '@musical-patterns/utilities'
-import { StandardSpec, StandardSpecs } from '../types'
-import { Configurations, InputType, RangedInputType } from './types'
+import { StandardSpec } from '../types'
+import { InputType, RangedInputType, StandardConfigurations } from './types'
 
-const standardConfigurations: Configurations<StandardSpecs> = {
+const standardConfigurations: StandardConfigurations = {
     [ StandardSpec.DURATION_TRANSLATION ]: {
         description: 'translate each duration by this amount (does not preserve temporal ratios)',
         inputType: InputType.RANGED,
