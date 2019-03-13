@@ -1,6 +1,6 @@
-import { HtmlValueOrChecked, KeyMap, Units } from '@musical-patterns/utilities'
+import { HtmlValueOrChecked, KeyMap, ObjectOf, Units } from '@musical-patterns/utilities'
 import { Presentable } from '../../metadata'
-import { Specs, StandardSpec } from '../types'
+import { Specs, StandardSpec, StandardSpecs } from '../types'
 
 enum InputType {
     RANGED = 'RANGED',
@@ -68,7 +68,7 @@ type Configuration =
     StringedConfiguration |
     ToggledConfiguration
 
-interface StandardConfigurations {
+interface StandardConfigurations extends Configurations<StandardSpecs> {
     [ StandardSpec.DURATION_TRANSLATION ]: RangedConfiguration,
     [ StandardSpec.BASE_DURATION ]: RangedConfiguration,
     [ StandardSpec.FREQUENCY_TRANSLATION ]: RangedConfiguration,
@@ -77,7 +77,7 @@ interface StandardConfigurations {
     [ StandardSpec.BASE_POSITION_SCALAR ]: RangedConfiguration,
 }
 
-type Configurations<SpecsType = Specs> = KeyMap<SpecsType, Configuration>
+type Configurations<SpecsType = Specs> = ObjectOf<Configuration> & KeyMap<SpecsType, Configuration>;
 
 export {
     Configuration,

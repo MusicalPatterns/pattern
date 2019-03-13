@@ -1,4 +1,3 @@
-
 import { isUndefined } from '@musical-patterns/utilities'
 import {
     ArrayedDomSpecValue,

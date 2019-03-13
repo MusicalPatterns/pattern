@@ -1,6 +1,6 @@
 import { KeyMap, Maybe } from '@musical-patterns/utilities'
 import { Configurations } from '../configuration'
-import { DomSpecs, Specs } from '../types'
+import { Specs } from '../types'
 
 type SingularValidation = Maybe<string>
 
