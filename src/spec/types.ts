@@ -47,7 +47,7 @@ interface DomSpecs extends KeyMap<StandardSpecs, DomSpecValue>, ObjectOf<Maybe<D
 interface Spec<SpecsType = Specs> {
     computeValidations?: ComputeValidations<SpecsType>,
     configurations: Configurations<SpecsType>,
-    initial: SpecsType,
+    initialSpecs: SpecsType,
     presets?: ObjectOf<Preset<SpecsType>>,
 }
 

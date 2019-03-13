@@ -20,7 +20,7 @@ const standardInitialSpecs: StandardSpecs = {
 
 const standardSpec: Spec<StandardSpecs> = {
     configurations: standardConfigurations,
-    initial: standardInitialSpecs,
+    initialSpecs: standardInitialSpecs,
 }
 
 export {

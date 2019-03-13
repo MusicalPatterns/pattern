@@ -47,7 +47,7 @@ interface Metadata extends Presentable {
 interface Spec<SpecsType = Specs> {
     computeValidations?: ComputeValidations<SpecsType>,
     configurations: Configurations<SpecsType>,
-    initial: SpecsType,
+    initialSpecs: SpecsType,
     presets?: ObjectOf<Preset<SpecsType>>,
 }
 ```
@@ -58,7 +58,7 @@ A value for one of these properties is typed as a `SpecValue`, and key is curren
 The object containing such specs is typed as `Specs`.
 The `Pattern` type is generic, and takes a type of `Specs` as its single parameter, which is then passed to the pattern's `Spec` property.
 
-- `initial` is what the `@musical-patterns/compiler` will use as your pattern's `Specs` when materializing your pattern if you do not specifically provide a `Specs` object.
+- `initialSpecs` is what the `@musical-patterns/compiler` will use as your pattern's `Specs` when materializing your pattern if you do not specifically provide a `Specs` object.
 - `presets` is an object containing `Specs` that your pattern could materialize with. Use presets when there are a few particular combinations of spec settings you'd like to highlight and make easily accessible.
 - `configurations` are again mapped to your `Pattern`'s `SpecsType` argument, and each `Configuration` determines how the control for that spec will work.
 	- `inputType` is either ranged (numeric), optioned (set of strings), toggled (boolean), or stringed (an arbitary string, almost certainly heavily custom validated).
