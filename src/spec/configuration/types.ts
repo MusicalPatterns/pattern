@@ -1,4 +1,4 @@
-import { HtmlValueOrChecked, KeyMap, ObjectOf, Units } from '@musical-patterns/utilities'
+import { HtmlValueOrChecked, KeyMap, Units } from '@musical-patterns/utilities'
 import { Presentable } from '../../metadata'
 import { Specs, StandardSpec, StandardSpecs } from '../types'
 
@@ -77,7 +77,7 @@ interface StandardConfigurations extends Configurations<StandardSpecs> {
     [ StandardSpec.BASE_POSITION_SCALAR ]: RangedConfiguration,
 }
 
-type Configurations<SpecsType = Specs> = ObjectOf<Configuration> & KeyMap<SpecsType, Configuration>;
+type Configurations<SpecsType = Specs> = KeyMap<SpecsType, Configuration>
 
 export {
     Configuration,
