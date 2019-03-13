@@ -12,6 +12,10 @@ export {
 export {
     validateSpecs,
     Validations,
+    InputType,
+    Configurations,
+    ValidationsResult,
+    ComputeValidations,
 } from './spec/indexForTest'
 
 export {

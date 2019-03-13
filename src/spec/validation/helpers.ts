@@ -1,5 +1,6 @@
 import { entries, isUndefined, Maybe } from '@musical-patterns/utilities'
 import { Configuration, InputType } from '../configuration'
+import { Specs } from '../types'
 import { Validation, Validations } from './types'
 
 const validationRequired: (configuration: Maybe<Configuration>) => configuration is Configuration =
@@ -18,25 +19,27 @@ const updateForSpecWhichTriggeredReevaluatingValidationsIsValid:
         !newValidationForTheSpecInAndOfItself
 
 const updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs:
-    (reevaluatedValidationsFromFunctionOverAllSpecs: Validations) => boolean =
-    (reevaluatedValidationsFromFunctionOverAllSpecs: Validations): boolean =>
+    <SpecsType = Specs>(reevaluatedValidationsFromFunctionOverAllSpecs: Validations<SpecsType>) => boolean =
+    <SpecsType = Specs>(reevaluatedValidationsFromFunctionOverAllSpecs: Validations<SpecsType>): boolean =>
         !reevaluatedValidationsFromFunctionOverAllSpecs ||
         Object.values(reevaluatedValidationsFromFunctionOverAllSpecs)
             .every(isUndefined)
 
-const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint: (
-    reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations,
-    reevaluatedValidationsFromFunctionOverAllSpecs: Validations,
-) => Validations =
-    (
-        reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations,
-        reevaluatedValidationsFromFunctionOverAllSpecs: Validations,
-    ): Validations => {
-        const validations: Validations = { ...reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint }
+const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint:
+    <SpecsType = Specs>(
+        reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations<SpecsType>,
+        reevaluatedValidationsFromFunctionOverAllSpecs: Validations<SpecsType>,
+    ) => Validations<SpecsType> =
+    <SpecsType = Specs>(
+        reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations<SpecsType>,
+        reevaluatedValidationsFromFunctionOverAllSpecs: Validations<SpecsType>,
+    ): Validations<SpecsType> => {
+        const validations: Validations<SpecsType> = { ...reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint }
         if (!isUndefined(reevaluatedValidationsFromFunctionOverAllSpecs)) {
             entries(reevaluatedValidationsFromFunctionOverAllSpecs)
                 .forEach(([ specKey, validation ]: [ string, Validation ]): void => {
                     if (!isUndefined(validation)) {
+                        // @ts-ignore
                         validations[ specKey ] = validation
                     }
                 })

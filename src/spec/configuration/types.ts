@@ -77,8 +77,7 @@ interface StandardConfigurations {
     [ StandardSpec.BASE_POSITION_SCALAR ]: RangedConfiguration,
 }
 
-// tslint:disable-next-line no-useless-intersection
-type Configurations<SpecsType = Specs> = StandardConfigurations & KeyMap<SpecsType, Configuration>
+type Configurations<SpecsType = Specs> = KeyMap<SpecsType, Configuration>
 
 export {
     Configuration,

@@ -12,16 +12,16 @@ type Validations<SpecsType = Specs> = Maybe<Partial<KeyMap<SpecsType, Validation
 
 type ComputeValidations<SpecsType = Specs> = (specs: SpecsType) => Validations<SpecsType>
 
-interface ValidateSpecsParameters {
-    computeValidations: Maybe<ComputeValidations>,
-    configurations: Configurations,
-    displayedSpecs: DomSpecs,
+interface ValidateSpecsParameters<SpecsType = DomSpecs> {
+    computeValidations: Maybe<ComputeValidations<SpecsType>>,
+    configurations: Configurations<SpecsType>,
+    displayedSpecs: SpecsType,
     keyOfSpecTriggeringValidation: string,
 }
 
-interface ValidationsResult {
-    specsShouldBeSubmitted: boolean,
-    validations: Validations,
+interface ValidationsResult<SpecsType = Specs> {
+    shouldSubmitUpdateToSpecTriggeringValidation: boolean,
+    validations: Validations<SpecsType>,
 }
 
 export {

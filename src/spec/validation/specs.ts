@@ -36,42 +36,51 @@ const validateSpec: (displayedSpecValue: DomSpecValue, configuration: Maybe<Conf
         return validByRangedConstraint(numericValue, constraint as Maybe<RangedConstraint>)
     }
 
-const validateSpecs: (parameters: ValidateSpecsParameters) => ValidationsResult =
-    (parameters: ValidateSpecsParameters): ValidationsResult => {
+const validateSpecs:
+    <SpecsType = Specs>(parameters: ValidateSpecsParameters<SpecsType>) => ValidationsResult<SpecsType> =
+    <SpecsType = Specs>(parameters: ValidateSpecsParameters<SpecsType>): ValidationsResult<SpecsType> => {
         const { displayedSpecs, configurations, computeValidations, keyOfSpecTriggeringValidation } = parameters
-        const reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint: Validations = reduce(
-            entries(displayedSpecs),
-            (accumulator: Validations, [ key, val ]: [ string, DomSpecValue ]) => ({
-                ...accumulator,
-                [ key ]: validateSpec(val, configurations[ key ]),
-            }),
-            {},
-        )
-        let reevaluatedValidationsFromFunctionOverAllSpecsAsTheyAreDisplayed: Validations
+        const reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint: Validations<SpecsType> =
+            reduce<[ string, DomSpecValue ], Validations<SpecsType>>(
+                entries(displayedSpecs),
+                // @ts-ignore
+                (accumulator: Validations<SpecsType>, [ key, val ]: [ string, DomSpecValue ]) => ({
+                    ...accumulator,
+                    // @ts-ignore
+                    [ key ]: validateSpec(val, configurations[ key ]),
+                }),
+                {},
+            )
+
+        let reevaluatedValidationsFromFunctionOverAllSpecsAsTheyAreDisplayed: Validations<SpecsType>
         if (computeValidations) {
-            const displayedSpecsTreatedAsRealSpecsForTheBenefitOfTheComputeValidationsFunctionOfThePattern: Specs =
-                displayedSpecs as Specs
+            const displayedSpecsTreatedAsRealSpecsForTheBenefitOfTheComputeValidationsFunctionOfThePattern: SpecsType =
+                displayedSpecs as unknown as SpecsType
             reevaluatedValidationsFromFunctionOverAllSpecsAsTheyAreDisplayed = computeValidations(
                 displayedSpecsTreatedAsRealSpecsForTheBenefitOfTheComputeValidationsFunctionOfThePattern,
             )
         }
-        const validations: Validations =
+
+        const validations: Validations<SpecsType> =
             mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint(
                 reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint,
                 reevaluatedValidationsFromFunctionOverAllSpecsAsTheyAreDisplayed,
             )
+
         const newValidationForTheTriggeringSpecInAndOfItself: Validation =
             reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint &&
+            // @ts-ignore
             reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint[
                 keyOfSpecTriggeringValidation ]
-        const specsShouldBeSubmitted: boolean =
+
+        const shouldSubmitUpdateToSpecTriggeringValidation: boolean =
             updateForSpecWhichTriggeredReevaluatingValidationsIsValid(newValidationForTheTriggeringSpecInAndOfItself) &&
             updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs(
                 reevaluatedValidationsFromFunctionOverAllSpecsAsTheyAreDisplayed,
             )
 
         return {
-            specsShouldBeSubmitted,
+            shouldSubmitUpdateToSpecTriggeringValidation,
             validations,
         }
     }
