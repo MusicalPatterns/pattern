@@ -15,8 +15,8 @@ type ComputeValidations<SpecsType = Specs> = (specs: SpecsType) => Validations<S
 interface ValidateSpecsParameters {
     computeValidations: Maybe<ComputeValidations>,
     configurations: Configurations,
+    displayedSpecs: DomSpecs,
     keyOfSpecTriggeringValidation: string,
-    specs: Specs,
 }
 
 interface ValidationsResult {

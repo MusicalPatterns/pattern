@@ -24,7 +24,7 @@ const updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs:
         Object.values(reevaluatedValidationsFromFunctionOverAllSpecs)
             .every(isUndefined)
 
-const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecInAndOfItsOwnConstraint: (
+const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint: (
     reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations,
     reevaluatedValidationsFromFunctionOverAllSpecs: Validations,
 ) => Validations =
@@ -46,7 +46,7 @@ const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpec
     }
 
 export {
-    mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecInAndOfItsOwnConstraint,
+    mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint,
     validationRequired,
     updateForSpecWhichTriggeredReevaluatingValidationsIsValid,
     updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs,
