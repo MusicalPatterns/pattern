@@ -1,11 +1,11 @@
 import { entries, isUndefined, Maybe, reduce } from '@musical-patterns/utilities'
 import { Configuration, InputType, RangedConstraint, StringedConstraint } from '../configuration'
-import { isArrayedDomSpecValue } from '../typeGuards'
-import { DomSpecValue, Specs } from '../types'
+import { isArrayedSpecValue } from '../typeGuards'
+import { SpecValue } from '../types'
 import { validateArrayedSpec } from './arrayedSpecs'
 import { validByRangedConstraint } from './rangedConstraints'
 import { validByStringedConstraint } from './stringedConstraints'
-import { ValidateSpecsParameters, Validation, Validations } from './types'
+import { ValidateSpecsParameters, Validation, Validations, ValidationsResult } from './types'
 
 const validationRequired: (configuration: Maybe<Configuration>) => configuration is Configuration =
     (configuration: Maybe<Configuration>): configuration is Configuration => {
@@ -17,24 +17,24 @@ const validationRequired: (configuration: Maybe<Configuration>) => configuration
             configuration.inputType === InputType.TOGGLED)
     }
 
-const validateSpec: (domSpecValue: DomSpecValue, configuration: Maybe<Configuration>) => Validation =
-    (domSpecValue: DomSpecValue, configuration: Maybe<Configuration>): Validation => {
+const validateSpec: (specValue: SpecValue, configuration: Maybe<Configuration>) => Validation =
+    (specValue: SpecValue, configuration: Maybe<Configuration>): Validation => {
         if (!validationRequired(configuration)) {
             return undefined
         }
         const { constraint, inputType } = configuration
 
-        if (isArrayedDomSpecValue(domSpecValue)) {
-            return validateArrayedSpec(domSpecValue, configuration)
+        if (isArrayedSpecValue(specValue)) {
+            return validateArrayedSpec(specValue, configuration)
         }
 
         if (inputType === InputType.STRINGED) {
-            return validByStringedConstraint(domSpecValue as string, constraint as Maybe<StringedConstraint>)
+            return validByStringedConstraint(specValue as string, constraint as Maybe<StringedConstraint>)
         }
 
         let numericValue: number
         try {
-            numericValue = JSON.parse(domSpecValue as string)
+            numericValue = JSON.parse(specValue as string)
         }
         catch (e) {
             return 'this input is formatted in a way which cannot be parsed'
@@ -43,27 +43,53 @@ const validateSpec: (domSpecValue: DomSpecValue, configuration: Maybe<Configurat
         return validByRangedConstraint(numericValue, constraint as Maybe<RangedConstraint>)
     }
 
-const validateSpecs: (parameters: ValidateSpecsParameters) => Validations =
-    (parameters: ValidateSpecsParameters): Validations => {
-        const { specs, configurations, computeValidations } = parameters
+const updateForSpecWhichTriggeredReevaluatingValidationsIsValid:
+    (newValidationForTheSpecInAndOfItself: Validation) => boolean =
+    (newValidationForTheSpecInAndOfItself: Validation): boolean =>
+        !newValidationForTheSpecInAndOfItself
 
-        const reevaluatedValidationsPerIndividualSpec: Validations = reduce(
-            entries(specs),
-            (accumulator: Validations, [ key, val ]: [ string, DomSpecValue ]) => ({
+const updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs:
+    (reevaluatedValidationsFromFunctionOverAllSpecs: Validations) => boolean =
+    (reevaluatedValidationsFromFunctionOverAllSpecs: Validations): boolean =>
+        !reevaluatedValidationsFromFunctionOverAllSpecs ||
+        Object.values(reevaluatedValidationsFromFunctionOverAllSpecs)
+            .every(isUndefined)
+
+const validateSpecs: (parameters: ValidateSpecsParameters) => ValidationsResult =
+    (parameters: ValidateSpecsParameters): ValidationsResult => {
+        const { specs, configurations, computeValidations, keyOfSpecTriggeringValidation } = parameters
+
+        const reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations = reduce(
+            entries<string, SpecValue>(specs),
+            (accumulator: Validations, [ key, val ]: [ string, SpecValue ]) => ({
                 ...accumulator,
                 [ key ]: validateSpec(val, configurations[ key ]),
             }),
             {},
         )
 
-        let validationsFromFunctionOverAllSpecs: Validations
+        let reevaluatedValidationsFromFunctionOverAllSpecs: Validations
         if (computeValidations) {
-            validationsFromFunctionOverAllSpecs = computeValidations(specs as Specs)
+            reevaluatedValidationsFromFunctionOverAllSpecs = computeValidations(specs)
         }
 
+        const validations: Validations = {
+            ...reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint,
+            ...reevaluatedValidationsFromFunctionOverAllSpecs,
+        }
+        const newValidationForTheTriggeringSpecInAndOfItself: Validation =
+            reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint &&
+            reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint[ keyOfSpecTriggeringValidation ]
+
+        const specsShouldBeSubmitted: boolean =
+            updateForSpecWhichTriggeredReevaluatingValidationsIsValid(newValidationForTheTriggeringSpecInAndOfItself) &&
+            updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs(
+                reevaluatedValidationsFromFunctionOverAllSpecs,
+            )
+
         return {
-            ...reevaluatedValidationsPerIndividualSpec,
-            ...validationsFromFunctionOverAllSpecs,
+            specsShouldBeSubmitted,
+            validations,
         }
     }
 

@@ -34,6 +34,7 @@ export {
     ArrayedValidation,
     Validation,
     validateSpecs,
+    ValidationsResult,
 } from './validation'
 
 export {

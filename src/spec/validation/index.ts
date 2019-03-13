@@ -6,4 +6,5 @@ export {
     SingularValidation,
     ArrayedValidation,
     Validation,
+    ValidationsResult,
 } from './types'
