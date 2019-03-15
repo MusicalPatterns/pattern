@@ -8,6 +8,8 @@ export {
     computeTotalPitchDurationContourDuration,
     Segment,
     PitchDuration,
+    computeNotesTotalDurationByIndex,
+    computeNotesTotalDurationByScalar,
 } from './material/indexForTest'
 export {
     validateSpecs,

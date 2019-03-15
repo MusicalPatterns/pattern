@@ -5,6 +5,10 @@ export {
     pitchDurationRest,
 } from './contours'
 export {
+    computeNotesTotalDurationByIndex,
+    computeNotesTotalDurationByScalar,
+} from './notes'
+export {
     materializeStandardScales,
     computeNonScale,
     computeFlatDurationsScale,

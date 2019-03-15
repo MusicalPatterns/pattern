@@ -146,6 +146,8 @@ export {
     FULL_GAIN,
     SILENT,
     STANDARD_PITCH_INDEX_INDICATING_REST,
+    computeNotesTotalDurationByIndex,
+    computeNotesTotalDurationByScalar,
 } from './material'
 export {
     Metadata,
