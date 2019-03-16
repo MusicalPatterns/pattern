@@ -25,9 +25,8 @@ const validateArrayedSpec:
         if (isValid) {
             return undefined
         }
-        else {
-            return results
-        }
+
+        return results
     }
 
 export {
