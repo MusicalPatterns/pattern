@@ -13,7 +13,7 @@ import {
     Translation,
     zeroAndPositiveIntegers,
 } from '@musical-patterns/utilities'
-import { Specs, StandardSpec } from '../spec'
+import { StandardSpec, StandardSpecs } from '../spec'
 import { MaterializeStandardScalesOptions } from './types'
 
 const computeNonScale: () => Scale =
@@ -46,8 +46,12 @@ const computeOctaveSeriesScale: () => Scale =
             ),
     })
 
-const materializeStandardScales: (specs: Specs, options?: MaterializeStandardScalesOptions) => Scale[] =
-    (specs: Specs, { durationScalars, pitchScalars }: MaterializeStandardScalesOptions = {}): Scale[] => {
+const materializeStandardScales:
+    <SpecsType extends StandardSpecs>(specs: SpecsType, options?: MaterializeStandardScalesOptions) => Scale[] =
+    <SpecsType extends StandardSpecs>(
+        specs: SpecsType,
+        { durationScalars, pitchScalars }: MaterializeStandardScalesOptions = {},
+    ): Scale[] => {
         const gainScale: Scale = computeNonScale()
         const durationScalar: Scalar =
             from.Ms(specs[ StandardSpec.BASE_DURATION ] || to.Scalar(to.Ms(1)))
