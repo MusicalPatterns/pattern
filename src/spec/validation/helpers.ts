@@ -1,4 +1,4 @@
-import { entries, isUndefined, Maybe } from '@musical-patterns/utilities'
+import { entries, isUndefined, Maybe, objectSet } from '@musical-patterns/utilities'
 import { Configuration, InputType } from '../configuration'
 import { Specs } from '../types'
 import { Validation, Validations } from './types'
@@ -40,7 +40,7 @@ const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpec
                 .forEach(([ specKey, validation ]: [ string, Validation ]): void => {
                     if (!isUndefined(validation)) {
                         // @ts-ignore
-                        validations[ specKey ] = validation
+                        objectSet(validations, specKey, validation)
                     }
                 })
         }
