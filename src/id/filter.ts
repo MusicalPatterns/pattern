@@ -15,6 +15,7 @@ const idsToFilter: Id[] = [
     Id.PLAYROOM_TEST_VALIDATION,
     Id.TEMPLATE,
     Id.ZDAUBYAOS,
+    Id.MOEOM,
 ]
 
 const filter: PatternsFilter =
