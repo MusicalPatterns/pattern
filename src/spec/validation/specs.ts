@@ -5,13 +5,11 @@ import { DomSpecValue, Specs } from '../types'
 import { validateArrayedSpec } from './arrayedSpecs'
 import {
     mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint,
-    updateForSpecWhichTriggeredReevaluatingValidationsIsValid,
-    updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs,
     validationRequired,
 } from './helpers'
 import { validByRangedConstraint } from './rangedConstraints'
 import { validByStringedConstraint } from './stringedConstraints'
-import { ValidateSpecsParameters, Validation, Validations, ValidationsResult } from './types'
+import { ValidateSpecsParameters, Validation, Validations } from './types'
 
 const validateSpec: (displayedSpecValue: DomSpecValue, configuration: Maybe<Configuration>) => Validation =
     (displayedSpecValue: DomSpecValue, configuration: Maybe<Configuration>): Validation => {
@@ -37,9 +35,9 @@ const validateSpec: (displayedSpecValue: DomSpecValue, configuration: Maybe<Conf
     }
 
 const validateSpecs:
-    <SpecsType = Specs>(parameters: ValidateSpecsParameters<SpecsType>) => ValidationsResult<SpecsType> =
-    <SpecsType = Specs>(parameters: ValidateSpecsParameters<SpecsType>): ValidationsResult<SpecsType> => {
-        const { displayedSpecs, configurations, computeValidations, keyOfSpecTriggeringValidation } = parameters
+    <SpecsType = Specs>(parameters: ValidateSpecsParameters<SpecsType>) => Validations<SpecsType> =
+    <SpecsType = Specs>(parameters: ValidateSpecsParameters<SpecsType>): Validations<SpecsType> => {
+        const { displayedSpecs, configurations, computeValidations } = parameters
         const reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint: Validations<SpecsType> =
             reduce<[ string, DomSpecValue ], Validations<SpecsType>>(
                 entries(displayedSpecs),
@@ -61,28 +59,10 @@ const validateSpecs:
             )
         }
 
-        const validations: Validations<SpecsType> =
-            mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint(
-                reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint,
-                reevaluatedValidationsFromFunctionOverAllSpecsAsTheyAreDisplayed,
-            )
-
-        const newValidationForTheTriggeringSpecInAndOfItself: Validation =
-            reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint &&
-            // @ts-ignore
-            reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint[
-                keyOfSpecTriggeringValidation ]
-
-        const shouldSubmitUpdateToSpecTriggeringValidation: boolean =
-            updateForSpecWhichTriggeredReevaluatingValidationsIsValid(newValidationForTheTriggeringSpecInAndOfItself) &&
-            updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs(
-                reevaluatedValidationsFromFunctionOverAllSpecsAsTheyAreDisplayed,
-            )
-
-        return {
-            shouldSubmitUpdateToSpecTriggeringValidation,
-            validations,
-        }
+        return mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint(
+            reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint,
+            reevaluatedValidationsFromFunctionOverAllSpecsAsTheyAreDisplayed,
+        )
     }
 
 export {

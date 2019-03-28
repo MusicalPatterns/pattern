@@ -4,6 +4,5 @@ export { validateSpecs } from './specs'
 
 export {
     Validations,
-    ValidationsResult,
     ComputeValidations,
 } from './types'

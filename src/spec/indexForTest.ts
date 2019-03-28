@@ -8,5 +8,4 @@ export {
     validateSpecs,
     Validations,
     ComputeValidations,
-    ValidationsResult,
 } from './validation/indexForTest'

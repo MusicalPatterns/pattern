@@ -16,12 +16,6 @@ interface ValidateSpecsParameters<SpecsType = Specs> {
     computeValidations: Maybe<ComputeValidations<SpecsType>>,
     configurations: Configurations<SpecsType>,
     displayedSpecs: SpecsType,
-    keyOfSpecTriggeringValidation: string,
-}
-
-interface ValidationsResult<SpecsType = Specs> {
-    shouldSubmitUpdateToSpecTriggeringValidation: boolean,
-    validations: Validations<SpecsType>,
 }
 
 export {
@@ -31,5 +25,4 @@ export {
     Validations,
     ComputeValidations,
     ValidateSpecsParameters,
-    ValidationsResult,
 }

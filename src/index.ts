@@ -195,7 +195,6 @@ export {
     isSingularSpecValue,
     isSingularValidation,
     validateSpecs,
-    ValidationsResult,
 } from './spec'
 
 export {

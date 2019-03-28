@@ -13,18 +13,6 @@ const validationRequired: (configuration: Maybe<Configuration>) => configuration
             configuration.inputType === InputType.TOGGLED)
     }
 
-const updateForSpecWhichTriggeredReevaluatingValidationsIsValid:
-    (newValidationForTheSpecInAndOfItself: Validation) => boolean =
-    (newValidationForTheSpecInAndOfItself: Validation): boolean =>
-        !newValidationForTheSpecInAndOfItself
-
-const updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs:
-    <SpecsType = Specs>(reevaluatedValidationsFromFunctionOverAllSpecs: Validations<SpecsType>) => boolean =
-    <SpecsType = Specs>(reevaluatedValidationsFromFunctionOverAllSpecs: Validations<SpecsType>): boolean =>
-        !reevaluatedValidationsFromFunctionOverAllSpecs ||
-        Object.values(reevaluatedValidationsFromFunctionOverAllSpecs)
-            .every(isUndefined)
-
 const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint:
     <SpecsType = Specs>(
         reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations<SpecsType>,
@@ -51,6 +39,4 @@ const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpec
 export {
     mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint,
     validationRequired,
-    updateForSpecWhichTriggeredReevaluatingValidationsIsValid,
-    updateWouldNotResultInThereBeingAnyInvaliditiesFromFunctionOverAllSpecs,
 }

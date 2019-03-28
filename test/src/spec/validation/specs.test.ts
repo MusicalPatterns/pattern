@@ -4,7 +4,6 @@ import {
     InputType,
     validateSpecs,
     Validations,
-    ValidationsResult,
 } from '../../../../src/indexForTest'
 import { MinimumTestableSpec } from './types'
 
@@ -23,7 +22,7 @@ describe('validation of specs', () => {
                 inputType: InputType.RANGED,
             },
         }
-        const { shouldSubmitUpdateToSpecTriggeringValidation, validations }: ValidationsResult<MinimumTestableSpec> =
+        const validations: Validations<MinimumTestableSpec> =
             validateSpecs({
                 computeValidations: undefined,
                 configurations,
@@ -31,11 +30,8 @@ describe('validation of specs', () => {
                     justChangedSpec: 6,
                     otherSpec: 5,
                 },
-                keyOfSpecTriggeringValidation: 'justChangedSpec',
             })
 
-        expect(shouldSubmitUpdateToSpecTriggeringValidation)
-            .toBeFalsy()
         expect(validations)
             .toEqual({
                 justChangedSpec: 'must be less than or equal to 5',
@@ -62,7 +58,7 @@ describe('validation of specs', () => {
 
                 return undefined
             }
-        const { shouldSubmitUpdateToSpecTriggeringValidation, validations }: ValidationsResult<MinimumTestableSpec> =
+        const validations: Validations<MinimumTestableSpec> =
             validateSpecs<MinimumTestableSpec>({
                 computeValidations,
                 configurations,
@@ -70,11 +66,8 @@ describe('validation of specs', () => {
                     justChangedSpec: 6,
                     otherSpec: 5,
                 },
-                keyOfSpecTriggeringValidation: 'justChangedSpec',
             })
 
-        expect(shouldSubmitUpdateToSpecTriggeringValidation)
-            .toBeFalsy()
         expect(validations)
             .toEqual({
                 justChangedSpec: EXPECTED_CUSTOM_VALIDATION_MESSAGE,
@@ -104,7 +97,7 @@ describe('validation of specs', () => {
 
                 return undefined
             }
-        const { shouldSubmitUpdateToSpecTriggeringValidation, validations }: ValidationsResult<MinimumTestableSpec> =
+        const validations: Validations<MinimumTestableSpec> =
             validateSpecs<MinimumTestableSpec>({
                 computeValidations,
                 configurations,
@@ -112,11 +105,8 @@ describe('validation of specs', () => {
                     justChangedSpec: 6,
                     otherSpec: 4,
                 },
-                keyOfSpecTriggeringValidation: 'justChangedSpec',
             })
 
-        expect(shouldSubmitUpdateToSpecTriggeringValidation)
-            .toBeFalsy()
         expect(validations)
             .toEqual({
                 justChangedSpec: EXPECTED_CUSTOM_VALIDATION_MESSAGE,
@@ -139,7 +129,7 @@ describe('validation of specs', () => {
                 inputType: InputType.RANGED,
             },
         }
-        const { shouldSubmitUpdateToSpecTriggeringValidation, validations }: ValidationsResult<MinimumTestableSpec> =
+        const validations: Validations<MinimumTestableSpec> =
             validateSpecs<MinimumTestableSpec>({
                 computeValidations: undefined,
                 configurations,
@@ -147,11 +137,8 @@ describe('validation of specs', () => {
                     justChangedSpec: 6,
                     otherSpec: 4,
                 },
-                keyOfSpecTriggeringValidation: 'justChangedSpec',
             })
 
-        expect(shouldSubmitUpdateToSpecTriggeringValidation)
-            .toBeFalsy()
         expect(validations)
             .toEqual({
                 justChangedSpec: 'must be less than or equal to 5',

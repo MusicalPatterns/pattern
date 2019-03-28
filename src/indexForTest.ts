@@ -16,7 +16,6 @@ export {
     Validations,
     InputType,
     Configurations,
-    ValidationsResult,
     ComputeValidations,
 } from './spec/indexForTest'
 
