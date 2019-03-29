@@ -1,5 +1,5 @@
 import { entries, Maybe, reduce } from '@musical-patterns/utilities'
-import { Configuration, InputType, RangedConstraint, StringedConstraint } from '../configuration'
+import { Configuration, Configurations, InputType, RangedConstraint, StringedConstraint } from '../configuration'
 import { isArrayedDomSpecValue } from '../typeGuards'
 import { DomSpecValue, Specs } from '../types'
 import { validateArrayedSpec } from './arrayedSpecs'
@@ -9,7 +9,7 @@ import {
 } from './helpers'
 import { validByRangedConstraint } from './rangedConstraints'
 import { validByStringedConstraint } from './stringedConstraints'
-import { ValidateSpecsParameters, Validation, Validations } from './types'
+import { ComputeValidations, ValidateSpecsParameters, Validation, Validations } from './types'
 
 const validateSpec: (displayedSpecValue: DomSpecValue, configuration: Maybe<Configuration>) => Validation =
     (displayedSpecValue: DomSpecValue, configuration: Maybe<Configuration>): Validation => {
@@ -34,8 +34,11 @@ const validateSpec: (displayedSpecValue: DomSpecValue, configuration: Maybe<Conf
         return validByRangedConstraint(numericValue, constraint as Maybe<RangedConstraint>)
     }
 
-const validateSpecs:
-    <SpecsType = Specs>(parameters: ValidateSpecsParameters<SpecsType>) => Validations<SpecsType> =
+const validateSpecs: <SpecsType = Specs>(parameters: {
+    computeValidations: Maybe<ComputeValidations<SpecsType>>,
+    configurations: Configurations<SpecsType>,
+    displayedSpecs: SpecsType,
+}) => Validations<SpecsType> =
     <SpecsType = Specs>(parameters: ValidateSpecsParameters<SpecsType>): Validations<SpecsType> => {
         const { displayedSpecs, configurations, computeValidations } = parameters
         const reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint: Validations<SpecsType> =

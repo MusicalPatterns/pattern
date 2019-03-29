@@ -1,4 +1,15 @@
-import { apply, DOUBLE, Frequency, from, Ordinal, Power, Scalar, SQUARED, to } from '@musical-patterns/utilities'
+import {
+    apply,
+    Cardinal,
+    DOUBLE,
+    Frequency,
+    from,
+    Ordinal,
+    Power,
+    Scalar,
+    SQUARED,
+    to,
+} from '@musical-patterns/utilities'
 import { KINDA_GUESSING_AT_A_GOOD_SIGMA, NEGATIVE_POINT_FIVE_TRANSLATION, PITCH_CIRCULAR_TIER_COUNT } from './constants'
 import {
     ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters,
@@ -6,7 +17,7 @@ import {
 } from './types'
 
 const computeNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount:
-    (parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters) => number =
+    (parameters: { circledPitchIndex: Ordinal, pitchClassCount: Cardinal }) => number =
     (parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters): number => {
         const { pitchClassCount, circledPitchIndex } = parameters
         const maximumPitchAcrossAllTiers: Ordinal = to.Ordinal(from.Cardinal(apply.Scalar(
@@ -28,7 +39,7 @@ const computeNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslationBy
     }
 
 const computeNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize:
-    (parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters) => number =
+    (parameters: { circledPitchScalar: Scalar<Frequency>, windowSize: Scalar<Frequency> }) => number =
     (parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters): number => {
         const { windowSize, circledPitchScalar } = parameters
         const maximumPitchAcrossAllTiers: Scalar<Frequency> = apply.Power(
@@ -54,7 +65,7 @@ const computeNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByWin
     }
 
 const computePowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount:
-    (parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters) => Power =
+    (parameters: { circledPitchIndex: Ordinal, pitchClassCount: Cardinal }) => Power =
     (parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters): Power =>
         to.Power(
             computeNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount(parameters) /
@@ -62,7 +73,7 @@ const computePowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassC
         )
 
 const computePowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize:
-    (parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters) => Power =
+    (parameters: { circledPitchScalar: Scalar<Frequency>, windowSize: Scalar<Frequency> }) => Power =
     (parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters): Power =>
         to.Power(
             computeNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize(parameters) /

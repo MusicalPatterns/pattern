@@ -1,4 +1,17 @@
-import { Amplitude, apply, E, from, negative, ONE_HALF, Power, Scalar, to } from '@musical-patterns/utilities'
+import {
+    Amplitude,
+    apply,
+    Cardinal,
+    E,
+    Frequency,
+    from,
+    negative,
+    ONE_HALF,
+    Ordinal,
+    Power,
+    Scalar,
+    to,
+} from '@musical-patterns/utilities'
 import {
     computePowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount,
     computePowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize,
@@ -11,7 +24,7 @@ import {
 const applyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCount:
     (
         originalGainScalar: Scalar<Amplitude>,
-        parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters,
+        parameters: { circledPitchIndex: Ordinal, pitchClassCount: Cardinal },
     ) => Scalar<Amplitude> =
     (
         originalGainScalar: Scalar<Amplitude>,
@@ -31,7 +44,7 @@ const applyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCount:
 const applyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSize:
     (
         originalGainScalar: Scalar<Amplitude>,
-        parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters,
+        parameters: { circledPitchScalar: Scalar<Frequency>, windowSize: Scalar<Frequency> },
     ) => Scalar<Amplitude> =
     (
         originalGainScalar: Scalar<Amplitude>,

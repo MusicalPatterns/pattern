@@ -1,8 +1,18 @@
-import { apply, Frequency, from, Ordinal, Scalar, to, Translation, windowReduce } from '@musical-patterns/utilities'
+import {
+    apply,
+    Cardinal,
+    Frequency,
+    from,
+    Ordinal,
+    Scalar,
+    to,
+    Translation,
+    windowReduce,
+} from '@musical-patterns/utilities'
 import { ComputeCircledPitchIndexParameters, ComputeCircledPitchScalarParameters } from './types'
 
 const transposePitchIndexForTier:
-    (originalPitchIndex: Ordinal, parameters: ComputeCircledPitchIndexParameters) => Ordinal =
+    (originalPitchIndex: Ordinal, parameters: { pitchClassCount: Cardinal, tierIndex: Ordinal }) => Ordinal =
     (originalPitchIndex: Ordinal, { pitchClassCount, tierIndex }: ComputeCircledPitchIndexParameters): Ordinal => {
         const pitchIndexWrappedWithinPitchClassCountToRemoveOriginalWindowLocationInformation: Ordinal = apply.Modulus(
             originalPitchIndex,
@@ -20,8 +30,10 @@ const transposePitchIndexForTier:
         )
     }
 
-const scalePitchScalarForTier:
-    (originalPitchScalar: Scalar<Frequency>, parameters: ComputeCircledPitchScalarParameters) => Scalar<Frequency> =
+const scalePitchScalarForTier: (
+    originalPitchScalar: Scalar<Frequency>,
+    parameters: { tierIndex: Ordinal, windowSize: Scalar<Frequency> },
+) => Scalar<Frequency> =
     (originalPitchScalar: Scalar<Frequency>, parameters: ComputeCircledPitchScalarParameters): Scalar<Frequency> => {
         const { windowSize, tierIndex } = parameters
         const pitchScalarReducedWithinWindowSizeToRemoveWindowLocationInformation: Scalar<Frequency> = windowReduce(
