@@ -3,6 +3,7 @@
 export {
     InputType,
     Configurations,
+    computeBasicOptionedConstraintFromEnum,
 } from './configuration/indexForTest'
 export {
     validateSpecs,

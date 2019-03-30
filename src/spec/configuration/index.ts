@@ -1,4 +1,7 @@
+import { computeBasicOptionedConstraintFromEnum } from './constraints'
+
 export { standardConfigurations } from './standards'
+export { computeBasicOptionedConstraintFromEnum } from './constraints'
 export {
     Configuration,
     OptionedConfiguration,

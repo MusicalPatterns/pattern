@@ -17,6 +17,7 @@ export {
     InputType,
     Configurations,
     ComputeValidations,
+    computeBasicOptionedConstraintFromEnum,
 } from './spec/indexForTest'
 
 export {
