@@ -1,1 +1,4 @@
-export { ExampleEnum } from './types'
+export {
+    ExampleEnum,
+    MinimumTestableSpec,
+} from './types'

@@ -5,7 +5,7 @@ import {
     validateSpecs,
     Validations,
 } from '../../../../src/indexForTest'
-import { MinimumTestableSpec } from './types'
+import { MinimumTestableSpec } from '../../../support'
 
 const EXPECTED_CUSTOM_VALIDATION_MESSAGE: string = 'cannot be six'
 

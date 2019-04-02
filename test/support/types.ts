@@ -4,6 +4,12 @@ enum ExampleEnum {
     OPTION_THREE = 'OPTION_THREE',
 }
 
+interface MinimumTestableSpec {
+    justChangedSpec: number,
+    otherSpec: number,
+}
+
 export {
+    MinimumTestableSpec,
     ExampleEnum,
 }
