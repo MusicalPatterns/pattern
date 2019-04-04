@@ -69,9 +69,9 @@ type Configuration =
     ToggledConfiguration
 
 interface StandardConfigurations extends Configurations<StandardSpecs> {
-    [ StandardSpec.DURATION_TRANSLATION ]: RangedConfiguration,
+    [ StandardSpec.BASE_DURATION_TRANSLATION ]: RangedConfiguration,
     [ StandardSpec.BASE_DURATION ]: RangedConfiguration,
-    [ StandardSpec.FREQUENCY_TRANSLATION ]: RangedConfiguration,
+    [ StandardSpec.BASE_FREQUENCY_TRANSLATION ]: RangedConfiguration,
     [ StandardSpec.BASE_FREQUENCY ]: RangedConfiguration,
     [ StandardSpec.BASE_POSITION ]: RangedConfiguration,
     [ StandardSpec.BASE_POSITION_SCALAR ]: RangedConfiguration,

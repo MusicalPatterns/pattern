@@ -23,18 +23,18 @@ type ArrayedDomSpecValue = SingularDomSpecValue[]
 type DomSpecValue = SingularDomSpecValue | ArrayedDomSpecValue
 
 enum StandardSpec {
-    DURATION_TRANSLATION = 'baseDurationTranslation',
+    BASE_DURATION_TRANSLATION = 'baseDurationTranslation',
     BASE_DURATION = 'baseDuration',
-    FREQUENCY_TRANSLATION = 'baseFrequencyTranslation',
+    BASE_FREQUENCY_TRANSLATION = 'baseFrequencyTranslation',
     BASE_FREQUENCY = 'baseFrequency',
     BASE_POSITION = 'basePosition',
     BASE_POSITION_SCALAR = 'basePositionScalar',
 }
 
 type StandardSpecs = Partial<{
-    [ StandardSpec.DURATION_TRANSLATION ]: Translation<Ms>,
+    [ StandardSpec.BASE_DURATION_TRANSLATION ]: Translation<Ms>,
     [ StandardSpec.BASE_DURATION ]: Scalar<Ms>,
-    [ StandardSpec.FREQUENCY_TRANSLATION ]: Translation<Hz>,
+    [ StandardSpec.BASE_FREQUENCY_TRANSLATION ]: Translation<Hz>,
     [ StandardSpec.BASE_FREQUENCY ]: Scalar<Hz>,
     [ StandardSpec.BASE_POSITION ]: Array<Translation<Meters>>,
     [ StandardSpec.BASE_POSITION_SCALAR ]: Scalar<Meters>,

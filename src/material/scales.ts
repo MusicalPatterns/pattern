@@ -56,7 +56,7 @@ const materializeStandardScales:
         const durationScalar: Scalar =
             from.Ms(specs[ StandardSpec.BASE_DURATION ] || to.Scalar(to.Ms(1)))
         const durationTranslation: Translation =
-            from.Ms(specs[ StandardSpec.DURATION_TRANSLATION ] || to.Ms(NO_TRANSLATION))
+            from.Ms(specs[ StandardSpec.BASE_DURATION_TRANSLATION ] || to.Ms(NO_TRANSLATION))
         const durationsScale: Scale = {
             scalar: durationScalar,
             scalars: durationScalars,
@@ -65,7 +65,7 @@ const materializeStandardScales:
         const pitchesScalar: Scalar =
             from.Hz(specs[ StandardSpec.BASE_FREQUENCY ] || to.Scalar(to.Hz(1)))
         const pitchesTranslation: Translation =
-            from.Hz(specs[ StandardSpec.FREQUENCY_TRANSLATION ] || to.Hz(NO_TRANSLATION))
+            from.Hz(specs[ StandardSpec.BASE_FREQUENCY_TRANSLATION ] || to.Hz(NO_TRANSLATION))
         const pitchesScale: Scale = {
             scalar: pitchesScalar,
             scalars: pitchScalars,

@@ -3,7 +3,7 @@ import { StandardSpec } from '../types'
 import { InputType, RangedInputType, StandardConfigurations } from './types'
 
 const standardConfigurations: StandardConfigurations = {
-    [ StandardSpec.DURATION_TRANSLATION ]: {
+    [ StandardSpec.BASE_DURATION_TRANSLATION ]: {
         description: 'translate each duration by this amount (does not preserve temporal ratios)',
         inputType: InputType.RANGED,
         units: Units.MILLISECONDS,
@@ -16,7 +16,7 @@ const standardConfigurations: StandardConfigurations = {
         inputType: InputType.RANGED,
         units: Units.MILLISECONDS,
     },
-    [ StandardSpec.FREQUENCY_TRANSLATION ]: {
+    [ StandardSpec.BASE_FREQUENCY_TRANSLATION ]: {
         description: 'translate each pitch by this amount (does not preserve harmonic ratios)',
         inputType: InputType.RANGED,
         units: Units.HERTZ,
