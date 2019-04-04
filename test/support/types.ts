@@ -5,6 +5,7 @@ enum ExampleEnum {
 }
 
 interface MinimumTestableSpec {
+    arrayedSpec: number[],
     justChangedSpec: number,
     otherSpec: number,
 }
