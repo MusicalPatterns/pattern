@@ -17,4 +17,5 @@ export {
     Configurations,
     OptionedConstraintOption,
     RangedInputType,
+    ArrayedConstraint,
 } from './types'

@@ -196,6 +196,7 @@ export {
     isSingularValidation,
     validateSpecs,
     computeBasicOptionedConstraintFromEnum,
+    ArrayedConstraint,
 } from './spec'
 
 export {

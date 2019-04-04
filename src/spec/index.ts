@@ -15,6 +15,7 @@ export {
     OptionedConstraintOption,
     RangedInputType,
     computeBasicOptionedConstraintFromEnum,
+    ArrayedConstraint,
 } from './configuration'
 export {
     Preset,

@@ -1,3 +1,5 @@
+// tslint:disable max-file-line-count
+
 import { HtmlValueOrChecked, KeyMap, Units } from '@musical-patterns/utilities'
 import { Presentable } from '../../metadata'
 import { Specs, StandardSpec, StandardSpecs } from '../types'
@@ -35,7 +37,13 @@ type OptionedConstraint = OptionedConstraintOption[]
 
 type Constraint = RangedConstraint | OptionedConstraint | StringedConstraint
 
+interface ArrayedConstraint {
+    maxLength?: number,
+    minLength?: number,
+}
+
 interface SharedConfiguration extends Presentable {
+    arrayedConstraint?: ArrayedConstraint
     arrayedNewFieldInitialValue?: HtmlValueOrChecked,
     isArrayed?: boolean,
     units?: Units,
@@ -94,4 +102,5 @@ export {
     Configurations,
     OptionedConstraintOption,
     RangedInputType,
+    ArrayedConstraint,
 }
