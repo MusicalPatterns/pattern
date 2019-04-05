@@ -49,6 +49,7 @@ interface Spec<SpecsType = Specs> {
     configurations: Configurations<SpecsType>,
     initialSpecs: SpecsType,
     presets?: ObjectOf<Preset<SpecsType>>,
+    restartOnModify?: boolean,
 }
 
 export {
