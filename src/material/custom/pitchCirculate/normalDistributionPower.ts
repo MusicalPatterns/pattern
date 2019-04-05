@@ -18,8 +18,12 @@ import {
 
 const computeNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslationByPitchClassCount:
     (parameters: { circledPitchIndex: Ordinal, pitchClassCount: Cardinal }) => number =
-    (parameters: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters): number => {
-        const { pitchClassCount, circledPitchIndex } = parameters
+    (
+        {
+            pitchClassCount,
+            circledPitchIndex,
+        }: ApplyPitchCircularGainCurveWithTechniqueIndexTranslationByPitchClassCountParameters,
+    ): number => {
         const maximumPitchAcrossAllTiers: Ordinal = to.Ordinal(from.Cardinal(apply.Scalar(
             pitchClassCount,
             to.Scalar(from.Cardinal(PITCH_CIRCULAR_TIER_COUNT)),
@@ -40,8 +44,12 @@ const computeNumeratorOfPowerOfNormalDistributionWithTechniqueIndexTranslationBy
 
 const computeNumeratorOfPowerOfNormalDistributionWithTechniqueScalarScalingByWindowSize:
     (parameters: { circledPitchScalar: Scalar<Frequency>, windowSize: Scalar<Frequency> }) => number =
-    (parameters: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters): number => {
-        const { windowSize, circledPitchScalar } = parameters
+    (
+        {
+            windowSize,
+            circledPitchScalar,
+        }: ApplyPitchCircularGainCurveWithTechniqueScalarScalingByWindowSizeParameters,
+    ): number => {
         const maximumPitchAcrossAllTiers: Scalar<Frequency> = apply.Power(
             windowSize,
             to.Power(from.Cardinal(PITCH_CIRCULAR_TIER_COUNT)),

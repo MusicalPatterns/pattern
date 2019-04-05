@@ -39,8 +39,13 @@ const validateSpecs: <SpecsType = Specs>(parameters: {
     configurations: Configurations<SpecsType>,
     displayedSpecs: SpecsType,
 }) => Validations<SpecsType> =
-    <SpecsType = Specs>(parameters: ValidateSpecsParameters<SpecsType>): Validations<SpecsType> => {
-        const { displayedSpecs, configurations, computeValidations } = parameters
+    <SpecsType = Specs>(
+        {
+            displayedSpecs,
+            configurations,
+            computeValidations,
+        }: ValidateSpecsParameters<SpecsType>,
+    ): Validations<SpecsType> => {
         const reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint: Validations<SpecsType> =
             reduce<[ string, DomSpecValue ], Validations<SpecsType>>(
                 entries(displayedSpecs),

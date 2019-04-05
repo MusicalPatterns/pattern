@@ -34,8 +34,10 @@ const scalePitchScalarForTier: (
     originalPitchScalar: Scalar<Frequency>,
     parameters: { tierIndex: Ordinal, windowSize: Scalar<Frequency> },
 ) => Scalar<Frequency> =
-    (originalPitchScalar: Scalar<Frequency>, parameters: ComputeCircledPitchScalarParameters): Scalar<Frequency> => {
-        const { windowSize, tierIndex } = parameters
+    (
+        originalPitchScalar: Scalar<Frequency>,
+        { windowSize, tierIndex }: ComputeCircledPitchScalarParameters,
+    ): Scalar<Frequency> => {
         const pitchScalarReducedWithinWindowSizeToRemoveWindowLocationInformation: Scalar<Frequency> = windowReduce(
             originalPitchScalar,
             windowSize,
