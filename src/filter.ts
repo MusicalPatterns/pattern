@@ -1,7 +1,6 @@
 import { Maybe, reduce } from '@musical-patterns/utilities'
-import { Pattern, Patterns } from '../types'
-import { Id } from './registry'
-import { PatternsFilter } from './types'
+import { Id } from './id'
+import { Pattern, Patterns, PatternsFilter } from './types'
 
 const idsToFilter: Id[] = [
     Id.PERFORMER_QA,

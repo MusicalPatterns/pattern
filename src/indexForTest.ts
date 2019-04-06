@@ -1,6 +1,6 @@
 // tslint:disable no-reaching-imports
 
-export { filter, Id } from './id/indexForTest'
+export { Id } from './id/indexForTest'
 export {
     computeOctaveSeriesScale,
     pitchCirculate,
@@ -19,6 +19,8 @@ export {
     ComputeValidations,
     computeBasicOptionedConstraintFromEnum,
 } from './spec/indexForTest'
+
+export { filter } from './filter'
 
 export {
     Pattern,

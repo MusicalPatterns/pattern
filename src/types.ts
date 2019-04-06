@@ -14,8 +14,11 @@ type StandardPattern = Pattern<StandardSpecs>
 
 type Patterns = { [Index in Id]: Pattern }
 
+type PatternsFilter = (patterns: Patterns) => Patterns
+
 export {
     Patterns,
     StandardPattern,
     Pattern,
+    PatternsFilter,
 }

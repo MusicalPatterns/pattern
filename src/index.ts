@@ -3,7 +3,6 @@
 export {
     Id,
     isId,
-    filter,
 } from './id'
 export {
     computeTotalPitchDurationContourDuration,
@@ -198,6 +197,8 @@ export {
     computeBasicOptionedConstraintFromEnum,
     ArrayedConstraint,
 } from './spec'
+
+export { filter } from './filter'
 
 export {
     Patterns,
