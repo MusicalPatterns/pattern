@@ -1,7 +1,7 @@
-import { Material } from '@musical-patterns/compiler'
-import { Id } from './id'
-import { Metadata } from './metadata'
-import { Spec, Specs, StandardSpecs } from './spec'
+import { Id } from '@musical-patterns/id'
+import { Material } from '@musical-patterns/material'
+import { Metadata } from '@musical-patterns/metadata'
+import { Spec, Specs, StandardSpecs } from '@musical-patterns/spec'
 
 interface Pattern<SpecsType = Specs> {
     id: Id,

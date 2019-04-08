@@ -1,5 +1,6 @@
+import { Id } from '@musical-patterns/id'
 import { keys, reduce } from '@musical-patterns/utilities'
-import { filter, Id, Patterns } from '../../src/indexForTest'
+import { filter, Patterns } from '../../src/indexForTest'
 
 describe('filter', () => {
     it('removes the development-only patterns', () => {

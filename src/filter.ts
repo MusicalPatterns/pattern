@@ -1,5 +1,5 @@
+import { Id } from '@musical-patterns/id'
 import { Maybe, reduce } from '@musical-patterns/utilities'
-import { Id } from './id'
 import { Pattern, Patterns, PatternsFilter } from './types'
 
 const idsToFilter: Id[] = [
