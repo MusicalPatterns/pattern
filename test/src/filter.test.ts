@@ -20,8 +20,10 @@ describe('filter', () => {
             expect(filteredPatternId.match(/PLAYROOM_TEST/))
                 .toBeFalsy()
         })
-        expect(filteredPatternIds.includes(Id.PERFORMER_QA))
-            .toBeFalsy()
+        filteredPatternIds.forEach((filteredPatternId: Id) => {
+            expect(filteredPatternId.match(/MATERIAL_QA/))
+                .toBeFalsy()
+        })
         expect(filteredPatternIds.includes(Id.TEMPLATE))
             .toBeFalsy()
     })
