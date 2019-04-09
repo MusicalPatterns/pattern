@@ -4,6 +4,7 @@ import { Pattern, Patterns, PatternsFilter } from './types'
 
 const idsToFilter: Id[] = [
     Id.PERFORMER_QA,
+    Id.PERFORMER_QA_DELAY,
     Id.PLAYROOM_TEST_FINITE,
     Id.PLAYROOM_TEST_REPETEND,
     Id.PLAYROOM_TEST_LONG_DURATION,
