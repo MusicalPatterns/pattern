@@ -3,6 +3,7 @@ import { Maybe, reduce } from '@musical-patterns/utilities'
 import { Pattern, Patterns, PatternsFilter } from './types'
 
 const idsToFilter: Id[] = [
+    Id.BAPBO,
     Id.MATERIAL_QA,
     Id.MATERIAL_QA_DELAY,
     Id.PLAYROOM_TEST_FINITE,
