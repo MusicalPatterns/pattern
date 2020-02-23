@@ -26,7 +26,7 @@ const idsToFilter: Id[] = [
 const filter: PatternsFilter =
     (patterns: Patterns): Patterns => {
         const maybeIds: Array<Maybe<Id>> = Object.values(patterns)
-            .map((pattern: Maybe<Pattern>) =>
+            .map((pattern: Maybe<Pattern>): Maybe<Id> =>
                 pattern && pattern.id)
 
         const ids: Id[] = []
